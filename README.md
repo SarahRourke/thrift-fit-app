@@ -20,8 +20,8 @@ A lot of software development revloves around ecommerce so having a site that de
    - The buyer and seller should be able to login
     
   ### Should Have
-    - The buyer should be able to see shipping costs
-    - The buyer should be able to buy the outfits
+   - The buyer should be able to see shipping costs
+   - The buyer should be able to buy the outfits
     
   ### Could Have
    - The seller should be see their rating
