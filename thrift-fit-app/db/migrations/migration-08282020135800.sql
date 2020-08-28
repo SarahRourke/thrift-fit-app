@@ -2,7 +2,7 @@
 
 CREATE TABLE IF NOT EXISTS outfits (
     id SERIAL PRIMARY KEY,
-    username VARCHAR REFERENCES users(username),
+    user_id VARCHAR REFERENCES users(id),
     is_sold BOOLEAN,
     description TEXT
 );
