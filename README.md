@@ -44,4 +44,17 @@ A lot of software development revloves around ecommerce so having a site that de
 
   ### Bonus info
    - https://developer.squareup.com/docs/checkout-api-overview This link has an api for handling payments that we could use
-   - https://www.ups.com/us/en/services/technology-integration/online-tools-shipping.page This link has an api for calculating shipping costs for usps
+   - https://www.ups.com/us/en/services/technology-integration/online-tools-shipping.page Dev API provided by UPS to track shipping details
+  
+
+   ### Examples of bootstrap Component 'Cards' 
+   - https://react-bootstrap.github.io/components/cards/ 
+        - from reactbootstrap website
+
+   - https://www.youtube.com/watch?v=IhWFs0diAPE
+        - youtube video example
+
+   - https://reactjsexample.com/tag/cards/
+        - huge gallery of examples of react.js cards already in use      
+
+
