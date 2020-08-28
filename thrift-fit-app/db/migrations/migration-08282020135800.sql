@@ -5,4 +5,4 @@ CREATE TABLE IF NOT EXISTS outfits (
     user_id INT REFERENCES users(id),
     is_sold BOOLEAN,
     description TEXT
-);
+); 

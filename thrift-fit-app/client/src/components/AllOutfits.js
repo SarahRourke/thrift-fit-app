@@ -10,7 +10,7 @@ class AllOutfits extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/outfits', { credentials: 'include' })
+        fetch('/api/outfits'/*,{ credentials: 'include' }*/)
         .then(res => res.json())
         .then(res => {
             this.setState({
@@ -22,7 +22,9 @@ class AllOutfits extends Component {
 
     renderAllOutfits() {
         if (this.state.dataLoaded) {
-            return <h3>placeholder for outfits</h3>
+            return this.state.outfits.map(outfit => {
+                return <Outfit key={outfit.id} outfit={outfit} />
+            })
         } else return <p>Cleaning our closet...</p>;
     }
 
