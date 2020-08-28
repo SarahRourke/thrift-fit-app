@@ -40,6 +40,8 @@ app.get('/', (req, res) => {
 });
 
 // Routes will go here!
+const authRoutes = require('./routes/auth-routes');
+app.use('/api/auth', authRoutes);
 
 app.use('*', (req, res) => {
     res.status(400).json({
