@@ -10,6 +10,10 @@ class AllOutfits extends Component {
     }
 
     componentDidMount() {
+        this.getAllOutfits();
+    } 
+    
+    getAllOutfits() {
         fetch('/api/outfits'/*,{ credentials: 'include' }*/)
         .then(res => res.json())
         .then(res => {
@@ -17,6 +21,23 @@ class AllOutfits extends Component {
                 outfits: res.data.outfits,
                 dataLoaded: true,
             })
+        }).catch(err => console.log(err));
+    }
+
+    handleFormSubmit(method, e, data, id) {
+        e.preventDefault()
+        fetch(`/api/outfits/${id || ''}`, {
+            method: method,
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+            this.getAllOutfits();
         }).catch(err => console.log(err));
     }
 
