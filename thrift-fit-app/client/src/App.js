@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
+import SideBar from './components/SideBar'
 
 class App extends Component {
   constructor() {
@@ -88,6 +89,10 @@ class App extends Component {
         <div className="App">
 
           <Header logout={this.logout}/>
+          {(this.state.auth) 
+          ? <SideBar user={this.state.user.id}/>
+          : ''}
+          
 
           <div className="container">
 
