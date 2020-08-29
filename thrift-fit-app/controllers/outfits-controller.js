@@ -40,4 +40,18 @@ outfitController.create = (req, res, next) => {
     .catch(next);
 };
 
+outfitController.update = (req, res, next) => {
+  Outfit.getById(req.params.id)
+    .then((outfit) => {
+      return outfit.update(req.body);
+    })
+    .then((updatedOutfit) => {
+      res.json({
+        message: 'Outfit updated successfully!',
+        data: { updatedOutfit },
+      });
+    })
+    .catch(next);
+};
+
 module.exports = outfitController;

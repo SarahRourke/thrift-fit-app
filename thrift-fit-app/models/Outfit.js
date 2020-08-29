@@ -34,6 +34,23 @@ class Outfit {
       )
       .then((outfit) => Object.assign(this, outfit));
   }
+
+  update(changes) {
+    Object.assign(this, changes);
+    return db
+      .one(
+        `
+          UPDATE outfits SET
+          is_sold = $/is_sold/,
+          description = $/description/,
+          img_url = $/img_url/
+          WHERE id = $/id/
+          RETURNING *
+        `,
+        this
+      )
+      .then((updatedOutfit) => Object.assign(this, updatedOutfit));
+  }
   
 }
 

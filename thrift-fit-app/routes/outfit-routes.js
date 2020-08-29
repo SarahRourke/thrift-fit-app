@@ -12,4 +12,7 @@ outfitRoutes.get('/:id', outfitsController.show);
 // add new outfit route, /api/outfits/add 
 outfitRoutes.post('/', outfitsController.create);
 
+// add edit route, /api/outfits/:id
+outfitRoutes.put('/:id', outfitsController.update);
+
 module.exports = outfitRoutes;
