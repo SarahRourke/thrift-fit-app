@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Outfit from './Outfit';
 class AllOutfits extends Component {
     constructor(props) {
         super(props);
