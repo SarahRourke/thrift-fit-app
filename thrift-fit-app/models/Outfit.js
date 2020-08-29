@@ -14,6 +14,15 @@ class Outfit {
       .manyOrNone('SELECT * FROM outfits ORDER BY id ASC')
       .then((outfits) => outfits.map((outfit) => new this(outfit)));
   }
+
+  static getById(id) {
+    return db
+      .oneOrNone('SELECT * FROM outfits WHERE id = $1', [id])
+      .then((outfit) => {
+        if (outfit) return new this(outfit);
+        throw new Error(`Movie ${id} not found`);
+      });
+  }
   
 }
 
