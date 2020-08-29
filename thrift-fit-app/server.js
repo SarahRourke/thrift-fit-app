@@ -42,6 +42,8 @@ app.get('/', (req, res) => {
 // Routes will go here!
 const authRoutes = require('./routes/auth-routes');
 app.use('/api/auth', authRoutes);
+const followersRoutes = require('./routes/followers-router');
+app.use('/api/followerList', followersRoutes);
 
 app.use('*', (req, res) => {
     res.status(400).json({
