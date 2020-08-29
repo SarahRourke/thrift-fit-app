@@ -15,6 +15,7 @@ const Header = (props) => {
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/register">Register</Link></li>
           <li><Link to="/dashboard">Dashboard</Link></li>
+          <li><Link to="/outfits">Outfits</Link></li>
           <li><Link to="/shopping-cart">Shopping Cart</Link></li>
           <li><span onClick={props.logout}>Logout</span></li>
         </ul>

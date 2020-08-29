@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import OutfitsController from './components/OutfitsController';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -111,6 +112,11 @@ class App extends Component {
               : <Dashboard  user={this.state.user} />
             )} />
 
+            <Route exact path='/outfits' render={() => <OutfitsController currentPage='index' />} />
+            
+            <Route exact path='/new' render={() => (<OutfitsController currentPage='create' />)} />
+            <Route exact path='/outfits/update/:id' 
+            render={props => (<OutfitsController currentPage='update' currentId={props.match.params.id} />)} />
           </div>
 
           <Footer />
