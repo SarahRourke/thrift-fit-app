@@ -26,16 +26,15 @@ outfitController.show = (req, res, next) => {
 
 outfitController.create = (req, res, next) => {
   new Outfit({
-    user_id: req.user.id,
-    // is_sold: is not required. Default value is false.
+    user_id: req.body.user_id,
     description: req.body.description,
-    img_url: req.user.id,
+    img_url: req.body.img_url,
   })
     .save()
-    .then((outfit) => {
+    .then((newOutfit) => {
       res.json({
         message: 'Outfit added successfully!',
-        data: { outfit },
+        data: { newOutfit },
       });
     })
     .catch(next);

@@ -1,12 +1,12 @@
 const db = require('../db/config');
 
 class Outfit {
-  constructor({ id, user_id, is_sold, description, img_url }) {
-    this.id = id || null;
-    this.user_id = user_id || null;
-    this.is_sold = is_sold || false;
-    this.description = description;
-    this.img_url = img_url;
+  constructor(outfit) {
+    this.id = outfit.id || null;
+    this.user_id = outfit.user_id;
+    this.is_sold = outfit.is_sold || false;
+    this.description = outfit.description;
+    this.img_url = outfit.img_url;
   }
 
   static getAll() {
@@ -20,8 +20,19 @@ class Outfit {
       .oneOrNone('SELECT * FROM outfits WHERE id = $1', [id])
       .then((outfit) => {
         if (outfit) return new this(outfit);
-        throw new Error(`Movie ${id} not found`);
+        throw new Error(`Outfit ${id} not found`);
       });
+  }
+
+  save() {
+    return db
+      .one(
+        `INSERT INTO outfits (user_id, description, img_url)
+         VALUES ($/user_id/, $/description/, $/img_url/)
+         RETURNING *`,
+        this
+      )
+      .then((outfit) => Object.assign(this, outfit));
   }
   
 }
