@@ -12,7 +12,7 @@ const OutfitJustOne = (props) => {
                 <div className="details">
                     <h3 className="soldby">{props.outfit.user_id}</h3>
                     <p>{props.outfit.description}</p>
-                        <Link to={`/outfit/edit/${props.outfit.id}`}>Edit</Link>
+                        <Link to={`/outfit/update/${props.outfit.id}`}>Edit</Link>
                         <span className="delete" onClick={() => props.outfitDelete(props.outfit.id)}>Delete</span>
                 </div>
             </div>

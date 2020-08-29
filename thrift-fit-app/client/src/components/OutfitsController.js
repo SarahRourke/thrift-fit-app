@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import AllOutfits from './AllOutfits';
+import allOutfits from './allOutfits';
 import OutfitEditForm from './OutfitEditForm';
 import OutfitJustOne from './OutfitJustOne';
 
@@ -24,7 +24,7 @@ class OutfitsController extends Component {
 
     componentDidMount() {
         if (this.state.currentPage === 'index') {
-            fetch('/api/outfit')
+            fetch('/api/outfits')
             .then(res => res.json())
             .then(res => {
                 this.setState({
@@ -32,8 +32,8 @@ class OutfitsController extends Component {
                     dataLoaded: true,
                 });
             }).catch(err => console.log(err));
-        } else if (this.state.currentPage === 'show' || this.state.currentPage === 'edit') {
-            fetch(`/api/outfit/${this.state.currentId}`)
+        } else if (this.state.currentPage === 'create' || this.state.currentPage === 'update') {
+            fetch(`/api/outfits/${this.state.currentId}`)
                 .then(res => res.json())
                 .then(res => {
                     this.setState({
@@ -41,7 +41,7 @@ class OutfitsController extends Component {
                     dataLoaded: true,
                     })
                 }).catch(err => console.log(err));
-        }   else if (this.state.currentPage === 'new') {
+        }   else if (this.state.currentPage === 'show') {
             this.setState({
                 dataLoaded: true,
             })
@@ -51,7 +51,7 @@ class OutfitsController extends Component {
 
     outfitSubmit(method, e, data, id) {
         e.preventDefault();
-        fetch(`/api/outfit/${id || ''}`, {
+        fetch(`/api/outfits/${id || ''}`, {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
@@ -61,20 +61,20 @@ class OutfitsController extends Component {
             .then(res => {
                 this.setState({
                 fireRedirect: true,
-                redirectPath: `/outfit/${res.data.outfit.id}`,
+                redirectPath: `/outfits/${res.data.outfit.id}`,
                 })
             });
     }    
 
     outfitDelete(id) {
-        fetch(`/api/outfit/${id}`, {
+        fetch(`/api/outfits/${id}`, {
             method: 'DELETE',
         })  .then(res => res.json())
             .then(res => {
                 console.log(res);
                 this.setState({
                     fireRedirect: true,
-                    redirectPath: '/outfit',
+                    redirectPath: '/outfits',
                 });
         }).catch(err => console.log(err));
     }
@@ -82,15 +82,15 @@ class OutfitsController extends Component {
     decideWhichToRender() {
         switch (this.state.currentPage) {
             case 'index':
-                return <AllOutfits allOutfits={this.state.allOutfits} />;
+                return <allOutfits allOutfits={this.state.allOutfits} />;
                 break;
             case 'show':
                 return <OutfitJustOne outfit={this.state.currentOutfit} outfitDelete={this.outfitDelete} />;
                 break;
-            case 'new':
+            case 'create':
                 return <OutfitEditForm isAdd={true} outfitSubmit={this.outfitSubmit} />;
                 break;
-            case 'edit':
+            case 'update':
                 return <OutfitEditForm isAdd={false} outfitSubmit={this.outfitSubmit} outfit={this.state.currentOutfit} />
                 break;
         }
