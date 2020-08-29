@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 class AllOutfits extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             outfits: null,
             dataLoaded: false,
+            auth: props.auth,
         }
     }
 
@@ -46,7 +47,10 @@ class AllOutfits extends Component {
             return this.state.outfits.map(outfit => {
                 return <Outfit key={outfit.id} outfit={outfit} />
             })
-        } else return <p>Cleaning our closet...</p>;
+        } if (this.state.auth === true) {
+            return this.handleFormSubmit(isAdd === true);
+        }
+        else return <p>Cleaning our closet...</p>;
     }
 
     render() {
