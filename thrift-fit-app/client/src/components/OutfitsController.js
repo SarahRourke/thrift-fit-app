@@ -4,7 +4,7 @@ import AllOutfits from './AllOutfits';
 import OutfitEditForm from './OutfitEditForm';
 import OutfitJustOne from './OutfitJustOne';
 
-import { Link, Redirect } from 'react-router-dom'
+import { /*Link,*/ Redirect } from 'react-router-dom'
 
 class OutfitsController extends Component {
     constructor(props) {
