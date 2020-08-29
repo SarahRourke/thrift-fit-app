@@ -43,6 +43,10 @@ app.get('/', (req, res) => {
 const authRoutes = require('./routes/auth-routes');
 app.use('/api/auth', authRoutes);
 
+// Outfits routes
+const outfitRoutes = require('./routes/outfit-routes');
+app.use('/api/outfits', outfitRoutes);
+
 app.use('*', (req, res) => {
     res.status(400).json({
         message: 'Not Found!',
