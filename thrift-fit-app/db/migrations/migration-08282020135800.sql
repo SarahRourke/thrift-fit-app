@@ -7,4 +7,3 @@ CREATE TABLE IF NOT EXISTS outfits (
     description TEXT,
     img_url VARCHAR(255)
 );
-
