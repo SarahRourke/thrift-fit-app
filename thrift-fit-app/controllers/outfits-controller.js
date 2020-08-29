@@ -54,4 +54,15 @@ outfitController.update = (req, res, next) => {
     .catch(next);
 };
 
+outfitController.delete = (req, res, next) => {
+  Outfit.getById(req.params.id)
+    .then((outfit) => outfit.delete())
+    .then(() => {
+      res.json({
+        message: 'Outfit deleted successfully!',
+      });
+    })
+    .catch(next);
+};
+
 module.exports = outfitController;

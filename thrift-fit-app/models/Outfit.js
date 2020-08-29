@@ -51,6 +51,10 @@ class Outfit {
       )
       .then((updatedOutfit) => Object.assign(this, updatedOutfit));
   }
+
+  delete() {
+    return db.none('DELETE FROM outfits WHERE id = $1', this.id);
+  }
   
 }
 
