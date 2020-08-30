@@ -19,7 +19,7 @@ class Followers {
             // console.log(users)
             return users.map((user) => {
                 console.log(user)
-                return {followerInstance: new this(user), follower: new User(user)}
+                return {followInstance: new this(user), follow: new User(user)}
             })
         })
         // .then((users) => users.map((user) => new this(user)));
@@ -35,7 +35,7 @@ class Followers {
         .then((users) => {
             return users.map((user) => {
                 console.log(user)
-                return {followedInstance: new this(user), followed: new User(user)}
+                return {followInstance: new this(user), follow: new User(user)}
             })
         })
     }
