@@ -10,8 +10,8 @@ shoppingCartRoutes.get('/', shoppingCartsController.index);
 // // show details for an specific shopping-cart route, /api/shopping-carts/:id
 // shoppingCartRoutes.get('/:id', shoppingCartsController.show);
 
-// // add new shopping-cart route, /api/shopping-carts/add 
-// // shoppingCartRoutes.post('/', shoppingCartsController.create);
+// add new shopping-cart route, /api/shopping-carts/add 
+shoppingCartRoutes.post('/', shoppingCartsController.create);
 
 // // delete shopping-cart route, /api/shopping-carts/:id
 // shoppingCartRoutes.delete('/:id', shoppingCartsController.delete);

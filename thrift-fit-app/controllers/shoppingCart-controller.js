@@ -14,6 +14,20 @@ ShoppingCartController.index = (req, res, next) => {
     .catch(next);
 };
 
+ShoppingCartController.create = (req, res, next) => {
+  new ShoppingCart({
+    user_id: req.body.user_id,
+  })
+    .save()
+    .then((newShoppingCart) => {
+      res.json({
+        message: 'Shopping Cart added successfully!',
+        data: { newShoppingCart },
+      });
+    })
+    .catch(next);
+};
+
 // delete a shopping cart
 // ShoppingCartController.delete = (req, res, next) => {
 //     ShoppingCart.getById(req.params.id)

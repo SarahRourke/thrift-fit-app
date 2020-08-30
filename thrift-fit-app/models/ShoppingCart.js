@@ -16,6 +16,19 @@ class ShoppingCart {
             new this(shoppingCart))
         );
     }
+    
+    // create new shopping cart
+    save() {
+        return db
+        .one(
+            `INSERT INTO shopping_carts (user_id)
+             VALUES ($/user_id/)
+             RETURNING *
+            `,
+            this
+        )
+        .then((shoppingCart) => Object.assign(this, shoppingCart));
+    }
 
     // static getAllItems() {
     //     return db
