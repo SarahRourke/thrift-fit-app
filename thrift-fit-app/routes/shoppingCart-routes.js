@@ -13,7 +13,7 @@ shoppingCartRoutes.get('/', shoppingCartsController.index);
 // add new shopping-cart route, /api/shopping-carts/add 
 shoppingCartRoutes.post('/', shoppingCartsController.create);
 
-// // delete shopping-cart route, /api/shopping-carts/:id
-// shoppingCartRoutes.delete('/:id', shoppingCartsController.delete);
+// delete shopping-cart route, /api/shopping-carts/:id
+shoppingCartRoutes.delete('/:id', shoppingCartsController.delete);
 
 module.exports = shoppingCartRoutes;

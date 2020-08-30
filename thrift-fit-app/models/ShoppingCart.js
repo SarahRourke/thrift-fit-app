@@ -44,18 +44,20 @@ class ShoppingCart {
     //     });
     // }
 
-    // static getById(id) {
-    //     return db
-    //     .oneOrNone('SELECT * FROM shopping_carts WHERE id = $1', [id])
-    //     .then((shoppingCart) => {
-    //       if (shoppingCart) return new this(shoppingCart);
-    //       throw new Error(`Shopping Cart ${id} not found`);
-    //     });
-    // }
-
-    // delete() {
-    //     return db.oneOrNone('DELETE FROM shopping_carts WHERE id = $1', this.id);
-    // }
+    // get an specific shopping cart
+    static getById(id) {
+        return db
+        .oneOrNone('SELECT * FROM shopping_carts WHERE id = $1', [id])
+        .then((shoppingCart) => {
+          if (shoppingCart) return new this(shoppingCart);
+          throw new Error(`Shopping Cart ${id} not found`);
+        });
+    }
+     
+    // delete a shopping cart
+    delete() {
+        return db.oneOrNone('DELETE FROM shopping_carts WHERE id = $1', this.id);
+    }
 }
 
 module.exports = ShoppingCart;
