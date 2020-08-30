@@ -22,7 +22,8 @@ class OutfitEditForm extends Component {
 
     render() {
         return (
-            <div className="add">
+            <div className="outfitcontainer">
+            <div className="outfitform">
             <form className={this.props.isAdd ? 'addform' : 'editform'} 
             onSubmit={
                 this.props.isAdd
@@ -31,9 +32,10 @@ class OutfitEditForm extends Component {
             }>
                 <input type="text" name="description" placeholder="Describe your outfit here..." value={this.state.description} onChange={this.handleChange} />
                 <input type="text" name="img_url" placeholder="img_url goes here" value={this.state.img_url} onChange={this.handleChange} />
-                <input type="submit" value={this.props.isAdd ? 'Add this outfit' : 'Update this outfit'} />
+                <input type="submit" value={this.props.isAdd ? 'Add this outfit' : 'Update this outfit'}  />
             </form>
-            </div>    
+            </div>  
+            </div>  
         );
         
         

@@ -4,11 +4,14 @@ import Outfit from './Outfit';
 
 const AllOutfits = (props) => {
     return (
+        <div className="outfitcontainer">
         <div className="allOutfits">
             
-            {props.allOutfits.map(outfit => {
-                return <Outfit key={outfit.id} outfit={outfit} /> 
+           {props.allOutfits.map(outfit => {
+                return <Outfit key={outfit.id}  
+               outfit={outfit} /> 
             })}
+        </div>    
         </div>
     );
 };
