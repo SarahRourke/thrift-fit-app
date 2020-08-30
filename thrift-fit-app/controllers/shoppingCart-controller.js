@@ -13,6 +13,19 @@ ShoppingCartController.index = (req, res, next) => {
     })
     .catch(next);
 };
+
+// get details for an specific shopping cart by its id
+ShoppingCartController.show = (req, res, next) => {
+  ShoppingCart.getById(req.params.id)
+    .then((shoppingCart) => {
+      res.json({
+        message: 'ok',
+        data: { shoppingCart },        
+      });
+    })
+    .catch(next);
+};
+
 // create new shopping cart
 ShoppingCartController.create = (req, res, next) => {
   new ShoppingCart({

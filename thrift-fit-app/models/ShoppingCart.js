@@ -5,7 +5,7 @@ class ShoppingCart {
     constructor(cart) {
         this.id = cart.id || null;
         this.user_id = cart.user_id;
-        this.is_sale_completed = cart.is_sale_completed || false;    
+        this.is_sale_completed = cart.is_sale_completed || false;            
     }
 
     // get all shopping carts
@@ -30,6 +30,7 @@ class ShoppingCart {
         .then((shoppingCart) => Object.assign(this, shoppingCart));
     }
 
+    // get all items from an specific cart
     // static getAllItems() {
     //     return db
     //     .manyOrNone(`
