@@ -2,7 +2,7 @@ import React from 'react';
 import Outfit from './Outfit';
 
 
-const allOutfits = (props) => {
+const AllOutfits = (props) => {
     return (
         <div className="allOutfits">
             
@@ -13,7 +13,7 @@ const allOutfits = (props) => {
     );
 };
 
-export default allOutfits;
+export default AllOutfits;
 // class AllOutfits extends Component {
 //     constructor(props) {
 //         super(props);

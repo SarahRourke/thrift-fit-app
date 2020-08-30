@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import allOutfits from './allOutfits';
+import AllOutfits from './allOutfits';
 import OutfitEditForm from './OutfitEditForm';
 import OutfitJustOne from './OutfitJustOne';
 
@@ -57,7 +57,7 @@ class OutfitsController extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
-        })  .then(res => res.json())
+        }).then(res => res.json())
             .then(res => {
                 this.setState({
                 fireRedirect: true,
@@ -69,7 +69,7 @@ class OutfitsController extends Component {
     outfitDelete(id) {
         fetch(`/api/outfits/${id}`, {
             method: 'DELETE',
-        })  .then(res => res.json())
+        }).then(res => res.json())
             .then(res => {
                 console.log(res);
                 this.setState({
@@ -82,17 +82,19 @@ class OutfitsController extends Component {
     decideWhichToRender() {
         switch (this.state.currentPage) {
             case 'index':
-                return <allOutfits allOutfits={this.state.allOutfits} />;
-                break;
+                return <AllOutfits allOutfits={this.state.allOutfits} />;
+                
             case 'show':
                 return <OutfitJustOne outfit={this.state.currentOutfit} outfitDelete={this.outfitDelete} />;
-                break;
+                
             case 'create':
                 return <OutfitEditForm isAdd={true} outfitSubmit={this.outfitSubmit} />;
-                break;
+                
             case 'update':
                 return <OutfitEditForm isAdd={false} outfitSubmit={this.outfitSubmit} outfit={this.state.currentOutfit} />
-                break;
+            default:
+                return <Redirect push to="/outfits" />;
+                
         }
     }
 
