@@ -5,7 +5,7 @@ const Dashboard = (props) => {
   return (
     <div className="dash">
       <h1>Hello {props.user.username}!</h1>
-      <Link to="/create">Add an outfit!</Link>
+      <Link to="/outfits/new">Add an outfit!</Link>
     </div>
   )
 }

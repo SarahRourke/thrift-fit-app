@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Outfit = () => {
+const Outfit = (props) => {
     return (
         <div className="outfitcontainer">
         <div className="outfit">
-            <img src={this.outfit.img_url} alt={this.outfit.id} />
-            <h3>{this.outfit.description}</h3>
-            <Link to={`/outfit/${this.outfit.id}`}>See more by this USER_NAME here</Link>
+            <img src={props.img_url} alt={props.id} />
+            <h3>{props.description}</h3>
+            <Link to={`/outfits/${props.id}`}>See more by this USER_NAME here</Link>
         </div>    
         </div>
     );

@@ -31,10 +31,10 @@ outfitController.create = (req, res, next) => {
     img_url: req.body.img_url,
   })
     .save()
-    .then((newOutfit) => {
+    .then((outfit) => {
       res.json({
         message: 'Outfit added successfully!',
-        data: { newOutfit },
+        data: { outfit },
       });
     })
     .catch(next);
