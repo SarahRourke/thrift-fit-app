@@ -53,5 +53,17 @@ ShoppingCartController.delete = (req, res, next) => {
       })
       .catch(next);
 };
+
+// get all outfits from buyer's cart given it's user_id.
+ShoppingCartController.showBuyerCartItems = (req, res, next) => {
+  ShoppingCart.getAllItems(req.params.id)
+    .then((outfits) => {
+      res.json({
+        message: 'ok',
+        data: { outfits },
+      });
+    })
+    .catch(next);
+}
   
   module.exports = ShoppingCartController;

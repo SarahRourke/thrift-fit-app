@@ -31,14 +31,14 @@ class ShoppingCart {
         .then((shoppingCart) => Object.assign(this, shoppingCart));
     }
 
-    // get all items from an specific cart
-    static getAllItems() {
+    // get all outfits from buyer's cart given it's user_id as parameter.
+    static getAllItems(user_id) {
         return db
         .manyOrNone(`
             SELECT * FROM outfits
                 JOIN shopping_carts 
                 ON outfits.id = shopping_carts.shopping_cart_item
-            WHERE shopping_carts.user_id = ${this.id};`)
+            WHERE shopping_carts.user_id = ${user_id};`)
         .then((items) => {
             return items.map((item) => {
             return new Outfit(item);

@@ -16,4 +16,7 @@ shoppingCartRoutes.post('/', shoppingCartsController.create);
 // delete shopping-cart route, /api/shopping-carts/:id
 shoppingCartRoutes.delete('/:id', shoppingCartsController.delete);
 
+// show all buyer's cart outfits route given user_id, /api/shopping-carts/shopping_cart_item/:id
+shoppingCartRoutes.get('/shopping_cart_item/:id', shoppingCartsController.showBuyerCartItems);
+
 module.exports = shoppingCartRoutes;
