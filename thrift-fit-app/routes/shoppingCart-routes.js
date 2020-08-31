@@ -7,7 +7,7 @@ const shoppingCartsController = require('../controllers/shoppingCart-controller'
 // root route, /api/shopping-carts
 shoppingCartRoutes.get('/', shoppingCartsController.index);
 
-// // show details for an specific shopping-cart route, /api/shopping-carts/:id
+// show details for an specific user shopping-cart route, /api/shopping-carts/:id
 shoppingCartRoutes.get('/:id', shoppingCartsController.show);
 
 // add new shopping-cart route, /api/shopping-carts/add 

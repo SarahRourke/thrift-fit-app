@@ -5,6 +5,7 @@ class ShoppingCart {
     constructor(cart) {
         this.id = cart.id || null;
         this.user_id = cart.user_id;
+        this.shopping_cart_item = cart.shopping_cart_item;
         this.is_sale_completed = cart.is_sale_completed || false;            
     }
 
@@ -16,13 +17,13 @@ class ShoppingCart {
             new this(shoppingCart))
         );
     }
-    
+
     // create new shopping cart
     save() {
         return db
         .one(
-            `INSERT INTO shopping_carts (user_id)
-             VALUES ($/user_id/)
+            `INSERT INTO shopping_carts (user_id, shopping_cart_item, is_sale_completed)
+             VALUES ($/user_id/, $/shopping_cart_item/, $/is_sale_completed/)
              RETURNING *
             `,
             this
@@ -31,19 +32,33 @@ class ShoppingCart {
     }
 
     // get all items from an specific cart
-    // static getAllItems() {
-    //     return db
-    //     .manyOrNone(`
-    //         SELECT * FROM outfits
-    //             JOIN shopping_cart_items 
-    //             ON outfits.id = shopping_cart_items.item_id
-    //         WHERE shopping_cart_items.cart_id = ${this.id};`)
-    //     .then((items) => {
-    //         return items.map((item) => {
-    //         return new Outfit(item);
-    //         });
-    //     });
-    // }
+    static getAllItems() {
+        return db
+        .manyOrNone(`
+            SELECT * FROM outfits
+                JOIN shopping_carts 
+                ON outfits.id = shopping_carts.shopping_cart_item
+            WHERE shopping_carts.user_id = ${this.id};`)
+        .then((items) => {
+            return items.map((item) => {
+            return new Outfit(item);
+            });
+        });
+    }
+
+    // get an specific shopping cart by user_id
+    static getByUserId(id) {
+        return db
+        .manyOrNone('SELECT * FROM shopping_carts WHERE user_id = $1', [id])
+        .then((shoppingCarts) => {
+          if (shoppingCarts){
+            return shoppingCarts.map((shoppingCart) => {
+                return new this(shoppingCart);
+            });            
+          } 
+          throw new Error(` User ${id} not found`);
+        });
+    }
 
     // get an specific shopping cart
     static getById(id) {

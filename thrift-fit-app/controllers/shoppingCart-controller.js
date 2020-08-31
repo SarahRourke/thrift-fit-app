@@ -14,9 +14,9 @@ ShoppingCartController.index = (req, res, next) => {
     .catch(next);
 };
 
-// get details for an specific shopping cart by its id
+// get details for an specific shopping cart by its user_id
 ShoppingCartController.show = (req, res, next) => {
-  ShoppingCart.getById(req.params.id)
+  ShoppingCart.getByUserId(req.params.id)
     .then((shoppingCart) => {
       res.json({
         message: 'ok',
@@ -30,6 +30,7 @@ ShoppingCartController.show = (req, res, next) => {
 ShoppingCartController.create = (req, res, next) => {
   new ShoppingCart({
     user_id: req.body.user_id,
+    shopping_cart_item: req.body.shopping_cart_item,
   })
     .save()
     .then((newShoppingCart) => {
