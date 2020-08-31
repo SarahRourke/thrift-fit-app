@@ -1,7 +1,68 @@
+
+
 .App {
   text-align: center;
+  width: 100%;
+
+  
 }
 
+.container {
+  display: flex;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: black solid 2px;
+}
+
+
+.logo {
+  display: flex;
+  flex-grow: 0;
+  height: 100px;
+  width: 100px;
+  border: black solid 2px;
+  border-radius: 50px;
+  box-sizing: border-box;
+  margin: 1em;
+  padding: 25px 25px;
+  text-align: center;
+  
+  
+}
+
+form.search-bar {
+  display: flex;
+  width: 300px;;
+  overflow: hidden;
+  margin: 30px 5px;
+  
+
+}
+
+.search-bar input[type="text"] { 
+  box-sizing: border-box;
+  height: 5em;
+  width: 250px;
+  border: black solid 2px;
+  /* float: left; */
+} 
+
+ul {
+  list-style-type: none;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  border: black solid 2px;
+  padding: 6px;
+  margin: 35px 5px;
+  justify-content: space-around;
+}
+  
 .outfitcontainer {
   box-sizing: border-box;
   border: green solid 3px;

@@ -10,7 +10,7 @@ const Header = (props) => {
       <div className="logo">Thrift-Fit-App</div>
       <SearchBarForm />
       <nav>
-        <ul>
+        <ul>Nav:
           <li><Link to="/">Home</Link></li>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/register">Register</Link></li>
