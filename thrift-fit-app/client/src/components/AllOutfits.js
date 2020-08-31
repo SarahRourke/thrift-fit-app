@@ -2,18 +2,21 @@ import React from 'react';
 import Outfit from './Outfit';
 
 
-const allOutfits = (props) => {
+const AllOutfits = (props) => {
     return (
+        <div className="outfitcontainer">
         <div className="allOutfits">
             
-            {props.allOutfits.map(outfit => {
-                return <Outfit key={outfit.id} outfit={outfit} /> 
+           {props.allOutfits.map(outfit => {
+                return <Outfit key={outfit.id}  
+               outfit={outfit} /> 
             })}
+        </div>    
         </div>
     );
 };
 
-export default allOutfits;
+export default AllOutfits;
 // class AllOutfits extends Component {
 //     constructor(props) {
 //         super(props);

@@ -111,17 +111,22 @@ class App extends Component {
               : <Register handleRegisterSubmit={this.handleRegisterSubmit} />
             )} />
 
-            <Route exact path='/dashboard' render={() => (
+             <Route exact path='/dashboard' render={() => (
               !this.state.auth
               ? <Redirect to='/login' />
               : <Dashboard  user={this.state.user} />
             )} />
+        
+          <div className='outfitcontainer'>
 
             <Route exact path='/outfits' render={() => <OutfitsController currentPage='index' />} />
             
-            <Route exact path='/new' render={() => (<OutfitsController currentPage='create' />)} />
+            <Route exact path='/create' render={() => (<OutfitsController currentPage='create' />)} />
+
             <Route exact path='/outfits/update/:id' 
             render={props => (<OutfitsController currentPage='update' currentId={props.match.params.id} />)} />
+
+          </div>
           </div>
 
           <Footer />

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Outfit = (props) => {
+const Outfit = () => {
     return (
+        <div className="outfitcontainer">
         <div className="outfit">
-            <img src={props.outfit.img_url} />
-            <h3>{props.outfit.description}</h3>
-            <Link to={`/outfit/${props.outfit.id}`}>See more by this USER_NAME here</Link>
+            <img src={this.outfit.img_url} alt={this.outfit.id} />
+            <h3>{this.outfit.description}</h3>
+            <Link to={`/outfit/${this.outfit.id}`}>See more by this USER_NAME here</Link>
+        </div>    
         </div>
     );
 };
