@@ -32,8 +32,8 @@ class AllOutfits extends Component {
     render() {
         return (
             <div className="outfitcontainer">
-                {this.state.outfits.map((outfit, i) => {
-                    return <div key={i}>
+                {this.state.outfits.map((outfit) => {
+                    return <div key={outfit.id}>
                         <p>{outfit.description}</p>
                         <img src={outfit.img_url} />
                          </div>
