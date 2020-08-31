@@ -5,11 +5,11 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
-import OutfitsController from './components/OutfitsController';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import SideBar from './components/SideBar'
+import OutfitAddForm from './components/OutfitAddForm';
 
 class App extends Component {
   constructor() {
@@ -119,12 +119,12 @@ class App extends Component {
         
           <div className='outfitcontainer'>
 
-            <Route exact path='/outfits' render={() => <OutfitsController currentPage='index' />} />
+            {/* <Route exact path='/outfits' render={() => ( <OutfitsController currentPage='index' outfits={this.state.outfits} />)} /> */}
             
-            <Route exact path='/create' render={() => (<OutfitsController currentPage='create' />)} />
+            <Route exact path='/outfits/new' render={() => (<OutfitAddForm />)} />
 
-            <Route exact path='/outfits/update/:id' 
-            render={props => (<OutfitsController currentPage='update' currentId={props.match.params.id} />)} />
+            {/* <Route exact path='/outfits/update/:id' 
+            render={props => (<OutfitsController currentPage='update' currentId={props.match.params.id} />)} /> */}
 
           </div>
           </div>
