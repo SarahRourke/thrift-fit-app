@@ -49,6 +49,10 @@ app.use('/api/followerList', followersRoutes);
 const outfitRoutes = require('./routes/outfit-routes');
 app.use('/api/outfits', outfitRoutes);
 
+// Shopping carts routes
+const shoppingCartRoutes = require('./routes/shoppingCart-routes');
+app.use('/api/shopping-carts', shoppingCartRoutes);
+
 app.use('*', (req, res) => {
     res.status(400).json({
         message: 'Not Found!',
