@@ -5,11 +5,12 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
-import OutfitsController from './components/OutfitsController';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import SideBar from './components/SideBar'
+import OutfitAddForm from './components/OutfitAddForm';
+import AllOutfits from './components/AllOutfits';
 
 class App extends Component {
   constructor() {
@@ -119,12 +120,14 @@ class App extends Component {
         
           <div className='outfitcontainer'>
 
-            <Route exact path='/outfits' render={() => <OutfitsController currentPage='index' />} />
+            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} />)} />
             
-            <Route exact path='/create' render={() => (<OutfitsController currentPage='create' />)} />
+            <Route exact path='/outfits/new' render={() => (!this.state.auth
+              ? <Redirect to='/login' /> 
+              : <OutfitAddForm user={this.state.user}/>)} />
 
-            <Route exact path='/outfits/update/:id' 
-            render={props => (<OutfitsController currentPage='update' currentId={props.match.params.id} />)} />
+            {/* <Route exact path='/outfits/update/:id' 
+            render={props => (<OutfitsController currentPage='update' currentId={props.match.params.id} />)} /> */}
 
           </div>
           </div>
