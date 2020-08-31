@@ -35,7 +35,7 @@ class AllOutfits extends Component {
                 {this.state.outfits.map((outfit, i) => {
                     return <div key={i}>
                         <p>{outfit.description}</p>
-                        <p>{outfit.img_url}</p>
+                        <img src={outfit.img_url} />
                          </div>
 
                 })}
