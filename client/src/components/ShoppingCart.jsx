@@ -31,10 +31,14 @@ class ShoppingCart extends Component {
     }
 
     // delete shopping cartItem giving its id.
-    deleteCartItem(id) {
-        // got outfit id. Call back-end to delete row from shopping_carts
-        // where shopping_cart_item === id
-        alert(`Here is the id: ${id}`);
+    deleteCartItem(id) {        
+        fetch(`/api/shopping-carts/${id}`, {
+            method: 'DELETE',
+            credentials: 'include',
+        }).then(res => res.json())
+        .then(res => {
+            this.getAllCartItemsByUserId();
+        }).catch(err => console.log(err));
     }
 
     renderCartItems() {      
