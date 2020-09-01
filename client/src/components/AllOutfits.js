@@ -8,8 +8,9 @@ class AllOutfits extends Component {
         this.state = {
             outfits: [],
             dataLoaded: false,
+            shoppingCartItem: null,
         }
-
+        this.handleOnClickAddToCart = this.handleOnClickAddToCart.bind(this);
     }
         
 
@@ -28,17 +29,19 @@ class AllOutfits extends Component {
             }).catch(err => console.log(err));
     }
 
+    handleOnClickAddToCart(id) { 
+        this.props.onAddItemToCartClick(id);
+        this.setState({
+            shoppingCartItem: id,
+        });  
+    }
+
     render() {
         return (
             <div className="outfitcontainer">
-                {this.state.outfits.map((outfit, i) => {
-                    return <div key={i}>
-                        <p>{outfit.description}</p>
-                        <p>{outfit.img_url}</p>
-                         </div>
-
-                })}
-                <p>hello</p>
+                {this.state.outfits.map((outfit) => {
+                    return <Outfit outfit={outfit} key={outfit.id} handleOnClickAddToCart={this.handleOnClickAddToCart} />
+                })}               
             </div>
         )
     }
