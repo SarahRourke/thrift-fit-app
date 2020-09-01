@@ -1,5 +1,4 @@
-// call the back-end shopping cart route
-// GET /api/shopping-carts/shopping_cart_item/:id
+// show cart_item(outfit) details
 import React from 'react';
 
 const ShoppingCartItem = (props) => {
