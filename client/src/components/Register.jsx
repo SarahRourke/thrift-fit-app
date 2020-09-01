@@ -69,7 +69,7 @@ class Register extends Component {
 
                     <input type='submit' value='Register!'/>
                 </form>
-                <Link to="/register">Already have an account?</Link>
+                <Link to="/login">Already have an account?</Link>
             </div>
         )
     }

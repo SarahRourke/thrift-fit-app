@@ -42,7 +42,7 @@ class Login extends Component {
                     />
                     <input type='submit' value='Log in!'/>
                 </form>
-                <Link to="/login">Login</Link>
+                <Link to="/register">Don't have an account?</Link>
             </div>
         )
     }

@@ -13,6 +13,17 @@ outfitController.index = (req, res, next) => {
     .catch(next);
 };
 
+outfitController.indexUser = (req, res, next) => {
+  Outfit.getAllUser(req.user.id)
+  .then((outfits) => {
+    res.json({
+      message: 'ok',
+      data: { outfits },
+    })
+  })
+  .catch(next);
+}
+
 outfitController.show = (req, res, next) => {
   Outfit.getById(req.params.id)
     .then((outfit) => {

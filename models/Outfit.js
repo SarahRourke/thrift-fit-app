@@ -15,6 +15,12 @@ class Outfit {
       .then((outfits) => outfits.map((outfit) => new this(outfit)));
   }
 
+  static getAllUser(id) {
+    return db
+      .manyOrNone('SELECT * FROM outfits WHERE user_id = $1 ORDER BY id ASC', id)
+      .then((outfits) => outfits.map((outfit) => new this (outfit)))
+  }
+
   static getById(id) {
     return db
       .oneOrNone('SELECT * FROM outfits WHERE id = $1', [id])
