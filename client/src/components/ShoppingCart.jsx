@@ -17,7 +17,7 @@ class ShoppingCart extends Component {
     }
 
     componentDidMount() {        
-        if (this.state.addItem > 0 ) {            
+        if (this.state.addItem) {            
             // add that item to the shopping_cart_item
             this.addItemIdToCart(this.state.addItem);
         }
