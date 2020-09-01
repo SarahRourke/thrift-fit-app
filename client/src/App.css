@@ -44,27 +44,56 @@ form.search-bar {
   /* float: left; */
 } 
 
-ul {
-  list-style-type: none;
-  width: 300px;
-  display: flex;
+.navbar {
+  overflow: hidden;
+  background-color: #83c5be;
+  /* display: flex;
   flex-wrap: wrap;
   border: black solid 2px;
   padding: 6px;
   margin: 35px 5px;
-  justify-content: space-around;
+  justify-content: space-around; */
 }
   
-li {
-  border-right: black solid 1px;
-  padding: .2em;
-
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: #edf6f9;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #006d77
+}
+
+
+
+
+
 .container {
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   background-color: beige;
+  background: fill;
   position: absolute;
   top: 135;
   left: 0;
@@ -72,11 +101,7 @@ li {
   height: 100%;
   overflow: hidden;
   justify-content: space-around;
-
-
 }
-
-
 
 .outfitform input { 
   border: blue solid 2px;

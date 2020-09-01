@@ -9,17 +9,22 @@ const Header = (props) => {
     <header className="header">
       <div className="logo">Thrift-Fit-App</div>
       <SearchBarForm />
-      <nav>
-        <ul>Nav:
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/register">Register</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/outfits">Outfits</Link></li>
-          <li><Link to="/shopping-cart">Shopping Cart</Link></li>
-          <li><span onClick={props.logout}>Logout</span></li>
-        </ul>
-      </nav>
+      <div class="navbar">
+        <a><Link to="/">Home</Link></a>
+        <a><Link to="/login">Login</Link></a>
+        <a><Link to="/register">Register</Link></a>
+        <a><Link to="/shopping-cart">Shopping Cart</Link></a>
+        <div class="dropdown">
+          <button class="dropbtn">Dropdown
+          <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dopdown-content">
+              <a><Link to="/dashboard">Dashboard</Link></a>
+              <a><Link to="/outfits">Outfits</Link></a>
+              <a><span onClick={props.logout}>Logout</span></a>
+          </div>
+        </div> 
+      </div>
     </header>
   );
 };
