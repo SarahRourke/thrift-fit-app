@@ -7,6 +7,7 @@ class Outfit {
     this.is_sold = outfit.is_sold || false;
     this.description = outfit.description;
     this.img_url = outfit.img_url;
+    this.price = outfit.price || null;
   }
 
   static getAll() {
@@ -33,8 +34,8 @@ class Outfit {
   save() {
     return db
       .one(
-        `INSERT INTO outfits (user_id, description, img_url)
-         VALUES ($/user_id/, $/description/, $/img_url/)
+        `INSERT INTO outfits (user_id, description, img_url, price)
+         VALUES ($/user_id/, $/description/, $/img_url/, $/price/)
          RETURNING *`,
         this
       )
@@ -49,7 +50,8 @@ class Outfit {
           UPDATE outfits SET
           is_sold = $/is_sold/,
           description = $/description/,
-          img_url = $/img_url/
+          img_url = $/img_url/,
+          price = $/price/
           WHERE id = $/id/
           RETURNING *
         `,
