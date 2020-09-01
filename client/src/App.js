@@ -12,6 +12,7 @@ import SideBar from './components/SideBar'
 import OutfitAddForm from './components/OutfitAddForm';
 import AllOutfits from './components/AllOutfits';
 import ShoppingCart from './components/ShoppingCart';
+import { transformAuthInfo } from 'passport';
 
 class App extends Component {
   constructor() {
@@ -19,7 +20,9 @@ class App extends Component {
     this.state = {
       auth: false,
       user: null,
+      addItemIdToCart: null,
     }
+    this.onAddItemToCartClick = this.onAddItemToCartClick.bind(this);
   }
 
   componentDidMount() {
@@ -86,6 +89,12 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
+  onAddItemToCartClick(id) {
+    this.setState({
+      addItemIdToCart: id,
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -121,7 +130,8 @@ class App extends Component {
         
           <div className='outfitcontainer'>
 
-            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} /> )} />
+            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} 
+                              onAddItemToCartClick={this.onAddItemToCartClick} /> )} />
             
             <Route exact path='/outfits/new' render={() => (!this.state.auth
               ? <Redirect to='/login' /> 
@@ -132,7 +142,7 @@ class App extends Component {
 
             <Route exact path='/shopping-cart' render={() => (
               this.state.auth
-              ? < ShoppingCart user={this.state.user} itemId={this.state.shoppingCartItem} />
+              ? < ShoppingCart user={this.state.user} addItemIdToCart={this.state.addItemIdToCart} />
               : < Redirect to='/login'/>
             )}/>
 

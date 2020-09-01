@@ -10,18 +10,40 @@ class ShoppingCart extends Component {
         this.state = {
             cartItems: null,
             dataLoaded: false,
-            user: props.user,
-            addItem: props.addItem,
+            user: props.user.id,
+            addItem: props.addItemIdToCart,
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
 
-    componentDidMount() {
-        alert(`${this.state.addItem}`);
-        this.getAllCartItemsByUserId();        
+    componentDidMount() {        
+        if (this.state.addItem > 0 ) {            
+            // add that item to the shopping_cart_item
+            this.addItemIdToCart(this.state.addItem);
+        }
+        this.getAllCartItemsByUserId();
+        
     }
 
-    getAllCartItemsByUserId() {        
+    addItemIdToCart(outfit_id) {        
+        fetch(`/api/shopping-carts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                user_id: this.state.user,
+                shopping_cart_item: outfit_id
+            })
+        })
+        .then(res => res.json())
+        .then(res => {
+            this.getAllCartItemsByUserId();
+        });
+    }
+
+    getAllCartItemsByUserId() {          
         fetch(`/api/shopping-carts/shopping_cart_item/${1}`)
         .then(res => res.json())
         .then(res => {

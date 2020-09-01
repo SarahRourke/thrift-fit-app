@@ -10,7 +10,7 @@ class AllOutfits extends Component {
             dataLoaded: false,
             shoppingCartItem: null,
         }
-        this.setShoppingCartItem = this.setShoppingCartItem.bind(this);
+        this.handleOnClickAddToCart = this.handleOnClickAddToCart.bind(this);
     }
         
 
@@ -30,18 +30,18 @@ class AllOutfits extends Component {
         
     }
 
-    setShoppingCartItem(id) {
-        console.log(`here is the id: ${id}`);
+    handleOnClickAddToCart(id) { 
+        this.props.onAddItemToCartClick(id);
         this.setState({
             shoppingCartItem: id,
-        })        
+        });  
     }
 
     render() {
         return (
             <div className="outfitcontainer">
                 {this.state.outfits.map((outfit) => {
-                    return <Outfit outfit={outfit} key={outfit.id} setShoppingCartItem={this.setShoppingCartItem} />
+                    return <Outfit outfit={outfit} key={outfit.id} handleOnClickAddToCart={this.handleOnClickAddToCart} />
                 })}               
             </div>
         )
