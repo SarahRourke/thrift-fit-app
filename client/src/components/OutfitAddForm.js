@@ -28,7 +28,10 @@ class OutfitAddForm extends Component {
             <div className="outfitcontainer">
             <div className="outfitform">
             <form className="addOutfitForm"
-            onSubmit={(e) => this.props.handleOutfitSubmit('POST', e, this.state)}>
+            onSubmit={(
+                this.props.edit
+                ? (e) => this.props.handleOutfitSubmit('PUT', e, this.state, this.props.outfit.value.id)
+                : (e) => this.props.handleOutfitSubmit('POST', e, this.state))}>
               
 
                 <input 
@@ -47,7 +50,7 @@ class OutfitAddForm extends Component {
                 
                 onChange={this.handleChange} />
 
-                <input type="submit" value='Add this outfit'/>
+                <input type="submit" value={(this.props.edit ? 'Edit this outfit!' : 'Add this outfit!')}/>
             </form>
             </div>  
             </div>  
