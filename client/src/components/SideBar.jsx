@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './SideBar.css'
 import Follows from './Follows';
 
 class SideBar extends Component {
@@ -60,14 +60,19 @@ class SideBar extends Component {
     render(){
         return(
             <div className='sideBar'>
+                <div className="follows">
+                <h4>Followers</h4>
                 {(this.state.followersLoaded) 
                 ? <Follows isFollowers={true} follows={this.state.allFollowers} unFollow={this.unFollow}/> 
                 : <p>Loading...</p>}
+                </div>
 
+                <div className="follows">
+                    <h4>Following</h4>
                 {(this.state.followingLoaded) 
                 ? <Follows isFollowers={false} follows={this.state.allFollowing} unFollow={this.unFollow}/> 
                 : <p>Loading...</p>}
-
+                </div>
             </div>
         )
     }

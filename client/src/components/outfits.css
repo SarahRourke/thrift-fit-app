@@ -1,0 +1,22 @@
+/* .outfitcontainer {
+    display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+} */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 4;
+    box-sizing: border-box;
+    height: 260px;
+    width: 200px;
+    margin: 1em;
+
+}
+
+img {
+    height: 170px;
+    width: 130px;
+}

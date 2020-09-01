@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Outfit from './Outfit';
+import './outfits.css';
 
 
 class AllOutfits extends Component {
@@ -43,6 +44,7 @@ class AllOutfits extends Component {
                     return <Outfit outfit={outfit} key={outfit.id} handleOnClickAddToCart={this.handleOnClickAddToCart} />
                 })}               
             </div>
+            
         )
     }
 
