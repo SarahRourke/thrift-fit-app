@@ -43,21 +43,25 @@ class Outfit {
   }
 
   update(changes) {
-    Object.assign(this, changes);
-    return db
-      .one(
-        `
-          UPDATE outfits SET
-          is_sold = $/is_sold/,
-          description = $/description/,
-          img_url = $/img_url/,
-          price = $/price/
-          WHERE id = $/id/
-          RETURNING *
-        `,
-        this
-      )
-      .then((updatedOutfit) => Object.assign(this, updatedOutfit));
+    if (changes.price>= 0.00) {
+      Object.assign(this, changes);
+      return db
+        .one(
+          `
+            UPDATE outfits SET
+            is_sold = $/is_sold/,
+            description = $/description/,
+            img_url = $/img_url/,
+            price = $/price/
+            WHERE id = $/id/
+            RETURNING *
+          `,
+          this
+        )
+        .then((updatedOutfit) => Object.assign(this, updatedOutfit));
+    } else {
+      throw new Error("Price cannot be negative");      
+    }
   }
 
   delete() {
