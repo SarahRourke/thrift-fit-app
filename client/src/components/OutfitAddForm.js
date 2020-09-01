@@ -4,11 +4,15 @@ class OutfitAddForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
-            description: '',
-            img_url: '',
+            description: props.edit ? props.outfit.value.description : '',
+            img_url: props.edit ? props.outfit.value.description  : '',
         }
-       
+    }
+
+    componentDidMount(){
+        if(this.props.edit){
+            console.log(this.props.outfit)
+        }
     }
 
     handleChange = (e) => {
@@ -19,45 +23,19 @@ class OutfitAddForm extends Component {
         });
     }
 
-
-        handleAddOutfitSubmit = (e, data) => {
-            console.log(this.state.user_id)
-            console.log(data)
-            data.user_id = this.props.user.id
-            e.preventDefault();
-            fetch(`/api/outfits/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include',
-                body: JSON.stringify(data),
-            }).then(res => res.json())
-                .then(res => {
-                    console.log(res);
-                    this.setState({
-                        
-                        description : res.data.description,
-                        img_url : res.data.img_url
-
-                     })
-                 
-                }).catch(err => console.log(err));
-            }
-
     render() {
         return (
             <div className="outfitcontainer">
             <div className="outfitform">
             <form className="addOutfitForm"
-            onSubmit={(e) => this.handleAddOutfitSubmit(e, this.state)}>
+            onSubmit={(e) => this.props.handleOutfitSubmit('POST', e, this.state)}>
               
 
                 <input 
                 type="text" 
                 name="description" 
                 value={this.state.description || ''}  
-                placeholder="Describe your outfit here..." 
+                placeholder={this.props.edit ? this.props.outfit.value.description : "Describe your outfit here..." }
                 onChange={this.handleChange} />
 
 
@@ -65,11 +43,11 @@ class OutfitAddForm extends Component {
                 type="text" 
                 name="img_url" 
                 value={this.state.img_url || ''} 
-                placeholder="img_url goes here" 
+                placeholder={this.props.edit ? this.props.outfit.value.img_url : "img_url goes here"}
                 
                 onChange={this.handleChange} />
 
-                <input type="submit" value='Add this outfit' />
+                <input type="submit" value='Add this outfit'/>
             </form>
             </div>  
             </div>  
