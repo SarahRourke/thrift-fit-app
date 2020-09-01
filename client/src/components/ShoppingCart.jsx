@@ -11,12 +11,14 @@ class ShoppingCart extends Component {
             cartItems: null,
             dataLoaded: false,
             user: props.user,
+            addItem: props.addItem,
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
 
     componentDidMount() {
-        this.getAllCartItemsByUserId();
+        alert(`${this.state.addItem}`);
+        this.getAllCartItemsByUserId();        
     }
 
     getAllCartItemsByUserId() {        

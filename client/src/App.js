@@ -121,7 +121,7 @@ class App extends Component {
         
           <div className='outfitcontainer'>
 
-            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} />)} />
+            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} /> )} />
             
             <Route exact path='/outfits/new' render={() => (!this.state.auth
               ? <Redirect to='/login' /> 
@@ -132,7 +132,7 @@ class App extends Component {
 
             <Route exact path='/shopping-cart' render={() => (
               this.state.auth
-              ? < ShoppingCart user={this.state.user}/>
+              ? < ShoppingCart user={this.state.user} itemId={this.state.shoppingCartItem} />
               : < Redirect to='/login'/>
             )}/>
 
