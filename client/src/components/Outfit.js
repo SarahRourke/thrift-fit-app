@@ -5,9 +5,11 @@ const Outfit = (props) => {
     return (
         <div className="outfitcontainer">
         <div className="outfit">
-            <img src={props.img_url} alt={props.id} />
-            <h3>{props.description}</h3>
-            <Link to={`/outfits/${props.id}`}>See more by this USER_NAME here</Link>
+            <img src={props.outfit.img_url} alt={props.outfit.key} />
+            <h3>{props.outfit.description}</h3>
+            <Link to={`/outfits/${props.outfit.user_id}`}>See more by this USER_NAME here</Link>
+            <span className="add-to-cart" onClick={() => props.handleOnClickAddToCart(props.outfit.id)}>Add To Cart
+            </span>
         </div>    
         </div>
     );
