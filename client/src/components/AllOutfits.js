@@ -26,8 +26,7 @@ class AllOutfits extends Component {
                     outfits : res.data.outfits,
                     dataLoaded: true,
                 });
-            }).then(res => {console.log(this.state.outfits)}).catch(err => console.log(err));
-        
+            }).catch(err => console.log(err));
     }
 
     handleOnClickAddToCart(id) { 
