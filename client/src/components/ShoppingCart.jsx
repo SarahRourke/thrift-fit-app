@@ -12,6 +12,7 @@ class ShoppingCart extends Component {
             dataLoaded: false,
             user: props.user,
         }
+        this.deleteCartItem = this.deleteCartItem.bind(this);
     }
 
     componentDidMount() {
@@ -29,10 +30,18 @@ class ShoppingCart extends Component {
         }).catch(err => console.log(err));
     }
 
+    // delete shopping cartItem giving its id.
+    deleteCartItem(id) {
+        // got outfit id. Call back-end to delete row from shopping_carts
+        // where shopping_cart_item === id
+        alert(`Here is the id: ${id}`);
+    }
+
     renderCartItems() {      
         if (this.state.dataLoaded) {
             return this.state.cartItems.map(outfit => {
-                return <ShoppingCartItem key={outfit.id} outfit={outfit} />
+                return <ShoppingCartItem key={outfit.id} outfit={outfit} 
+                        deleteCartItem={this.deleteCartItem}/>
             })
         } else return <p>Loading...</p>;
     }

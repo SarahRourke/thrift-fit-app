@@ -6,6 +6,10 @@ const ShoppingCartItem = (props) => {
         <div className="shopping-cart-item">
             <img src={props.outfit.img_url} alt={props.outfit.id} />
             <h3>{props.outfit.description}</h3>
+            <span className="delete" onClick={() => 
+                props.deleteCartItem(props.outfit.id)}>
+                    Delete
+            </span>
         </div>
     );
 };
