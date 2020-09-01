@@ -11,6 +11,7 @@ import Register from './components/Register';
 import SideBar from './components/SideBar'
 import OutfitAddForm from './components/OutfitAddForm';
 import AllOutfits from './components/AllOutfits';
+import ShoppingCart from './components/ShoppingCart';
 
 class App extends Component {
   constructor() {
@@ -128,6 +129,12 @@ class App extends Component {
 
             {/* <Route exact path='/outfits/update/:id' 
             render={props => (<OutfitsController currentPage='update' currentId={props.match.params.id} />)} /> */}
+
+            <Route exact path='/shopping-cart' render={() => (
+              this.state.auth
+              ? < ShoppingCart user={this.state.user}/>
+              : < Redirect to='/login'/>
+            )}/>
 
           </div>
           </div>
