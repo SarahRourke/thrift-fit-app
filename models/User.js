@@ -8,7 +8,7 @@ class User {
         this.last_name = last_name;
         this.email = email;
         this.password_digest = password_digest;
-        this.profile_img_url = profile_img_url || '';
+        this.profile_img_url = profile_img_url;
     }
 
     static findByUserName(username) {
