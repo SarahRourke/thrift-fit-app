@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Outfit from './Outfit';
+import './outfits.css';
 
 
 class AllOutfits extends Component {
@@ -31,16 +32,19 @@ class AllOutfits extends Component {
 
     render() {
         return (
-            <div className="outfitcontainer">
+            
+            <div className="card">
+                
                 {this.state.outfits.map((outfit, i) => {
                     return <div key={i}>
-                        <p>{outfit.description}</p>
-                        <p>{outfit.img_url}</p>
-                         </div>
-
+                        <img src={outfit.img_url} alt="add pic" />
+                        <h2>{outfit.description}</h2>
+                        <h4>{outfit.user_id}</h4>
+                        </div>
                 })}
-                <p>hello</p>
+
             </div>
+            
         )
     }
 

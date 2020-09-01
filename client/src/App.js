@@ -118,7 +118,7 @@ class App extends Component {
               : <Dashboard  user={this.state.user} />
             )} />
         
-          <div className='outfitcontainer'>
+          
 
             <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} />)} />
             
@@ -132,9 +132,11 @@ class App extends Component {
           </div>
           </div>
 
-          <Footer />
+          
+         
 
-        </div>
+        
+        {/* <Footer /> */}
       </Router>
     );
   }

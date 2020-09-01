@@ -1,8 +1,8 @@
-/* 
+
 .App {
   text-align: center;
   width: 100vw;  
-} */
+}
 
 header {
   display: flex;
@@ -31,6 +31,7 @@ form.search-bar {
   width: 300px;;
   overflow: hidden;
   margin: 30px 5px;
+  float: right;
   
 
 }
@@ -54,24 +55,29 @@ ul {
   justify-content: space-around;
 }
   
+li {
+  border-right: black solid 1px;
+  padding: .2em;
+
+}
 .container {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: beige;
   position: absolute;
   top: 135;
   left: 0;
   right: 270px;
+  height: 100%;
+  overflow: hidden;
+  justify-content: space-around;
+
 
 }
-.outfitcontainer {
-  box-sizing: border-box;
-  border: green solid 3px;
-  height: 100vh;
-}
 
-.outfit {
-  height: 200px;
-  width: 170px;
-  border: purple solid 3px;
-}
+
+
 .outfitform input { 
   border: blue solid 2px;
   height: 20px;
@@ -81,4 +87,11 @@ ul {
 
 .allOutfits {
   background-color: orange;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  
+  width: 100vw;
 }
