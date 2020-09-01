@@ -40,6 +40,7 @@ outfitController.create = (req, res, next) => {
     user_id: req.body.user_id,
     description: req.body.description,
     img_url: req.body.img_url,
+    price: req.body.price,
   })
     .save()
     .then((outfit) => {
