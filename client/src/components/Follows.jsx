@@ -11,7 +11,6 @@ const Follows = (props) => {
                 {props.follows.map((value, i) => {
                     return <div key={i} className={(props.isFollowers) ? 'followers' : 'following'}>
                         <p>{value.follow.username}</p>
-                        <a>value.follow.username</a>
                         {(!props.isFollowers) ? <button onClick={() => props.unFollow(value.followInstance.instance_id)}>Unfollow</button> : ''}
                     </div>
                 })}                

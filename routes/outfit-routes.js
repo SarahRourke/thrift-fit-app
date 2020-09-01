@@ -11,13 +11,13 @@ outfitRoutes.get('/', outfitsController.index);
 outfitRoutes.get('/outfit/:id', outfitsController.show);
 
 // add new outfit route, /api/outfits/add 
-outfitRoutes.post('/', outfitsController.create);
+outfitRoutes.post('/', authHelpers.loginRequired, outfitsController.create);
 
 // edit outfit route, /api/outfits/:id
-outfitRoutes.put('/:id', outfitsController.update);
+outfitRoutes.put('/:id', authHelpers.loginRequired, outfitsController.update);
 
 // delete outfit route, /api/outfits/:id
-outfitRoutes.delete('/:id', outfitsController.delete);
+outfitRoutes.delete('/:id', authHelpers.loginRequired, outfitsController.delete);
 
 // allow outfit get by users name /api/outfits/user
 outfitRoutes.get('/user', outfitsController.indexUser);
