@@ -31,8 +31,10 @@ class ShoppingCart extends Component {
 
     renderCartItems() {      
         if (this.state.dataLoaded) {
-            return <h1>Our cart items will go here!</h1>
-          } else return <p>Loading...</p>;
+            return this.state.cartItems.map(outfit => {
+                return <ShoppingCartItem key={outfit.id} outfit={outfit} />
+            })
+        } else return <p>Loading...</p>;
     }
 
     render() {
