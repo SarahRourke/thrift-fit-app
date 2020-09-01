@@ -1,18 +1,132 @@
+
 .App {
   text-align: center;
+  width: 100vw;  
 }
 
-.outfitcontainer {
+header {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  border-bottom: black solid 2px;
+}
+
+.logo {
+  display: flex;
+  flex-grow: 0;
+  height: 100px;
+  width: 100px;
+  border: black solid 2px;
+  border-radius: 50px;
   box-sizing: border-box;
-  border: green solid 3px;
-  height: 100vh;
+  margin: 1em;
+  padding: 25px 25px;
+  text-align: center;
+  
+  
 }
 
-.outfit {
-  height: 200px;
-  width: 170px;
-  border: purple solid 3px;
+form.search-bar {
+  display: flex;
+  width: 300px;;
+  overflow: hidden;
+  margin: 30px 5px;
+  float: right;
+  
+
 }
+
+.search-bar input[type="text"] { 
+  box-sizing: border-box;
+  height: 5em;
+  width: 250px;
+  border: black solid 2px;
+  /* float: left; */
+} 
+
+.navbar {
+  overflow: hidden;
+  background-color: #83c5be;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  border: black solid 2px;
+  padding: 6px;
+  /* margin: 35px 5px; */
+  /* justify-content: space-around;  */
+}
+  
+.navbar a {
+  float: left;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  padding: 8px 5px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 18px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #006d77
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #edf6f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: #1a535c;
+  padding: 4px 8px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ffddd2;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: beige; */
+  background: fill;
+  position: absolute;
+  top: 135;
+  left: 0;
+  right: 270px;
+  height: 100%;
+  overflow: hidden;
+  justify-content: space-around;
+}
+
 .outfitform input { 
   border: blue solid 2px;
   height: 20px;
@@ -22,4 +136,11 @@
 
 .allOutfits {
   background-color: orange;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  
+  width: 100vw;
 }
