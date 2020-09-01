@@ -9,7 +9,6 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import SideBar from './components/SideBar'
-import OutfitAddForm from './components/OutfitAddForm';
 import AllOutfits from './components/AllOutfits';
 
 class App extends Component {
@@ -121,13 +120,6 @@ class App extends Component {
           <div className='outfitcontainer'>
 
             <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} />)} />
-            
-            <Route exact path='/outfits/new' render={() => (!this.state.auth
-              ? <Redirect to='/login' /> 
-              : <OutfitAddForm user={this.state.user}/>)} />
-
-            {/* <Route exact path='/outfits/update/:id' 
-            render={props => (<OutfitsController currentPage='update' currentId={props.match.params.id} />)} /> */}
 
           </div>
           </div>

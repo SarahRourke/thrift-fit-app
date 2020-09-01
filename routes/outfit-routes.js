@@ -8,7 +8,7 @@ const authHelpers = require('../services/auth/auth-helpers');
 outfitRoutes.get('/', outfitsController.index);
 
 // show details for an specific outfit route, /api/outfits/:id
-outfitRoutes.get('/:id', outfitsController.show);
+outfitRoutes.get('/outfit/:id', outfitsController.show);
 
 // add new outfit route, /api/outfits/add 
 outfitRoutes.post('/', outfitsController.create);
@@ -18,5 +18,8 @@ outfitRoutes.put('/:id', outfitsController.update);
 
 // delete outfit route, /api/outfits/:id
 outfitRoutes.delete('/:id', outfitsController.delete);
+
+// allow outfit get by users name /api/outfits/user
+outfitRoutes.get('/user', outfitsController.indexUser);
 
 module.exports = outfitRoutes;
