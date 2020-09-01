@@ -19,7 +19,7 @@ class SideBar extends Component {
     }
 
     getFollowers = () => {
-        fetch(`/api/followerList/follower/${this.props.user}`)
+        fetch(`/api/followerList/follower/`)
             .then(res => res.json())
             .then(res => {
                 console.log(res)
@@ -31,7 +31,7 @@ class SideBar extends Component {
     }
 
     getFollowing = () => {
-        fetch(`/api/followerList/followed/${this.props.user}`)
+        fetch(`/api/followerList/followed/`)
             .then(res => res.json())
             .then(res => {
                 console.log(res.data.followed)
