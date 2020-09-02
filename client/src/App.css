@@ -42,7 +42,7 @@ header {
 .search-bar input[type="text"] { 
     border: #00416d solid 2px;
     width: 25vw;
-    max-width: 30vw;
+    max-width: 300px;
     border-radius: 4px;
 } 
 
