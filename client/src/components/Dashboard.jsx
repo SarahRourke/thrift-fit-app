@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import OutfitAddForm from './OutfitAddForm'
+import '../App.css';
 
 class Dashboard extends Component {
   constructor(props){
@@ -91,8 +91,10 @@ class Dashboard extends Component {
 
   render(){
     return (
-      <div className="dash">
+      <div className="container">
+        <div className="dash">
           {this.decideWhichToRender()}
+        </div>
       </div>
     )
   }

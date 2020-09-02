@@ -1,0 +1,42 @@
+div.loginlogo {
+    display: flex;
+    position: relative;
+    /* order: 1; */
+    height: 300px;
+    width: 300px;
+    border: black solid 2px;
+    border-radius: 150px;
+    box-sizing: border-box;
+    margin: 4em 1em 6em 3em;
+    padding: 90px 100px;
+    font-size: 2em;
+    /* float: left; */
+    /* overflow: hidden; */
+  }
+
+div.loginform {
+    margin: 10em 4em 4em 0;
+    align-content: center;
+}  
+
+form.loginform {
+    /* float: right; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* order: 2; */
+    /* flex-direction: column; */
+    
+    /* float: right; */
+    /* height: 100%; */
+    
+    /* align-content: center; */
+}
+
+.loginform input {
+    display: flex;
+    align-self: center;
+    /* align-self: center; */
+    padding: .5em;
+    margin: 1em 2em .2em 2em;
+}
