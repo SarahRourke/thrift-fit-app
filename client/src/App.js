@@ -105,7 +105,7 @@ class App extends Component {
           : ''}
           
 
-          <div className="container">
+          {/* <div className="container"> */}
 
             <Route exact path='/' component={Home} />
 
@@ -138,8 +138,31 @@ class App extends Component {
               : < Redirect to='/login'/>
             )}/>
 
+           
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
-          </div>
+          {/* </div> */}
 
           
          

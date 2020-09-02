@@ -10,24 +10,24 @@ const Header = (props) => {
       <div className="logo">Thrift-Fit-App</div>
       <SearchBarForm />
         <div class="navbar">
-          <a><Link to="/">Home</Link></a>
+          <Link to="/">Home</Link>
             <div class="dropdown">
               <button class="dropbtn">Profile
                 <i class="fa fa-caret-down"></i>
               </button>
                 <div class="dropdown-content">
-                  <a><Link to="/login">Login</Link></a> <a><Link to="/dashboard">Dashboard</Link></a>
-                  <a><Link to="/register">Register</Link></a>
-                  <a onClick={props.logout}><Link to="/">Logout</Link></a>
+                  <Link to="/login">Login</Link> <Link to="/dashboard">Dashboard</Link>
+                  <Link to="/register">Register</Link>
+                  <Link onClick={props.logout} to="/">Logout</Link>
                 </div>
             </div>
-        <a><Link to="/shopping-cart">Shopping Cart</Link></a>
+        <Link to="/shopping-cart">Shopping Cart</Link>
         <div class="dropdown">
           <button class="dropbtn">Outfits
           <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-              <a><Link to="/outfits">All Outfits</Link></a>
+              <Link to="/outfits">All Outfits</Link>
               
           </div>
         </div> 
