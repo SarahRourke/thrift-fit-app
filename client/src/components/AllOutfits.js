@@ -30,8 +30,7 @@ class AllOutfits extends Component {
             }).catch(err => console.log(err));
     }
 
-    handleOnClickAddToCart(outfit_id) {   
-        alert(`outfit id: ${outfit_id}`);
+    handleOnClickAddToCart(outfit_id) {           
         fetch(`/api/shopping-carts`, {
             method: 'POST',
             headers: {

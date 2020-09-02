@@ -25,8 +25,7 @@ class ShoppingCart extends Component {
     getCartTotalPrice() {
         fetch(`/api/shopping-carts/total-price/`)
         .then(res => res.json())
-        .then(res => {
-            console.log(`Here is the price ${res.data.total_price.sum}`);
+        .then(res => {            
             this.setState({
                 cartTotalPrice: res.data.total_price.sum,
                 totalPriceLoaded: true,
@@ -68,8 +67,7 @@ class ShoppingCart extends Component {
 
     renderSubTotal() {
         if (this.state.totalPriceLoaded) {
-            return <h3>
-                {console.log(this.state.cartTotalPrice)}
+            return <h3>                
                 <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
             </h3>
         } else {
