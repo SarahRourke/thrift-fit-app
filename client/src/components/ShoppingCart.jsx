@@ -10,7 +10,7 @@ class ShoppingCart extends Component {
         this.state = {
             cartItems: null,
             dataLoaded: false,
-            user: props.user.id,      
+            // user: props.user.id,      
             cartTotalPrice: 0.00,
             totalPriceLoaded: false,
         }
@@ -24,7 +24,7 @@ class ShoppingCart extends Component {
 
     // set state with user's cart total price.
     getCartTotalPrice() {
-        fetch(`/api/shopping-carts/total-price/${this.state.user}`)
+        fetch(`/api/shopping-carts/total-price/`)
         .then(res => res.json())
         .then(res => {
             console.log(`Here is the price ${res.data.total_price.sum}`);
