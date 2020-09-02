@@ -11,7 +11,7 @@ class ShoppingCart extends Component {
             cartItems: null,
             dataLoaded: false,
             user: props.user.id,      
-            cartTotalPrice: null,
+            cartTotalPrice: 0.00,
             totalPriceLoaded: false,
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
@@ -54,6 +54,7 @@ class ShoppingCart extends Component {
         }).then(res => res.json())
         .then(res => {
             this.getAllCartItemsByUserId();
+            this.getCartTotalPrice();
         }).catch(err => console.log(err));
     }
 
