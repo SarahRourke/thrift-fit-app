@@ -16,7 +16,7 @@ ShoppingCartController.index = (req, res, next) => {
 
 // get details for an specific shopping cart by its user_id
 ShoppingCartController.show = (req, res, next) => {
-  ShoppingCart.getByUserId(req.params.id)
+  ShoppingCart.getByUserId(req.user.id)
     .then((shoppingCart) => {
       res.json({
         message: 'ok',
@@ -29,11 +29,11 @@ ShoppingCartController.show = (req, res, next) => {
 // create new item on shopping cart
 ShoppingCartController.create = (req, res, next) => {
     // check if item was already added to that user's cart. If not found, add it to cart
-    ShoppingCart.isItemFoundOnUserCart(req.body.user_id, req.body.shopping_cart_item)
+    ShoppingCart.isItemFoundOnUserCart(req.user.id, req.body.shopping_cart_item)
       .then((isFound) => {
         if (!isFound) {
           new ShoppingCart({
-            user_id: req.body.user_id,
+            user_id: req.user.id,
             shopping_cart_item: req.body.shopping_cart_item,
           })
             .save()
@@ -68,7 +68,7 @@ ShoppingCartController.delete = (req, res, next) => {
 
 // get all outfits from buyer's cart given it's user_id.
 ShoppingCartController.showBuyerCartItems = (req, res, next) => {
-  ShoppingCart.getAllItems(req.params.id)
+  ShoppingCart.getAllItems(req.user.id)
     .then((outfits) => {
       res.json({
         message: 'ok',
@@ -80,7 +80,7 @@ ShoppingCartController.showBuyerCartItems = (req, res, next) => {
 
 // get shopping cart total price given user_id
 ShoppingCartController.getTotalPriceByUserId = (req, res, next) => {
-  ShoppingCart.getTotalPriceByUserId(req.params.id)
+  ShoppingCart.getTotalPriceByUserId(req.user.id)
     .then((total_price) => {
       if (total_price !== null) {
         res.json({
@@ -89,7 +89,7 @@ ShoppingCartController.getTotalPriceByUserId = (req, res, next) => {
         });
       } else {
         res.json({
-          message: `User with id: ${req.params.id} not found`,          
+          message: `User with id: ${req.user.id} not found`,          
         });
       }
     })

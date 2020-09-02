@@ -8,7 +8,7 @@ const shoppingCartsController = require('../controllers/shoppingCart-controller'
 shoppingCartRoutes.get('/', shoppingCartsController.index);
 
 // show details for an specific user shopping-cart route, /api/shopping-carts/:id
-shoppingCartRoutes.get('/:id', shoppingCartsController.show);
+shoppingCartRoutes.get('/', shoppingCartsController.show);
 
 // add new shopping-cart route, /api/shopping-carts/add 
 shoppingCartRoutes.post('/', shoppingCartsController.create);
@@ -17,9 +17,9 @@ shoppingCartRoutes.post('/', shoppingCartsController.create);
 shoppingCartRoutes.delete('/:id', shoppingCartsController.delete);
 
 // show all buyer's cart outfits route given user_id, /api/shopping-carts/shopping_cart_item/:id
-shoppingCartRoutes.get('/shopping_cart_item/:id', shoppingCartsController.showBuyerCartItems);
+shoppingCartRoutes.get('/shopping_cart_item/', shoppingCartsController.showBuyerCartItems);
 
 // get Shopping Cart Total Price By UserId route, GET /api/shopping-carts/total-price/:id
-shoppingCartRoutes.get('/total-price/:id', shoppingCartsController.getTotalPriceByUserId);
+shoppingCartRoutes.get('/total-price/', shoppingCartsController.getTotalPriceByUserId);
 
 module.exports = shoppingCartRoutes;
