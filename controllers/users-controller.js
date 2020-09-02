@@ -12,6 +12,7 @@ UserController.create = (req, res, next) => {
         last_name: req.body.last_name,
         email: req.body.email,
         password_digest: hash,
+        profile_img_url: req.body.profile_img_url,
     })
     .save()
     .then(user => {
