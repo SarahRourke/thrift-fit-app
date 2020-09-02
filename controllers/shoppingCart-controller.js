@@ -77,5 +77,23 @@ ShoppingCartController.showBuyerCartItems = (req, res, next) => {
     })
     .catch(next);
 }
+
+// get shopping cart total price given user_id
+ShoppingCartController.getTotalPriceByUserId = (req, res, next) => {
+  ShoppingCart.getTotalPriceByUserId(req.params.id)
+    .then((total_price) => {
+      if (total_price !== null) {
+        res.json({
+          message: 'ok',
+          data: { total_price },
+        });
+      } else {
+        res.json({
+          message: `User with id: ${req.params.id} not found`,          
+        });
+      }
+    })
+    .catch(next);
+}
   
   module.exports = ShoppingCartController;

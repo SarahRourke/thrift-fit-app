@@ -19,4 +19,7 @@ shoppingCartRoutes.delete('/:id', shoppingCartsController.delete);
 // show all buyer's cart outfits route given user_id, /api/shopping-carts/shopping_cart_item/:id
 shoppingCartRoutes.get('/shopping_cart_item/:id', shoppingCartsController.showBuyerCartItems);
 
+// get Shopping Cart Total Price By UserId route, GET /api/shopping-carts/total-price/:id
+shoppingCartRoutes.get('/total-price/:id', shoppingCartsController.getTotalPriceByUserId);
+
 module.exports = shoppingCartRoutes;

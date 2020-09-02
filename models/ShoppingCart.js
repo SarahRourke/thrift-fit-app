@@ -90,6 +90,23 @@ class ShoppingCart {
     delete() {
         return db.oneOrNone('DELETE FROM shopping_carts WHERE id = $1', this.id);
     }
+
+    // get shopping cart Total Price by user_id
+    static getTotalPriceByUserId(userId) {
+        return db
+        .oneOrNone(`
+            SELECT SUM (price) FROM outfits
+            JOIN shopping_carts
+                ON outfits.id = shopping_carts.shopping_cart_item
+            WHERE shopping_carts.user_id = ${userId};
+        `)
+        .then((sum) => {
+            if (sum) {                
+                return sum;                               
+            }
+            throw new Error(`User ${userId} not found`);
+        });
+    }
 }
 
 module.exports = ShoppingCart;
