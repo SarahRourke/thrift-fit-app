@@ -10,13 +10,29 @@ class ShoppingCart extends Component {
         this.state = {
             cartItems: null,
             dataLoaded: false,
-            user: props.user.id,          
+            user: props.user.id,      
+            cartTotalPrice: 0.00,
+            totalPriceLoaded: false,
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
 
     componentDidMount() {        
-        this.getAllCartItemsByUserId();        
+        this.getCartTotalPrice();
+        this.getAllCartItemsByUserId();              
+    }
+
+    // set state with user's cart total price.
+    getCartTotalPrice() {
+        fetch(`/api/shopping-carts/total-price/${this.state.user}`)
+        .then(res => res.json())
+        .then(res => {
+            console.log(`Here is the price ${res.data.total_price.sum}`);
+            this.setState({
+                cartTotalPrice: res.data.total_price.sum,
+                totalPriceLoaded: true,
+            })
+        }).catch(err => console.log(err));
     }
 
     getAllCartItemsByUserId() {          
@@ -38,6 +54,7 @@ class ShoppingCart extends Component {
         }).then(res => res.json())
         .then(res => {
             this.getAllCartItemsByUserId();
+            this.getCartTotalPrice();
         }).catch(err => console.log(err));
     }
 
@@ -50,10 +67,24 @@ class ShoppingCart extends Component {
         } else return <p>Loading...</p>;
     }
 
+    renderSubTotal() {
+        if (this.state.totalPriceLoaded) {
+            return <h3>
+                {console.log(this.state.cartTotalPrice)}
+                <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
+            </h3>
+        } else {
+            return <p>Loading Subtotal</p>
+        }
+    }
+
     render() {
          return(
             <div className="shopping-cart">
                 {this.renderCartItems()}
+                <div className= "total_price-cart">
+                    {this.renderSubTotal()}
+                </div>
             </div>
          )       
     }
