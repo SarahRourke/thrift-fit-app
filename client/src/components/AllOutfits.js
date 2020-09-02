@@ -9,8 +9,7 @@ class AllOutfits extends Component {
         this.state = {
             outfits: [],
             dataLoaded: false,
-            shoppingCartItem: null,
-            user: props.user.id,
+            shoppingCartItem: null            
         }
         this.handleOnClickAddToCart = this.handleOnClickAddToCart.bind(this);
     }
