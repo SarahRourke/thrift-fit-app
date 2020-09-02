@@ -6,6 +6,8 @@ const authHelpers = require('../services/auth/auth-helpers');
 followersRoutes.get('/follower/', authHelpers.loginRequired, followersController.indexFollowers);
 followersRoutes.get('/followed/', authHelpers.loginRequired, followersController.indexFollowed);
 
+followersRoutes.get('/followed/checkFollowed/:id', authHelpers.loginRequired, followersController.indexFollowed);
+
 followersRoutes.post('/follower', authHelpers.loginRequired, followersController.create);
 followersRoutes.delete('/follower/:id', authHelpers.loginRequired, followersController.delete);
 

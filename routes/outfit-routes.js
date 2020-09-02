@@ -20,6 +20,6 @@ outfitRoutes.put('/:id', authHelpers.loginRequired, outfitsController.update);
 outfitRoutes.delete('/:id', authHelpers.loginRequired, outfitsController.delete);
 
 // allow outfit get by users name /api/outfits/user
-outfitRoutes.get('/user', outfitsController.indexUser);
+outfitRoutes.get('/user/:id', outfitsController.indexUser);
 
 module.exports = outfitRoutes;

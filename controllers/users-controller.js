@@ -29,4 +29,15 @@ UserController.create = (req, res, next) => {
     }).catch(next);
 }
 
+UserController.show = (req, res, next) => {
+    User.getById(req.params.id)
+      .then((User) => {
+        res.json({
+          message: 'ok',
+          data: { User },
+        });
+      })
+      .catch(next);
+  };
+
 module.exports = UserController;

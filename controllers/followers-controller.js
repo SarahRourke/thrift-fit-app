@@ -24,6 +24,17 @@ followersController.indexFollowed = (req, res, next) => {
         .catch(next)
 }
 
+followersController.checkFollowing = (req, res, next) => {
+    Followers.checkFollowing(req.user.id, req.params.id)
+    .then((followed) => {
+        res.json({
+            message: 'ok',
+            data: { followed },
+        });
+    })
+    .catch(next)
+}
+
 followersController.create = (req, res, next) => {
     new Followers({
         follower_id: req.user.id,

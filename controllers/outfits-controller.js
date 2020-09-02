@@ -14,7 +14,7 @@ outfitController.index = (req, res, next) => {
 };
 
 outfitController.indexUser = (req, res, next) => {
-  Outfit.getAllUser(req.user.id)
+  Outfit.getAllUser(req.params.id)
   .then((outfits) => {
     res.json({
       message: 'ok',

@@ -50,7 +50,7 @@ class Dashboard extends Component {
   }
 
   getAllOutfits = () => {
-    fetch('/api/outfits/user', 
+    fetch(`/api/outfits/user/${this.props.user.id}`, 
     { credentials: 'include' })
         .then(res => res.json())
         .then(res => {

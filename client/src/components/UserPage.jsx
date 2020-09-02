@@ -18,23 +18,35 @@ class UserPage extends Component {
         }
     }
 
-    //check if following method here
+    checkFollowing = () => {
+        fetch(`/api/outfits/user/${this.props.user.id}`, 
+        { credentials: 'include' })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res.data.outfits)
+                this.setState({
+                    outfits : res.data.outfits,
+                    dataLoaded: true,
+                });
+            }).then(res => {
+              console.log(this.state.outfits)
+            }).catch(err => console.log(err));
+    }
 
     follow = () => {
+        console.log(this.props.user.id)
         fetch(`/api/followerList/follower/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             credentials: 'include',
-            body: {
-                'followed_id': this.props.user.id,
-            },
+            body: JSON.stringify({'followed_id': this.props.user.id,}),
         }).then(res => res.json())
             .then(res => {
-                this.setState({
-                    isFollowing: true,
-                })
+                // this.setState({
+                //     isFollowing: true,
+                // })
             }).catch(err => console.log(err));
         }
 
@@ -44,9 +56,9 @@ class UserPage extends Component {
         })
         .then(res => res.json())
         .then(res => {
-            this.state({
-                followingLoaded: false
-            })
+            // this.state({
+            //     followingLoaded: false
+            // })
         })
         .then(res => {
             this.setState({
@@ -56,7 +68,7 @@ class UserPage extends Component {
     }
 
     getAllOutfits = () => {
-        fetch('/api/outfits/user', 
+        fetch(`/api/outfits/user/${this.props.user.id}`, 
         { credentials: 'include' })
             .then(res => res.json())
             .then(res => {
@@ -77,7 +89,7 @@ class UserPage extends Component {
             return <div>
                 {/* profile picture */}
                 
-                <h1>Hello {this.props.user.username}!</h1>
+                <h1>{this.props.user.username}!</h1>
 
                 {/* bio */}
 
@@ -86,12 +98,12 @@ class UserPage extends Component {
                     {this.state.isFollowing ? "Unfollow" : "Follow"}
                 </button>
                 
-                {this.state.outfits.map((value, i) => {
+                {this.state.dataLoaded ? this.state.outfits.map((value, i) => {
                     return <div key={i}> 
                         <p>{value.description}</p>
                         {/* addToCart */}
                     </div>})
-                }
+                : <p>Loading...</p>}
 
             </div>
         }
