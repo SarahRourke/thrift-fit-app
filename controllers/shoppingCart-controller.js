@@ -26,6 +26,18 @@ ShoppingCartController.show = (req, res, next) => {
     .catch(next);
 };
 
+// check if item exists, returns json message: true or false
+ShoppingCartController.isFound = (req, res, next) => {
+    // check if item was already added to that user's cart
+    ShoppingCart.isItemFoundOnUserCart(req.body.user_id, req.body.shopping_cart_item)
+      .then((result) => {
+        res.json({
+          message: result
+        })
+      })
+      .catch(next);
+}
+
 // create new shopping cart
 ShoppingCartController.create = (req, res, next) => {
   new ShoppingCart({
