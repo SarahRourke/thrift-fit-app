@@ -19,9 +19,7 @@ class App extends Component {
     this.state = {
       auth: false,
       user: null,
-      addItemIdToCart: null,
-    }
-    this.onAddItemToCartClick = this.onAddItemToCartClick.bind(this);
+    }   
   }
 
   componentDidMount() {
@@ -88,12 +86,6 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
-  onAddItemToCartClick(id) {
-    this.setState({
-      addItemIdToCart: id,
-    })
-  }
-
   render() {
     return (
       <Router>
@@ -129,12 +121,11 @@ class App extends Component {
         
           
 
-            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} 
-                              onAddItemToCartClick={this.onAddItemToCartClick} /> )} />
+            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} user={this.state.user} /> )} />
 
             <Route exact path='/shopping-cart' render={() => (
               this.state.auth
-              ? < ShoppingCart user={this.state.user} addItemIdToCart={this.state.addItemIdToCart} />
+              ? < ShoppingCart user={this.state.user} />
               : < Redirect to='/login'/>
             )}/>
 

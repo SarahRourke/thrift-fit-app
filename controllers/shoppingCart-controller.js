@@ -26,21 +26,33 @@ ShoppingCartController.show = (req, res, next) => {
     .catch(next);
 };
 
-// create new shopping cart
+// create new item on shopping cart
 ShoppingCartController.create = (req, res, next) => {
-  new ShoppingCart({
-    user_id: req.body.user_id,
-    shopping_cart_item: req.body.shopping_cart_item,
-  })
-    .save()
-    .then((newShoppingCart) => {
-      res.json({
-        message: 'Shopping Cart added successfully!',
-        data: { newShoppingCart },
-      });
-    })
-    .catch(next);
-};
+    // check if item was already added to that user's cart. If not found, add it to cart
+    ShoppingCart.isItemFoundOnUserCart(req.body.user_id, req.body.shopping_cart_item)
+      .then((isFound) => {
+        if (!isFound) {
+          new ShoppingCart({
+            user_id: req.body.user_id,
+            shopping_cart_item: req.body.shopping_cart_item,
+          })
+            .save()
+            .then((newShoppingCart) => {
+              res.json({
+                message: 'Shopping Cart added successfully!',
+                data: { newShoppingCart },
+              });
+            })
+            .catch(next);
+        } else {
+          res.json({
+            message: 'Item already exits'
+          });
+          next();
+        }
+      })
+      .catch(next);
+}
 
 // delete a shopping cart
 ShoppingCartController.delete = (req, res, next) => {
@@ -62,6 +74,24 @@ ShoppingCartController.showBuyerCartItems = (req, res, next) => {
         message: 'ok',
         data: { outfits },
       });
+    })
+    .catch(next);
+}
+
+// get shopping cart total price given user_id
+ShoppingCartController.getTotalPriceByUserId = (req, res, next) => {
+  ShoppingCart.getTotalPriceByUserId(req.params.id)
+    .then((total_price) => {
+      if (total_price !== null) {
+        res.json({
+          message: 'ok',
+          data: { total_price },
+        });
+      } else {
+        res.json({
+          message: `User with id: ${req.params.id} not found`,          
+        });
+      }
     })
     .catch(next);
 }
