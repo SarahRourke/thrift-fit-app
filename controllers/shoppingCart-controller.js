@@ -26,33 +26,33 @@ ShoppingCartController.show = (req, res, next) => {
     .catch(next);
 };
 
-// check if item exists, returns json message: true or false
-ShoppingCartController.isItemFoundOnUserCart = (req, res, next) => {
-    // check if item was already added to that user's cart
+// create new item on shopping cart
+ShoppingCartController.create = (req, res, next) => {
+    // check if item was already added to that user's cart. If not found, add it to cart
     ShoppingCart.isItemFoundOnUserCart(req.body.user_id, req.body.shopping_cart_item)
-      .then((result) => {
-        res.json({
-          message: result
-        })
+      .then((isFound) => {
+        if (!isFound) {
+          new ShoppingCart({
+            user_id: req.body.user_id,
+            shopping_cart_item: req.body.shopping_cart_item,
+          })
+            .save()
+            .then((newShoppingCart) => {
+              res.json({
+                message: 'Shopping Cart added successfully!',
+                data: { newShoppingCart },
+              });
+            })
+            .catch(next);
+        } else {
+          res.json({
+            message: 'Item already exits'
+          });
+          next();
+        }
       })
       .catch(next);
 }
-
-// create new shopping cart
-ShoppingCartController.create = (req, res, next) => {
-  new ShoppingCart({
-    user_id: req.body.user_id,
-    shopping_cart_item: req.body.shopping_cart_item,
-  })
-    .save()
-    .then((newShoppingCart) => {
-      res.json({
-        message: 'Shopping Cart added successfully!',
-        data: { newShoppingCart },
-      });
-    })
-    .catch(next);
-};
 
 // delete a shopping cart
 ShoppingCartController.delete = (req, res, next) => {
