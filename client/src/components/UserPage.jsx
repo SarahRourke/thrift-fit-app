@@ -18,7 +18,7 @@ class UserPage extends Component {
         }
     }
 
-
+    //check if following method here
 
     follow = () => {
         fetch(`/api/followerList/follower/`, {
@@ -38,8 +38,8 @@ class UserPage extends Component {
             }).catch(err => console.log(err));
         }
 
-    unFollow = (id) => {
-        fetch(`/api/followerList/follower/${id}`, {
+    unFollow = () => {
+        fetch(`/api/followerList/follower/${this.props.user.id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
@@ -49,7 +49,9 @@ class UserPage extends Component {
             })
         })
         .then(res => {
-            this.getFollowing();
+            this.setState({
+                isFollowing: false,
+            })
         }).catch(err => console.log(err))
     }
 
@@ -68,18 +70,29 @@ class UserPage extends Component {
             }).catch(err => console.log(err));
     }
 
+    //add to shoping cart here maybe
+
     decideWhichToRender = () => {
         if(this.props.otherUser){
             return <div>
                 {/* profile picture */}
+                
                 <h1>Hello {this.props.user.username}!</h1>
+
                 {/* bio */}
-                <button onClick={() => this.follow()}>{this.state.isFollowing ? "Unfollow" : "Follow"}</button>
+
+                <button 
+                    onClick={this.state.isFollowing ? () => this.unFollow : () => this.follow()}>
+                    {this.state.isFollowing ? "Unfollow" : "Follow"}
+                </button>
+                
                 {this.state.outfits.map((value, i) => {
                     return <div key={i}> 
                         <p>{value.description}</p>
                         {/* addToCart */}
-                    </div>})}
+                    </div>})
+                }
+
             </div>
         }
         else{
