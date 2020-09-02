@@ -5,7 +5,8 @@ div.App {
   text-align: center;
   width: 100%;  
   height: 100%;
-  
+  background-color: #f5f1da;
+  overflow-y: auto;
 }
 
 header {
@@ -13,18 +14,19 @@ header {
   width: 100vw;
   border-radius: 3px;
   justify-content: space-between;
-  border-bottom: black solid 2px;
+  border-bottom: #f5f1da solid 2px;
   height: 60px;
+  background-color: #00416d;
 }
 
 .logo {
   position: absolute;
-  background-color: white;
+  background-color: #4e89ae;
   display: flex;
   flex-grow: 0;
   height: 100px;
   width: 100px;
-  border: black solid 2px;
+  border: #f5f1da solid 2px;
   border-radius: 50px;
   box-sizing: border-box;
   margin: 1em;
@@ -34,13 +36,18 @@ header {
 
 .search-bar {
   display: flex;
-  flex: 3;
-  margin: 5px 4em
+  margin: 5px 4em;
 }
 
 .search-bar input[type="text"] { 
-  flex: 1;
-  border: black solid 2px;
+    border: #00416d solid 2px;
+    width: 25vw;
+    max-width: 30vw;
+    border-radius: 4px;
+} 
+
+.search-bar input[type="submit"] { 
+ margin: 3px; 
 } 
 .navbar {
   overflow: hidden;
@@ -70,8 +77,6 @@ header {
   color: white;
   background-color: inherit;
   font-family: inherit;
-  
-  
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
@@ -110,12 +115,14 @@ header {
 .container {
   box-sizing: border-box;
   display: flex;
-  background: fill;
+  /* background: fill; */
   position: relative;
   top: 135;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
   justify-content: center; 
+  padding: .5em;
+  margin: 1em;
 }
 
 /* .outfitform input { 

@@ -4,7 +4,7 @@ import './outfits.css';
 
 const Outfit = (props) => {
     return (
-        
+        <>
         <div className="card">
             <div className="card-image">
             <img src={props.outfit.img_url} alt={props.outfit.key} />
@@ -19,6 +19,7 @@ const Outfit = (props) => {
             </span>
              </div>    
         </div>
+        </>
     );
 };
 

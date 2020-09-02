@@ -1,42 +1,45 @@
 div.loginlogo {
     display: flex;
     position: relative;
-    /* order: 1; */
     height: 300px;
     width: 300px;
-    border: black solid 2px;
+    border: #00416d solid 10px;
     border-radius: 150px;
     box-sizing: border-box;
     margin: 4em 1em 6em 3em;
     padding: 90px 100px;
     font-size: 2em;
-    /* float: left; */
-    /* overflow: hidden; */
-  }
+    background-color: #f6f6f6;
+    
+}
 
 div.loginform {
-    margin: 10em 4em 4em 0;
-    align-content: center;
+    margin: 10em 4em 4em 0; 
 }  
 
 form.loginform {
-    /* float: right; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* order: 2; */
-    /* flex-direction: column; */
-    
-    /* float: right; */
-    /* height: 100%; */
-    
-    /* align-content: center; */
+    margin-bottom: 2em;
 }
 
 .loginform input {
+    border: #f6f6f6;
     display: flex;
     align-self: center;
-    /* align-self: center; */
-    padding: .5em;
+    padding: 1em;
     margin: 1em 2em .2em 2em;
+    border-radius: 4px;
+}
+
+.loginform [type="submit"] {
+    background-color: #ffc93c; 
+    padding: .9em;
+    border-radius: 5px;
+}
+
+.loginform a {
+    text-decoration-line: none;
+    font-size: larger;
+    color: #00416d;
 }
