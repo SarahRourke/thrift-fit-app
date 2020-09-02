@@ -9,7 +9,7 @@ class AllOutfits extends Component {
         this.state = {
             outfits: [],
             dataLoaded: false,
-            shoppingCartItem: null            
+            shoppingCartItem: null,
         }
         this.handleOnClickAddToCart = this.handleOnClickAddToCart.bind(this);
     }
@@ -39,7 +39,7 @@ class AllOutfits extends Component {
             },
             credentials: 'include',
             body: JSON.stringify({
-                user_id: this.state.user,
+                // user_id: this.state.user,
                 shopping_cart_item: outfit_id
             })
         })

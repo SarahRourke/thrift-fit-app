@@ -6,6 +6,9 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 
+//auth-Helpers
+const authHelpers = require('./services/auth/auth-helpers')
+
 //initialize app
 const app = express();
 require('dotenv').config();
@@ -51,7 +54,7 @@ app.use('/api/outfits', outfitRoutes);
 
 // Shopping carts routes
 const shoppingCartRoutes = require('./routes/shoppingCart-routes');
-app.use('/api/shopping-carts', shoppingCartRoutes);
+app.use('/api/shopping-carts', authHelpers.loginRequired, shoppingCartRoutes);
 
 app.use('*', (req, res) => {
     res.status(400).json({
