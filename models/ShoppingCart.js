@@ -18,6 +18,22 @@ class ShoppingCart {
         );
     }
 
+    // Boolean. Return true if item already exists for that user.
+    static isItemFoundOnUserCart(userId, itemId) {
+        return db
+        .oneOrNone(`
+            SELECT shopping_cart_item FROM shopping_carts
+            WHERE user_id = ${userId} AND shopping_cart_item = ${itemId}; 
+        `)
+        .then((item) => {
+            if (item === null) {
+                return false;
+            } else {
+                return true;
+            }            
+        });
+    }
+
     // create new shopping cart
     save() {
         return db
