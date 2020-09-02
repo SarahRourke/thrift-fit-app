@@ -48,11 +48,15 @@ class AllOutfits extends Component {
 
     render() {
         return (
-            <div className="outfitcontainer">
-                {this.state.outfits.map((outfit) => {
-                    return <Outfit outfit={outfit} key={outfit.id} handleOnClickAddToCart={this.handleOnClickAddToCart} />
-                })}               
-            </div>
+            <div className="row">
+                
+                    {this.state.outfits.map((outfit) => {
+                        
+                        return <Outfit outfit={outfit} key={outfit.id} handleOnClickAddToCart={this.handleOnClickAddToCart} />
+                    
+                    
+                    })}               
+                </div>
             
         )
     }

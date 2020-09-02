@@ -7,11 +7,15 @@
 header {
   display: flex;
   width: 100vw;
+  border-radius: 3px;
   justify-content: space-between;
   border-bottom: black solid 2px;
+  height: 60px;
 }
 
 .logo {
+  position: absolute;
+  background-color: white;
   display: flex;
   flex-grow: 0;
   height: 100px;
@@ -22,45 +26,31 @@ header {
   margin: 1em;
   padding: 25px 25px;
   text-align: center;
-  
-  
 }
 
-form.search-bar {
+.search-bar {
   display: flex;
-  width: 300px;;
-  overflow: hidden;
-  margin: 30px 5px;
-  float: right;
-  
-
+  flex: 3;
+  margin: 5px 4em
 }
 
 .search-bar input[type="text"] { 
-  box-sizing: border-box;
-  height: 5em;
-  width: 250px;
+  flex: 1;
   border: black solid 2px;
-  /* float: left; */
 } 
-
 .navbar {
   overflow: hidden;
   background-color: #83c5be;
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  border: black solid 2px;
-  padding: 6px;
-  /* margin: 35px 5px; */
-  /* justify-content: space-around;  */
+  flex-wrap: wrap;
+  max-height: 80px;
+  padding: 1em;
 }
   
 .navbar a {
-  float: left;
   font-size: 18px;
   color: white;
   text-align: center;
-  padding: 8px 5px;
+  padding: 0 5px;  
   text-decoration: none;
 }
 
@@ -74,10 +64,10 @@ form.search-bar {
   border: none;
   outline: none;
   color: white;
-  padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
-  margin: 0;
+  
+  
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
@@ -116,14 +106,14 @@ form.search-bar {
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  /* background-color: beige; */
+  
   background: fill;
   position: absolute;
   top: 135;
   left: 0;
   right: 270px;
   height: 100%;
-  overflow: y;
+  overflow: auto;
   justify-content: space-around;
 }
 
@@ -131,12 +121,8 @@ form.search-bar {
   border: blue solid 2px;
   height: 20px;
   width: 200px;
-
 }
 
-.allOutfits {
-  background-color: orange;
-}
 
 footer {
   position: absolute;
