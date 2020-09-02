@@ -9,8 +9,7 @@ class ShoppingCart extends Component {
         super(props);
         this.state = {
             cartItems: null,
-            dataLoaded: false,
-            // user: props.user.id,      
+            dataLoaded: false,             
             cartTotalPrice: 0.00,
             totalPriceLoaded: false,
         }
