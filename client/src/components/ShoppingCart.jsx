@@ -20,7 +20,7 @@ class ShoppingCart extends Component {
     }
 
     getAllCartItemsByUserId() {          
-        fetch(`/api/shopping-carts/shopping_cart_item/${1}`)
+        fetch(`/api/shopping-carts/shopping_cart_item/${this.state.user}`)
         .then(res => res.json())
         .then(res => {
             this.setState({
