@@ -1,22 +1,49 @@
-/* .outfitcontainer {
-    display: flex;
-   flex-direction: column;
-   flex-wrap: wrap;
-} */
 
-.card {
+.row {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    flex-grow: 4;
+    align-items: flex-start;
+    flex-direction: column;
+    max-height: 100vh;
+    margin: 2em;
+    /* flex-grow: 4;
     box-sizing: border-box;
     height: 260px;
     width: 200px;
-    margin: 1em;
+    margin: 1em; */
 
 }
 
+.card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 400px;
+    min-width: 300px;
+    margin: 2em;
+    border: 3px solid black;
+    box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3);
+    max-height: 400px;
+    min-height: 300px;
+    position: relative;
+    background-color: black;
+    color: white;
+    
+}
+
+.card-image {
+    display: flex;
+    margin: 5px;
+    
+    max-height: 300px;
+    max-width: 300px; 
+    object-fit: fill;
+    
+}
+
 img {
-    height: 170px;
-    width: 130px;
+    
+     max-height: 250px;
+    max-width: 250px;
+    display: block; 
 }
