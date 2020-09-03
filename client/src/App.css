@@ -1,85 +1,56 @@
 
-div.App {
-  position: relative;
-  flex-grow: 1;
-  margin: 0 auto 30px auto;
-  max-width: 935px;
-  flex-shrink: 0;
+.App {
   text-align: center;
-  align-items: stretch;
-  width: 100%;  
-  height: 100%;
-  overflow: auto;
-
+  width: 100vw;  
 }
-
 
 header {
   display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 935px;
-  border-bottom: #4a4e69 solid 2px;
-  height: 60px;
-  background-color: #4a4e69;
-  position: fixed;
-  z-index: 1;
+  width: 100vw;
+  border-radius: 3px;
   justify-content: space-between;
+  border-bottom: black solid 2px;
+  height: 60px;
 }
 
 .logo {
-  position: fixed;
-  background-color: #9a8c98;
+  position: absolute;
+  background-color: white;
   display: flex;
-  order: 1;
   flex-grow: 0;
   height: 100px;
   width: 100px;
-  border: #faf9f9 solid 2px;
+  border: black solid 2px;
   border-radius: 50px;
   box-sizing: border-box;
   margin: 1em;
   padding: 25px 25px;
   text-align: center;
-  z-index: 1;
 }
 
 .search-bar {
   display: flex;
-  
-  margin: 5px 8em;
-  order: 2;
+  flex: 3;
+  margin: 5px 4em
 }
 
 .search-bar input[type="text"] { 
-    border: #4a4e69 solid 2px;
-    background-color: #fffffc;
-    width: 25vw;
-    max-width: 300px;
-    border-radius: 4px;
-    font-weight: bold;
-} 
-
-.search-bar input[type="submit"] { 
- margin: 3px; 
- font-weight: bold;
+  flex: 1;
+  border: black solid 2px;
 } 
 .navbar {
-  display: flex;
-  align-self: center;
-  background-color: #4a4e69;
+  overflow: hidden;
+  background-color: #83c5be;
+  flex-wrap: wrap;
   max-height: 80px;
-  font-size: 16px;
-  font-weight: bold;
-  order: 3;
-  padding: 5px;
-
+  padding: 1em;
 }
   
 .navbar a {
+  font-size: 18px;
   color: white;
   text-align: center;
-  padding: 1px;  
+  padding: 0 5px;  
   text-decoration: none;
 }
 
@@ -89,23 +60,24 @@ header {
 }
 
 .dropdown .dropbtn {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
   border: none;
   outline: none;
   color: white;
   background-color: inherit;
   font-family: inherit;
+  
+  
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: #3d405b;
+  background-color: #006d77
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #fffffc;
+  background-color: #edf6f9;
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -113,7 +85,7 @@ header {
 
 .dropdown-content a {
   float: none;
-  color: #293241;
+  color: #1a535c;
   padding: 4px 8px;
   text-decoration: none;
   display: block;
@@ -131,38 +103,25 @@ header {
 
 
 .container {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   display: flex;
-  flex-shrink: 0;
-  flex-grow: 1;
-  /* flex-direction: column; */
-  margin-top: 7em;
-  max-width: 935px;
+  flex-wrap: wrap;
   
-  
-  /* background: fill; */
-  position: relative;
-  /* top: 135; */
+  background: fill;
+  position: absolute;
+  top: 135;
+  left: 0;
+  right: 270px;
   height: 100%;
   overflow: auto;
-  justify-content: center; 
-  /* padding: .5em; */
-
-
-  
-}
-.container input {
-  background-color: fffffc;
-}
-.home {
-  color: #9a8c98;
+  justify-content: space-around;
 }
 
-/* .outfitform input { 
+.outfitform input { 
   border: blue solid 2px;
   height: 20px;
   width: 200px;
-} */
+}
 
 
 footer {
