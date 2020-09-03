@@ -1,6 +1,6 @@
-
 .row {
     display: flex;
+    flex-direction: row;
     position: relative;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -10,45 +10,50 @@
     /* overflow-wrap: normal; */
     
 }
-@media (min-width: 736px) {
-
+@media (max-width: 735px) {
+    
 }
 
 div.card {
     display: flex;
+    flex-shrink: 3;
     align-items: center;
     flex-direction: column;
     flex: 1;
-    width: 300px;
-    height: 300px;
-    max-width: 300px;
-    min-width: 300px;
-    margin: 15px;
-    /* border: 3px solid black; */
-    /* box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3); */
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 280px;
+    max-width: 280px;
+
+    margin: 1vw;
     position: relative;
     background-color: transparent;
     /* color: white; */
 }
 
+@media (max-width: 735px) {
+    div.card {
+        margin-right: 3px;
+    }
+    div.row {
+        margin-bottom: 3px;
+    }
+}
+
 div.card-image {
     display: flex;
-    /* margin: 5px; */
-    min-width: 300px;
-    min-height: 300px;
-    max-height: 300px;
-    max-width: 300px;  
+    margin: 5px;
+    /* min-width: 300px; */
+    /* min-height: 300px; */
+    /* max-height: 300px; */
+    /* max-width: 300px;   */
     /* object-fit: cover; */
     
 } 
 
 img {
-    max-height: 300px;
-    max-width: 300px;
-    min-height: 300px;
-    min-width: 300px;
+    max-height: 280px;
+    max-width: 280px;
+    min-height: 280px;
+    min-width: 280px;
     object-fit: cover;
     opacity: 1;
     transition: .5s ease;
@@ -75,7 +80,7 @@ div.card:hover img {
     opacity: 0.4;
     background-color: #9a8c98;
     
-}
+} 
 
 div.card:hover .card-content {
     opacity: 1;
