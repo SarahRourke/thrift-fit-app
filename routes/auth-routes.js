@@ -41,4 +41,6 @@ authRouter.get('/logout', (req, res) => {
     })
 });
 
+authRouter.get('/userGet/:id', userController.show);
+
 module.exports = authRouter;

@@ -1,38 +1,39 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
-
+import './header.css';
 import SearchBarForm from './SearchBarForm';
 
 const Header = (props) => {
   return (
-    <header className="header">
+    <header className="header headernav">
+      
       <div className="logo">Thrift-Fit-App</div>
       <SearchBarForm />
-        <div class="navbar">
-          <a><Link to="/">Home</Link></a>
-            <div class="dropdown">
-              <button class="dropbtn">Profile
-                <i class="fa fa-caret-down"></i>
+        <div className="navbar">
+          <Link to="/">Home</Link>
+            <div className="dropdown">
+              <button className="dropbtn">Profile
+                <i className="fa fa-caret-down"></i>
               </button>
-                <div class="dropdown-content">
-                  <a><Link to="/login">Login</Link></a> <a><Link to="/dashboard">Dashboard</Link></a>
-                  <a><Link to="/register">Register</Link></a>
-                  <a onClick={props.logout}><Link to="/">Logout</Link></a>
+                <div className="dropdown-content">
+                  <Link to="/login">Login</Link> <Link to="/dashboard">Dashboard</Link>
+                  <Link to="/register">Register</Link>
+                  <Link onClick={props.logout} to="/">Logout</Link>
                 </div>
             </div>
-        <a><Link to="/shopping-cart">Shopping Cart</Link></a>
-        <div class="dropdown">
-          <button class="dropbtn">Outfits
-          <i class="fa fa-caret-down"></i>
+        
+        <div className="dropdown">
+          <button className="dropbtn">Outfits
+          <i className="fa fa-caret-down"></i>
           </button>
-          <div class="dropdown-content">
-              <a><Link to="/outfits">All Outfits</Link></a>
-              
-          </div>
+          <div className="dropdown-content">
+              <Link to="/outfits">All Outfits</Link>
+          </div><Link to="/shopping-cart">Shopping Cart</Link>
         </div> 
       </div>
+      
     </header>
+    
   );
 };
 

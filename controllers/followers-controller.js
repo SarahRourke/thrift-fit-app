@@ -3,7 +3,7 @@ const Followers = require('../models/Followers');
 const followersController = {};
 
 followersController.indexFollowers = (req, res, next) => {
-    Followers.getAllFollowers(req.params.id)
+    Followers.getAllFollowers(req.user.id)
         .then((followers) => {
             res.json({
                 message: 'ok',
@@ -14,7 +14,7 @@ followersController.indexFollowers = (req, res, next) => {
 }
 
 followersController.indexFollowed = (req, res, next) => {
-    Followers.getAllFollowed(req.params.id)
+    Followers.getAllFollowed(req.user.id)
         .then((followed) => {
             res.json({
                 message: 'ok',
@@ -24,9 +24,20 @@ followersController.indexFollowed = (req, res, next) => {
         .catch(next)
 }
 
+followersController.checkFollowing = (req, res, next) => {
+    Followers.checkFollowing(req.user.id, req.params.id)
+    .then((followed) => {
+        res.json({
+            message: 'ok',
+            data: { followed },
+        });
+    })
+    .catch(next)
+}
+
 followersController.create = (req, res, next) => {
     new Followers({
-        follower_id: req.body.follower_id,
+        follower_id: req.user.id,
         followed_id: req.body.followed_id,
     })
         .save()

@@ -23,6 +23,7 @@ class AllOutfits extends Component {
         fetch('/api/outfits', { credentials: 'include' })
             .then(res => res.json())
             .then(res => {
+                console.log(res.data.outfits)
                 this.setState({
                     outfits : res.data.outfits,
                     dataLoaded: true,
@@ -30,21 +31,38 @@ class AllOutfits extends Component {
             }).catch(err => console.log(err));
     }
 
-    handleOnClickAddToCart(id) { 
-        this.props.onAddItemToCartClick(id);
-        this.setState({
-            shoppingCartItem: id,
-        });  
+
+    handleOnClickAddToCart(outfit_id) {          
+        fetch(`/api/shopping-carts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                // user_id: this.state.user,
+                shopping_cart_item: outfit_id
+            })
+        })
     }
 
     render() {
         return (
-            <div className="outfitcontainer">
-                {this.state.outfits.map((outfit) => {
-                    return <Outfit outfit={outfit} key={outfit.id} handleOnClickAddToCart={this.handleOnClickAddToCart} />
-                })}               
-            </div>
-            
+            <>
+            <div className="row">
+                
+                    {this.state.outfits.map((outfits) => {
+                        
+                        return <Outfit 
+                        outfits={outfits} 
+                        key={outfits.outfit.id} 
+                        handleOnClickAddToCart={this.handleOnClickAddToCart}
+                        otherUserFunction={this.props.otherUserFunction} />
+                    
+                    
+                    })}               
+                </div>
+            </>
         )
     }
 

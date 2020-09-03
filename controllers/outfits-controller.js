@@ -14,7 +14,7 @@ outfitController.index = (req, res, next) => {
 };
 
 outfitController.indexUser = (req, res, next) => {
-  Outfit.getAllUser(req.user.id)
+  Outfit.getAllUser(req.params.id)
   .then((outfits) => {
     res.json({
       message: 'ok',
@@ -37,9 +37,12 @@ outfitController.show = (req, res, next) => {
 
 outfitController.create = (req, res, next) => {
   new Outfit({
-    user_id: req.body.user_id,
+    user_id: req.user.id,
     description: req.body.description,
     img_url: req.body.img_url,
+    price: req.body.price,
+    img_url_01: req.body.img_url_01,
+    img_url_02: req.body.img_url_02
   })
     .save()
     .then((outfit) => {

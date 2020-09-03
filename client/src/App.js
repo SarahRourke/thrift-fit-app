@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import './components/Login.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -11,7 +12,7 @@ import Register from './components/Register';
 import SideBar from './components/SideBar'
 import AllOutfits from './components/AllOutfits';
 import ShoppingCart from './components/ShoppingCart';
-import { transformAuthInfo } from 'passport';
+import UserPage from './components/UserPage';
 
 class App extends Component {
   constructor() {
@@ -19,9 +20,9 @@ class App extends Component {
     this.state = {
       auth: false,
       user: null,
-      addItemIdToCart: null,
+      otherUser: null,
+      updateState: null,
     }
-    this.onAddItemToCartClick = this.onAddItemToCartClick.bind(this);
   }
 
   componentDidMount() {
@@ -88,24 +89,42 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
-  onAddItemToCartClick(id) {
-    this.setState({
-      addItemIdToCart: id,
-    })
-  }
+
+  otherUser = (id) => {
+    console.log(id)
+    fetch(`/api/auth/userGet/${id}`, 
+    { credentials: 'include' })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res.data.User)
+            this.setState({
+                otherUser : res.data.User,
+            });
+        }).then(res => {
+          console.log(this.state.otherUser)
+          console.log(this.state.otherUser.username)
+        }).catch(err => console.log(err));
+}
+
+updateStateFunction = (param) => {
+  this.setState({
+    updateState: param,
+  })
+}
 
   render() {
     return (
       <Router>
         <div className="App">
-
           <Header logout={this.logout}/>
-          {(this.state.auth) 
+          {/* {(this.state.auth) 
           ? <SideBar user={this.state.user.id}/>
-          : ''}
-          
+          : ''} */}
 
           <div className="container">
+          {(this.state.auth) 
+          ? <SideBar user={this.state.user.id} updateState={this.state.updateState} updateStateFunction={this.updateStateFunction}/>
+          : ''}
 
             <Route exact path='/' component={Home} />
 
@@ -126,26 +145,35 @@ class App extends Component {
               ? <Redirect to='/login' />
               : <Dashboard  user={this.state.user} />
             )} />
-        
-          
 
-            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} 
-                              onAddItemToCartClick={this.onAddItemToCartClick} /> )} />
+
+        
+            <Route exact path={`/user/${(this.state.otherUser) ? this.state.otherUser.username : ''}`} 
+            render={() => (
+              (this.state.otherUser === null) 
+              ? <Redirect to='/outfits'/>
+              : <UserPage user={this.state.otherUser} otherUser={true} updateStateFunction={this.updateStateFunction}/>
+            )}/>
+
+
+            <Route exact path='/outfits' 
+            render={() => ( 
+            <AllOutfits outfits={this.state.outfits} 
+            user={this.state.user} otherUserFunction={this.otherUser}/> )} />
 
             <Route exact path='/shopping-cart' render={() => (
               this.state.auth
-              ? < ShoppingCart user={this.state.user} addItemIdToCart={this.state.addItemIdToCart} />
+              ? < ShoppingCart user={this.state.user} />
               : < Redirect to='/login'/>
             )}/>
 
-          </div>
+    
+
           </div>
 
-          
-         
+          {/* <Footer /> */}
 
-        
-        {/* <Footer /> */}
+          </div>        
       </Router>
     );
   }

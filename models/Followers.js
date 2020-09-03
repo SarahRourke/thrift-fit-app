@@ -49,6 +49,15 @@ class Followers {
             });
     }
 
+    static checkFollowing(followerId, followedId) {
+        return db
+            .oneOrNone(`SELECT * FROM followers WHERE follower_id = $1 AND followed_id`, [followerId, followedId])
+            .then((follower) => {
+                if (follower) return new this(follower);
+                throw new Error(`Follower ${id} not found`);
+            });
+    }
+
     save() {
         console.log(this)
         return db   

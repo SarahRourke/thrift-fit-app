@@ -9,49 +9,45 @@ class ShoppingCart extends Component {
         super(props);
         this.state = {
             cartItems: null,
-            dataLoaded: false,
-            user: props.user.id,
-            addItem: props.addItemIdToCart,
+            dataLoaded: false,             
+            cartTotalPrice: 0.00,
+            totalPriceLoaded: false,
+            itemCounter: 0,
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
 
     componentDidMount() {        
-        if (this.state.addItem) {            
-            // add that item to the shopping_cart_item
-            this.addItemIdToCart(this.state.addItem);
-        }
-        this.getAllCartItemsByUserId();
-        
+        this.getCartTotalPrice();
+        this.getAllCartItemsByUserId();              
     }
 
-    addItemIdToCart(outfit_id) {        
-        fetch(`/api/shopping-carts`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                user_id: this.state.user,
-                shopping_cart_item: outfit_id
-            })
-        })
+    // set state with user's cart total price.
+    getCartTotalPrice() {
+        fetch(`/api/shopping-carts/total-price/`)
         .then(res => res.json())
         .then(res => {
-            this.getAllCartItemsByUserId();
-        });
+            this.setState({
+                cartTotalPrice: res.data.total_price.sum,
+                totalPriceLoaded: true,
+            })
+        }).catch(err => console.log(err));
     }
 
     getAllCartItemsByUserId() {          
-        fetch(`/api/shopping-carts/shopping_cart_item/${1}`)
+        fetch(`/api/shopping-carts/shopping_cart_item/`, {credentials: 'include',})
         .then(res => res.json())
         .then(res => {
             this.setState({
                 cartItems: res.data.outfits,
-                dataLoaded: true,                
+                dataLoaded: true,  
+                itemCounter: res.data.outfits.map((element, index) => { 
+                    if(element.id > 0) {
+                        return index
+                    }
+                }),
             })
-        }).catch(err => console.log(err));
+        }).catch(err => console.log(err));        
     }
 
     // delete shopping cartItem giving its id.
@@ -62,6 +58,7 @@ class ShoppingCart extends Component {
         }).then(res => res.json())
         .then(res => {
             this.getAllCartItemsByUserId();
+            this.getCartTotalPrice();
         }).catch(err => console.log(err));
     }
 
@@ -74,10 +71,34 @@ class ShoppingCart extends Component {
         } else return <p>Loading...</p>;
     }
 
+    renderSubTotal() {
+        if (this.state.totalPriceLoaded) {
+            return <h3>                
+                <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
+            </h3>
+        } else {
+            return <p>Loading Subtotal</p>
+        }
+    }
+
+    isCartEmpty() {
+        if (this.state.itemCounter.length >0 ) {            
+            return <div>
+                {this.renderSubTotal()}
+                <h4>Items: {this.state.itemCounter.length} </h4>
+            </div>             
+        } else {
+            return <h4>Your cart is empty!</h4>
+        }
+    }
+
     render() {
          return(
             <div className="shopping-cart">
                 {this.renderCartItems()}
+                <div className= "total_price-cart">
+                    {this.isCartEmpty()}
+                </div>
             </div>
          )       
     }

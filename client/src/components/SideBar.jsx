@@ -19,7 +19,7 @@ class SideBar extends Component {
     }
 
     getFollowers = () => {
-        fetch(`/api/followerList/follower/${this.props.user}`)
+        fetch(`/api/followerList/follower/`)
             .then(res => res.json())
             .then(res => {
                 console.log(res)
@@ -31,7 +31,7 @@ class SideBar extends Component {
     }
 
     getFollowing = () => {
-        fetch(`/api/followerList/followed/${this.props.user}`)
+        fetch(`/api/followerList/followed/`)
             .then(res => res.json())
             .then(res => {
                 console.log(res.data.followed)
@@ -48,18 +48,27 @@ class SideBar extends Component {
         })
         .then(res => res.json())
         .then(res => {
-            this.state({
+            this.setState({
                 followingLoaded: false
             })
         })
         .then(res => {
-            this.getFollowing();
+            this.props.getFollowing();
         }).catch(err => console.log(err))
+    }
+
+    update = () => {
+        if(this.props.updateState === 'follow'){
+            this.getFollowers()
+            this.getFollowing()
+            this.props.updateStateFunction(null)
+        }
     }
 
     render(){
         return(
             <div className='sideBar'>
+                {this.update()}
                 <div className="follows">
                 <h4>Followers</h4>
                 {(this.state.followersLoaded) 
