@@ -9,10 +9,17 @@ class ShoppingCart extends Component {
         super(props);
         this.state = {
             cartItems: null,
+<<<<<<< HEAD
+            dataLoaded: false,
+            // user: props.user.id,      
+            cartTotalPrice: 0.00,
+            totalPriceLoaded: false,
+=======
             dataLoaded: false,             
             cartTotalPrice: 0.00,
             totalPriceLoaded: false,
             itemCounter: 0,
+>>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
@@ -26,7 +33,12 @@ class ShoppingCart extends Component {
     getCartTotalPrice() {
         fetch(`/api/shopping-carts/total-price/`)
         .then(res => res.json())
+<<<<<<< HEAD
+        .then(res => {
+            console.log(`Here is the price ${res.data.total_price.sum}`);
+=======
         .then(res => {            
+>>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
             this.setState({
                 cartTotalPrice: res.data.total_price.sum,
                 totalPriceLoaded: true,
@@ -73,7 +85,12 @@ class ShoppingCart extends Component {
 
     renderSubTotal() {
         if (this.state.totalPriceLoaded) {
+<<<<<<< HEAD
+            return <h3>
+                {console.log(this.state.cartTotalPrice)}
+=======
             return <h3>                
+>>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
                 <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
             </h3>
         } else {
@@ -81,6 +98,8 @@ class ShoppingCart extends Component {
         }
     }
 
+<<<<<<< HEAD
+=======
     isCartEmpty() {
         if (this.state.itemCounter.length >0 ) {            
             return <div>
@@ -92,12 +111,17 @@ class ShoppingCart extends Component {
         }
     }
 
+>>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
     render() {
          return(
             <div className="shopping-cart">
                 {this.renderCartItems()}
                 <div className= "total_price-cart">
+<<<<<<< HEAD
+                    {this.renderSubTotal()}
+=======
                     {this.isCartEmpty()}
+>>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
                 </div>
             </div>
          )       

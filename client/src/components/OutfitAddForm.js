@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './forms.css';
 class OutfitAddForm extends Component {
     constructor(props) {
         super(props);
