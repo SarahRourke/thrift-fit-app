@@ -23,6 +23,7 @@ class AllOutfits extends Component {
         fetch('/api/outfits', { credentials: 'include' })
             .then(res => res.json())
             .then(res => {
+                console.log(res.data.outfits)
                 this.setState({
                     outfits : res.data.outfits,
                     dataLoaded: true,
@@ -48,9 +49,13 @@ class AllOutfits extends Component {
         return (
             <div className="row">
                 
-                    {this.state.outfits.map((outfit) => {
+                    {this.state.outfits.map((outfits) => {
                         
-                        return <Outfit outfit={outfit} key={outfit.id} handleOnClickAddToCart={this.handleOnClickAddToCart} />
+                        return <Outfit 
+                        outfits={outfits} 
+                        key={outfits.outfit.id} 
+                        handleOnClickAddToCart={this.handleOnClickAddToCart}
+                        otherUserFunction={this.props.otherUserFunction} />
                     
                     
                     })}               

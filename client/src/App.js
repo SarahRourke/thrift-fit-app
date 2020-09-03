@@ -11,7 +11,7 @@ import Register from './components/Register';
 import SideBar from './components/SideBar'
 import AllOutfits from './components/AllOutfits';
 import ShoppingCart from './components/ShoppingCart';
-import { transformAuthInfo } from 'passport';
+import UserPage from './components/UserPage';
 
 class App extends Component {
   constructor() {
@@ -19,7 +19,8 @@ class App extends Component {
     this.state = {
       auth: false,
       user: null,
-    }   
+      otherUser: null,
+    }
   }
 
   componentDidMount() {
@@ -86,6 +87,22 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
+  otherUser = (id) => {
+    console.log(id)
+    fetch(`/api/auth/userGet/${id}`, 
+    { credentials: 'include' })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res.data.User)
+            this.setState({
+                otherUser : res.data.User,
+            });
+        }).then(res => {
+          console.log(this.state.otherUser)
+          console.log(this.state.otherUser.username)
+        }).catch(err => console.log(err));
+}
+
   render() {
     return (
       <Router>
@@ -118,10 +135,18 @@ class App extends Component {
               ? <Redirect to='/login' />
               : <Dashboard  user={this.state.user} />
             )} />
-        
-          
 
-            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} user={this.state.user} /> )} />
+
+        
+            <Route exact path={`/user/${(this.state.otherUser) ? this.state.otherUser.username : ''}`} 
+            render={() => (
+              <UserPage user={this.state.otherUser} otherUser={true}/>
+            )}/>
+
+            <Route exact path='/outfits' 
+            render={() => ( 
+            <AllOutfits outfits={this.state.outfits} 
+            user={this.state.user} otherUserFunction={this.otherUser}/> )} />
 
             <Route exact path='/shopping-cart' render={() => (
               this.state.auth
