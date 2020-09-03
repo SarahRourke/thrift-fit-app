@@ -21,15 +21,14 @@ const Header = (props) => {
                   <Link onClick={props.logout} to="/">Logout</Link>
                 </div>
             </div>
-        <Link to="/shopping-cart">Shopping Cart</Link>
+        
         <div class="dropdown">
           <button class="dropbtn">Outfits
           <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
               <Link to="/outfits">All Outfits</Link>
-              
-          </div>
+          </div><Link to="/shopping-cart">Shopping Cart</Link>
         </div> 
       </div>
     </header>

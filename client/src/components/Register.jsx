@@ -25,8 +25,10 @@ class Register extends Component {
 
     render(){
         return(
-            <div className="loginRegister">
-                <form onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
+            <>
+            <div className="loginlogo">Thrift-Fit-App</div>
+            <div className="loginform">
+                <form className="loginform" onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
                     <input 
                     type='text'
                     name='username'
@@ -71,6 +73,7 @@ class Register extends Component {
                 </form>
                 <Link to="/login">Already have an account?</Link>
             </div>
+            </>
         )
     }
 }
