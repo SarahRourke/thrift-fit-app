@@ -1,13 +1,12 @@
-  
 import React from 'react';
-
 import { Link } from 'react-router-dom';
-
+import './header.css';
 import SearchBarForm from './SearchBarForm';
 
 const Header = (props) => {
   return (
-    <header className="header">
+    <header className="header headernav">
+      
       <div className="logo">Thrift-Fit-App</div>
       <SearchBarForm />
         <div className="navbar">
@@ -32,7 +31,9 @@ const Header = (props) => {
           </div><Link to="/shopping-cart">Shopping Cart</Link>
         </div> 
       </div>
+      
     </header>
+    
   );
 };
 

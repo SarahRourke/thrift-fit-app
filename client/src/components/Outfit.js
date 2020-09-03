@@ -4,12 +4,12 @@ import './outfits.css';
 
 const Outfit = (props) => {
     return (
-        <div className="card" key={props.outfits.outfit.id}>
+        <div className="card">
             {/* <div className="card-content"> */}
-            <img sizes="293px" src={props.outfits.outfit.img_url} alt="image" />
+            <img sizes="293px" src={props.outfits.outfit.img_url} alt={props.outfits.outfit.key} />
             
             <div className="card-content">
-                <a>@{props.outfits.outfit.user_id}</a>
+                <a>{props.outfits.outfit.user_id}</a>
                 <span >{props.outfits.outfit.description}</span>
                 <br />
                 <Link to={`/user/${props.outfits.user.username}`} 
