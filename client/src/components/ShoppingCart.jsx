@@ -15,6 +15,7 @@ class ShoppingCart extends Component {
             itemCounter: 0,
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
+        this.checkout = this.checkout.bind(this);
     }
 
     componentDidMount() {        
@@ -62,6 +63,11 @@ class ShoppingCart extends Component {
         }).catch(err => console.log(err));
     }
 
+    // checkout
+    checkout() {
+        alert('checkout!');
+    }
+
     renderCartItems() {      
         if (this.state.dataLoaded) {
             return this.state.cartItems.map(outfit => {
@@ -84,6 +90,7 @@ class ShoppingCart extends Component {
             return <div>
                 {this.renderSubTotal()}
                 <h4>Items: {this.state.itemCounter.length} </h4>
+                <span className="checkout" onClick={this.checkout}>Checkout</span>
             </div>             
         } else {
             return <h4>Your cart is empty!</h4>
