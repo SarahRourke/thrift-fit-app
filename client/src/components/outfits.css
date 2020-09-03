@@ -1,16 +1,18 @@
 
 .row {
     display: flex;
+    position: relative;
     flex-wrap: wrap;
     align-items: flex-start;
-    /* flex-direction: column; */
-    max-height: 70vh;
-    margin: 2em;
-    /* flex-grow: 4; */
     box-sizing: border-box;
+    max-height: 70vh;
+    /* flex-direction: column; */
     /* overflow-wrap: normal; */
+    
 }
+@media (min-width: 736px) {
 
+}
 
 div.card {
     display: flex;
@@ -21,7 +23,7 @@ div.card {
     height: 300px;
     max-width: 300px;
     min-width: 300px;
-    margin: 2em;
+    margin: 15px;
     /* border: 3px solid black; */
     /* box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3); */
     max-height: 300px;

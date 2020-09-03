@@ -1,20 +1,29 @@
 
 div.App {
-  box-sizing: border-box;
   position: relative;
+  flex-grow: 1;
+  margin: 0 auto 30px;
+  max-width: 935px;
+  flex-shrink: 0;
   text-align: center;
+  align-items: stretch;
   width: 100%;  
   height: 100%;
-  overflow-y: auto;
+  overflow: auto;
+
 }
+
 
 header {
   display: flex;
-  width: 100vw;
-  justify-content: space-between;
+  /* width: 100%; */
   border-bottom: #4a4e69 solid 2px;
   height: 60px;
   background-color: #4a4e69;
+  position: fixed;
+  z-index: 1;
+  /* border-bottom-left-radius: 4px; */
+  /* border-bottom-right-radius: 4px; */
 }
 
 .logo {
@@ -40,13 +49,16 @@ header {
 
 .search-bar input[type="text"] { 
     border: #4a4e69 solid 2px;
+    background-color: #fffffc;
     width: 25vw;
     max-width: 300px;
     border-radius: 4px;
+    font-weight: bold;
 } 
 
 .search-bar input[type="submit"] { 
  margin: 3px; 
+ font-weight: bold;
 } 
 .navbar {
   overflow: hidden;
@@ -54,13 +66,14 @@ header {
   flex-wrap: wrap;
   max-height: 80px;
   padding: 1em;
+  font-size: 16px;
+  font-weight: bold;
 }
   
 .navbar a {
-  font-size: 18px;
   color: white;
   text-align: center;
-  padding: 0 5px;  
+  padding: 4px;  
   text-decoration: none;
 }
 
@@ -70,7 +83,8 @@ header {
 }
 
 .dropdown .dropbtn {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: bold;
   border: none;
   outline: none;
   color: white;
@@ -98,7 +112,6 @@ header {
   text-decoration: none;
   display: block;
   text-align: left;
-
 }
 
 .dropdown-content a:hover {
@@ -115,14 +128,21 @@ header {
   box-sizing: border-box;
   display: flex;
   flex-shrink: 0;
+  flex-grow: 1;
+  /* flex-direction: column; */
+  margin-top: 7em;
+  
+  
   /* background: fill; */
   position: relative;
   top: 135;
   height: 100%;
   overflow: auto;
   justify-content: center; 
-  padding: .5em;
-  /* margin: 1em; */
+  /* padding: .5em; */
+  /* max-width: 1090px; */
+
+  
 }
 .container input {
   background-color: fffffc;

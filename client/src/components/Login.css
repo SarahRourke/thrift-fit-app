@@ -10,18 +10,18 @@ div.loginlogo {
     padding: 90px 100px;
     font-size: 2em;
     background-color: #f6f6f6;
-    
+    z-index: 0;
 }
 
 div.loginform {
-    margin: 8em 4em 4em 0; 
+    margin: 9em 4em 4em 0; 
 }  
 
 form.loginform {
     display: flex;
     flex-direction: column;
     margin-bottom: 2em;
-    background-color: white;
+    
 }
 
 .loginform input {
