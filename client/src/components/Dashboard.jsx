@@ -19,22 +19,22 @@ class Dashboard extends Component {
     this.getAllOutfits()
   }
 
-    handleOutfitSubmit = (method, e, data, id) => {
-      e.preventDefault();
-      this.setPage('default')
-      // data.user_id = this.props.user.id
-      fetch(`/api/outfits/${id || ''}`, {
-          method: method,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-          body: JSON.stringify(data),
-      }).then(res => res.json())
-          .then(res => {
-            this.getAllOutfits()
-          }).catch(err => console.log(err));
-      }
+  handleOutfitSubmit = (method, e, data, id) => {
+    e.preventDefault();
+    this.setPage('default')
+    // data.user_id = this.props.user.id
+    fetch(`/api/outfits/${id || ''}`, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(data),
+    }).then(res => res.json())
+        .then(res => {
+          this.getAllOutfits()
+        }).catch(err => console.log(err));
+    }
 
   setPage = (page) => {
     this.setState({

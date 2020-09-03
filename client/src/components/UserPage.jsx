@@ -9,28 +9,41 @@ class UserPage extends Component {
             outfits: [],
             dataLoaded: false,
             isFollowing: false, //need to add some backend stuff so that you can tell if you are following
+            followInstance: null,
           }
     }
 
     componentDidMount(){
         if(this.props.otherUser){
-            this.getAllOutfits()
+            this.getAllOutfits();
+            this.checkFollowing();
         }
     }
 
     checkFollowing = () => {
-        fetch(`/api/outfits/user/${this.props.user.id}`, 
+        console.log('hello')
+        fetch(`/api/followerList/followed/checkFollowed/${this.props.user.id}`, 
         { credentials: 'include' })
             .then(res => res.json())
             .then(res => {
-                console.log(res.data.outfits)
-                this.setState({
-                    outfits : res.data.outfits,
-                    dataLoaded: true,
-                });
+                console.log(res)
+                if(res.data.followed.length === 0){
+                    this.setState({
+                        isFollowing : false,
+                        followInstance: null,
+                    });
+                }
+                else if(res.data.followed[0].follow.id === this.props.user.id){
+                    this.setState({
+                        isFollowing : true,
+                        followInstance: res.data.followed[0].followInstance.instance_id,
+                    });
+                }
             }).then(res => {
-              console.log(this.state.outfits)
-            }).catch(err => console.log(err));
+              console.log(this.state.isFollowing)
+              console.log(this.state.followInstance)
+            }).catch(err => {
+                console.log(err)});
     }
 
     follow = () => {
@@ -47,23 +60,25 @@ class UserPage extends Component {
                 // this.setState({
                 //     isFollowing: true,
                 // })
+                this.checkFollowing();
             }).catch(err => console.log(err));
         }
 
     unFollow = () => {
-        fetch(`/api/followerList/follower/${this.props.user.id}`, {
+        fetch(`/api/followerList/follower/${this.state.followInstance}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
         .then(res => {
-            // this.state({
-            //     followingLoaded: false
-            // })
+            this.setState({
+                followingLoaded: false
+            })
         })
         .then(res => {
-            this.setState({
-                isFollowing: false,
-            })
+            // this.setState({
+            //     isFollowing: false,
+            // })
+            this.checkFollowing();
         }).catch(err => console.log(err))
     }
 
@@ -94,7 +109,7 @@ class UserPage extends Component {
                 {/* bio */}
 
                 <button 
-                    onClick={this.state.isFollowing ? () => this.unFollow : () => this.follow()}>
+                    onClick={this.state.isFollowing ? () => this.unFollow() : () => this.follow()}>
                     {this.state.isFollowing ? "Unfollow" : "Follow"}
                 </button>
                 

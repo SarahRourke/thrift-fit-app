@@ -48,7 +48,7 @@ class SideBar extends Component {
         })
         .then(res => res.json())
         .then(res => {
-            this.state({
+            this.setState({
                 followingLoaded: false
             })
         })
