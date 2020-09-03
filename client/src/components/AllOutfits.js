@@ -49,7 +49,6 @@ class AllOutfits extends Component {
 
     render() {
         return (
-            <>
             <div className="row">
                 
                     {this.state.outfits.map((outfits) => {
@@ -63,7 +62,7 @@ class AllOutfits extends Component {
                     
                     })}               
                 </div>
-            </>
+            
         )
     }
 

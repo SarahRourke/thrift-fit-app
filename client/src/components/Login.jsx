@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
+
 import { Link } from 'react-router-dom';
-import './Login.css';
 
 
 class Login extends Component {
@@ -23,11 +23,8 @@ class Login extends Component {
 
     render(){
         return(
-            
-            <>
-                <div className="loginlogo">Thrift-Fit-App</div>
-                <div className="loginform">
-                <form className="loginform" onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
+            <div className="loginRegister">
+                <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
                     <input 
                     type='text'
                     name='username'
@@ -46,8 +43,7 @@ class Login extends Component {
                     <input type='submit' value='Log in!'/>
                 </form>
                 <Link to="/register">Don't have an account?</Link>
-                </div>
-            </>
+            </div>
         )
     }
 }

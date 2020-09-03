@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
-import './components/Login.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -110,15 +109,12 @@ class App extends Component {
         <div className="App">
 
           <Header logout={this.logout}/>
-          {/* {(this.state.auth) 
-          ? <SideBar user={this.state.user.id}/>
-          : ''} */}
-          
-
-          <div className="container">
           {(this.state.auth) 
           ? <SideBar user={this.state.user.id}/>
           : ''}
+          
+
+          {/* <div className="container"> */}
 
             <Route exact path='/' component={Home} />
 
@@ -158,13 +154,37 @@ class App extends Component {
               : < Redirect to='/login'/>
             )}/>
 
-    
+           
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
 
           </div>
+          {/* </div> */}
 
-          {/* <Footer /> */}
+          
+         
 
-          </div>        
+        
+        {/* <Footer /> */}
       </Router>
     );
   }

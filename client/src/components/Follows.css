@@ -1,9 +1,8 @@
 div.sideBox {
+    display: inherit;
     height: 50vh;
     width: 240px;
-    /* top: 136px; */
+    top: 136px;
     right: 20px;
     border: blue solid 1px;
-    position: absolute;
-    display: contents;
 }

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import OutfitAddForm from './OutfitAddForm'
-import '../App.css';
 
-import UserPage from './UserPage'
+import OutfitAddForm from './OutfitAddForm'
 
 import UserPage from './UserPage'
 
@@ -86,10 +84,8 @@ class Dashboard extends Component {
 
   render(){
     return (
-      <div className="container">
-        <div className="dash">
+      <div className="dash">
           {this.decideWhichToRender()}
-        </div>
       </div>
     )
   }
