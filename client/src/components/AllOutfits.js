@@ -31,7 +31,8 @@ class AllOutfits extends Component {
             }).catch(err => console.log(err));
     }
 
-    handleOnClickAddToCart(outfit_id) {           
+
+    handleOnClickAddToCart(outfit_id) {          
         fetch(`/api/shopping-carts`, {
             method: 'POST',
             headers: {
@@ -47,6 +48,7 @@ class AllOutfits extends Component {
 
     render() {
         return (
+            <>
             <div className="row">
                 
                     {this.state.outfits.map((outfits) => {
@@ -60,7 +62,7 @@ class AllOutfits extends Component {
                     
                     })}               
                 </div>
-            
+            </>
         )
     }
 

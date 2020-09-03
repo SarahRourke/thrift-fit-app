@@ -26,7 +26,7 @@ class ShoppingCart extends Component {
     getCartTotalPrice() {
         fetch(`/api/shopping-carts/total-price/`)
         .then(res => res.json())
-        .then(res => {            
+        .then(res => {
             this.setState({
                 cartTotalPrice: res.data.total_price.sum,
                 totalPriceLoaded: true,

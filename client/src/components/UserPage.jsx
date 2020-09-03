@@ -83,7 +83,7 @@ class UserPage extends Component {
     }
 
     getAllOutfits = () => {
-        fetch(`/api/outfits/user/${this.props.user.id}`, 
+        fetch(`/api/outfits/user/${this.props.user.id}`,
         { credentials: 'include' })
             .then(res => res.json())
             .then(res => {
@@ -103,7 +103,6 @@ class UserPage extends Component {
         if(this.props.otherUser){
             return <div>
                 {/* profile picture */}
-                
                 <h1>{this.props.user.username}!</h1>
 
                 {/* bio */}
