@@ -12,6 +12,7 @@ class ShoppingCart extends Component {
             dataLoaded: false,             
             cartTotalPrice: 0.00,
             totalPriceLoaded: false,
+            itemCounter: 0,
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
@@ -39,9 +40,14 @@ class ShoppingCart extends Component {
         .then(res => {
             this.setState({
                 cartItems: res.data.outfits,
-                dataLoaded: true,                
+                dataLoaded: true,  
+                itemCounter: res.data.outfits.map((element, index) => { 
+                    if(element.id > 0) {
+                        return index
+                    }
+                }),
             })
-        }).catch(err => console.log(err));
+        }).catch(err => console.log(err));        
     }
 
     // delete shopping cartItem giving its id.
@@ -81,6 +87,7 @@ class ShoppingCart extends Component {
                 {this.renderCartItems()}
                 <div className= "total_price-cart">
                     {this.renderSubTotal()}
+                    <h4>Items: {this.state.itemCounter.length} </h4>
                 </div>
             </div>
          )       
