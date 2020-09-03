@@ -65,7 +65,9 @@ class ShoppingCart extends Component {
 
     // checkout
     checkout() {
-        alert('checkout!');
+        this.state.cartItems.map((outfitToUpdate) => {
+            alert(`Outfit id to be updated: ${outfitToUpdate.shopping_cart_item} `);
+        })        
     }
 
     renderCartItems() {      

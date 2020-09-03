@@ -12,6 +12,7 @@ class Outfit {
     this.price = outfit.price || null;
     this.img_url_01 = outfit.img_url_01;
     this.img_url_02 = outfit.img_url_02;
+    this.shopping_cart_item = outfit.shopping_cart_item || null;
   }
 
   // static getAll() {
