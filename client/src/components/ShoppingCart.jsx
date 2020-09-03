@@ -81,13 +81,23 @@ class ShoppingCart extends Component {
         }
     }
 
+    isCartEmpty() {
+        if (this.state.itemCounter.length >0 ) {            
+            return <div>
+                {this.renderSubTotal()}
+                <h4>Items: {this.state.itemCounter.length} </h4>
+            </div>             
+        } else {
+            return <h4>Your cart is empty!</h4>
+        }
+    }
+
     render() {
          return(
             <div className="shopping-cart">
                 {this.renderCartItems()}
                 <div className= "total_price-cart">
-                    {this.renderSubTotal()}
-                    <h4>Items: {this.state.itemCounter.length} </h4>
+                    {this.isCartEmpty()}
                 </div>
             </div>
          )       
