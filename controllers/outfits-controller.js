@@ -55,6 +55,7 @@ outfitController.create = (req, res, next) => {
 };
 
 outfitController.update = (req, res, next) => {
+  console.log(`value to update: ${req.body}`);
   Outfit.getById(req.params.id)
     .then((outfit) => {
       return outfit.update(req.body);

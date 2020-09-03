@@ -14,7 +14,7 @@ outfitRoutes.get('/outfit/:id', outfitsController.show);
 outfitRoutes.post('/', authHelpers.loginRequired, outfitsController.create);
 
 // edit outfit route, /api/outfits/:id
-outfitRoutes.put('/:id', authHelpers.loginRequired, outfitsController.update);
+outfitRoutes.put('/:id',  outfitsController.update);
 
 // delete outfit route, /api/outfits/:id
 outfitRoutes.delete('/:id', authHelpers.loginRequired, outfitsController.delete);

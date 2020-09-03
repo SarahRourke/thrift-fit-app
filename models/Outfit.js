@@ -52,16 +52,15 @@ class Outfit {
   save() {
     return db
       .one(
-        `INSERT INTO outfits (user_id, description, img_url, price, img_url_01, img_url_02)
-         VALUES ($/user_id/, $/description/, $/img_url/, $/price/, $/img_url_01/, $/img_url_02/)
+        `INSERT INTO outfits (user_id, is_sold ,description, img_url, price, img_url_01, img_url_02)
+         VALUES ($/user_id/, $/is_sold/ ,$/description/, $/img_url/, $/price/, $/img_url_01/, $/img_url_02/)
          RETURNING *`,
         this
       )
       .then((outfit) => Object.assign(this, outfit));
   }
 
-  update(changes) {
-    if (changes.price>= 0.00) {
+  update(changes) {        
       Object.assign(this, changes);
       return db
         .one(
@@ -78,10 +77,7 @@ class Outfit {
           `,
           this
         )
-        .then((updatedOutfit) => Object.assign(this, updatedOutfit));
-    } else {
-      throw new Error("Price cannot be negative");      
-    }
+        .then((updatedOutfit) => Object.assign(this, updatedOutfit));    
   }
 
   delete() {

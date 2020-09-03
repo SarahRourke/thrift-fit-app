@@ -65,9 +65,22 @@ class ShoppingCart extends Component {
 
     // checkout
     checkout() {
+        // map throughout cartItems and update status for each outfit.
         this.state.cartItems.map((outfitToUpdate) => {
-            alert(`Outfit id to be updated: ${outfitToUpdate.shopping_cart_item} `);
-        })        
+            // fetch to back-end api & update outfits status is_sold to true
+            fetch(`/api/outfits/${outfitToUpdate.shopping_cart_item}`, {
+                method: 'PUT',
+                credentials: 'include',
+                body: JSON.stringify({
+                    is_sold: true,
+                })
+            })
+            .catch(err => console.log(err));
+            
+            console.log(`Outfit id to be updated: ${outfitToUpdate.shopping_cart_item} `);
+        });
+        // show message: Your order is being reviewed, please expect an email from the seller.
+        alert('Your order is being reviewed, please expect an email from the seller.');      
     }
 
     renderCartItems() {      
