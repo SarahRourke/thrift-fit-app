@@ -19,12 +19,12 @@ class SearchBarForm extends Component {
 
   render() {
     return (
-        <>
+      <div className="search-bar">
       <form className="search-bar" >
         <input type="text" name="description" placeholder="Search" />        
         <input type="submit" />
       </form>
-      </>
+      </div>
     );
   }
 }

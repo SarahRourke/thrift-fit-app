@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
-import './components/Login.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -20,12 +19,8 @@ class App extends Component {
     this.state = {
       auth: false,
       user: null,
-<<<<<<< HEAD
-    }   
-=======
       otherUser: null,
     }
->>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
   }
 
   componentDidMount() {
@@ -92,8 +87,6 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
-<<<<<<< HEAD
-=======
   otherUser = (id) => {
     console.log(id)
     fetch(`/api/auth/userGet/${id}`, 
@@ -110,22 +103,18 @@ class App extends Component {
         }).catch(err => console.log(err));
 }
 
->>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
   render() {
     return (
       <Router>
         <div className="App">
 
           <Header logout={this.logout}/>
-          {/* {(this.state.auth) 
-          ? <SideBar user={this.state.user.id}/>
-          : ''} */}
-          
-
-          <div className="container">
           {(this.state.auth) 
           ? <SideBar user={this.state.user.id}/>
           : ''}
+          
+
+          {/* <div className="container"> */}
 
             <Route exact path='/' component={Home} />
 
@@ -154,14 +143,10 @@ class App extends Component {
               <UserPage user={this.state.otherUser} otherUser={true}/>
             )}/>
 
-<<<<<<< HEAD
-            <Route exact path='/outfits' render={() => ( <AllOutfits outfits={this.state.outfits} user={this.state.user} /> )} />
-=======
             <Route exact path='/outfits' 
             render={() => ( 
             <AllOutfits outfits={this.state.outfits} 
             user={this.state.user} otherUserFunction={this.otherUser}/> )} />
->>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
 
             <Route exact path='/shopping-cart' render={() => (
               this.state.auth
@@ -169,13 +154,37 @@ class App extends Component {
               : < Redirect to='/login'/>
             )}/>
 
-    
+           
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
 
           </div>
+          {/* </div> */}
 
-          {/* <Footer /> */}
+          
+         
 
-          </div>        
+        
+        {/* <Footer /> */}
       </Router>
     );
   }
