@@ -21,24 +21,6 @@ class Dashboard extends Component {
     this.getAllOutfits()
   }
 
-<<<<<<< HEAD
-    handleOutfitSubmit = (method, e, data, id) => {
-      e.preventDefault();
-      this.setPage('default')
-      // data.user_id = this.props.user.id
-      fetch(`/api/outfits/${id || ''}`, {
-          method: method,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-          body: JSON.stringify(data),
-      }).then(res => res.json())
-          .then(res => {
-            this.getAllOutfits()
-          }).catch(err => console.log(err));
-      }
-=======
   handleOutfitSubmit = (method, e, data, id) => {
     e.preventDefault();
     this.setPage('default')
@@ -55,7 +37,6 @@ class Dashboard extends Component {
           this.getAllOutfits()
         }).catch(err => console.log(err));
     }
->>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
 
   setPage = (page) => {
     this.setState({
