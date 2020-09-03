@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import OutfitAddForm from './OutfitAddForm'
 import '../App.css';
 
+import UserPage from './UserPage'
+
 class Dashboard extends Component {
   constructor(props){
     super(props)
@@ -20,7 +22,7 @@ class Dashboard extends Component {
     handleOutfitSubmit = (method, e, data, id) => {
       e.preventDefault();
       this.setPage('default')
-      data.user_id = this.props.user.id
+      // data.user_id = this.props.user.id
       fetch(`/api/outfits/${id || ''}`, {
           method: method,
           headers: {
@@ -30,7 +32,7 @@ class Dashboard extends Component {
           body: JSON.stringify(data),
       }).then(res => res.json())
           .then(res => {
-            console.log(res); 
+            this.getAllOutfits()
           }).catch(err => console.log(err));
       }
 
@@ -47,12 +49,12 @@ class Dashboard extends Component {
     })
   }
 
-
   getAllOutfits = () => {
     fetch('/api/outfits/user', 
     { credentials: 'include' })
         .then(res => res.json())
         .then(res => {
+            console.log(res.data.outfits)
             this.setState({
                 outfits : res.data.outfits,
                 dataLoaded: true,
@@ -62,29 +64,20 @@ class Dashboard extends Component {
         }).catch(err => console.log(err));
 }
 
+
+
   decideWhichToRender = () => {
     if(this.state.page === 'default'){
-      if(this.state.dataLoaded === false){
-        return <h1>You have no outfits yet</h1>
-      }
-      else{
-        return <div>
-        <h1>Hello {this.props.user.username}!</h1>
+      return <div>
         <button onClick={() => this.setPage('add')}>Add a outfit</button>
-        {this.state.outfits.map((value, i) => {
-          return <div> 
-            <p key={i}>{value.description}</p> 
-            <button onClick={() => this.edit(value)}>edit</button>
-            </div>
-        })}
-        </div>
-      }
+        {((this.state.dataLoaded === false) ? <h1>You have no outfits yet</h1> : <UserPage user={this.props.user} outfits={this.state.outfits} edit={this.edit}/>)}
+      </div>
     }
     else if(this.state.page === 'add'){
-      return <OutfitAddForm user={this.props.user} handleOutfitSubmit={this.handleOutfitSubmit} edit={false}/>
+      return <OutfitAddForm handleOutfitSubmit={this.handleOutfitSubmit} edit={false}/>
     }
     else{
-      return <OutfitAddForm user={this.props.user} handleOutfitSubmit={this.handleOutfitSubmit} edit={true} outfit={this.state.outfit}/>
+      return <OutfitAddForm handleOutfitSubmit={this.handleOutfitSubmit} edit={true} outfit={this.state.outfit}/>
     }
   }
 

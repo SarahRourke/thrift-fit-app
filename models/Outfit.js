@@ -7,6 +7,9 @@ class Outfit {
     this.is_sold = outfit.is_sold || false;
     this.description = outfit.description;
     this.img_url = outfit.img_url;
+    this.price = outfit.price || null;
+    this.img_url_01 = outfit.img_url_01;
+    this.img_url_02 = outfit.img_url_02;
   }
 
   static getAll() {
@@ -33,8 +36,8 @@ class Outfit {
   save() {
     return db
       .one(
-        `INSERT INTO outfits (user_id, description, img_url)
-         VALUES ($/user_id/, $/description/, $/img_url/)
+        `INSERT INTO outfits (user_id, description, img_url, price, img_url_01, img_url_02)
+         VALUES ($/user_id/, $/description/, $/img_url/, $/price/, $/img_url_01/, $/img_url_02/)
          RETURNING *`,
         this
       )
@@ -42,20 +45,27 @@ class Outfit {
   }
 
   update(changes) {
-    Object.assign(this, changes);
-    return db
-      .one(
-        `
-          UPDATE outfits SET
-          is_sold = $/is_sold/,
-          description = $/description/,
-          img_url = $/img_url/
-          WHERE id = $/id/
-          RETURNING *
-        `,
-        this
-      )
-      .then((updatedOutfit) => Object.assign(this, updatedOutfit));
+    if (changes.price>= 0.00) {
+      Object.assign(this, changes);
+      return db
+        .one(
+          `
+            UPDATE outfits SET
+            is_sold = $/is_sold/,
+            description = $/description/,
+            img_url = $/img_url/,
+            price = $/price/,
+            img_url_01 = $/img_url_01/,
+            img_url_02 = $/img_url_02/
+            WHERE id = $/id/
+            RETURNING *
+          `,
+          this
+        )
+        .then((updatedOutfit) => Object.assign(this, updatedOutfit));
+    } else {
+      throw new Error("Price cannot be negative");      
+    }
   }
 
   delete() {

@@ -1,10 +1,12 @@
 const followersRoutes = require('express').Router();
 const followersController = require('../controllers/followers-controller');
 
-followersRoutes.get('/follower/:id', followersController.indexFollowers);
-followersRoutes.get('/followed/:id', followersController.indexFollowed);
+const authHelpers = require('../services/auth/auth-helpers');
 
-followersRoutes.post('/follower', followersController.create);
-followersRoutes.delete('/follower/:id', followersController.delete);
+followersRoutes.get('/follower/', authHelpers.loginRequired, followersController.indexFollowers);
+followersRoutes.get('/followed/', authHelpers.loginRequired, followersController.indexFollowed);
+
+followersRoutes.post('/follower', authHelpers.loginRequired, followersController.create);
+followersRoutes.delete('/follower/:id', authHelpers.loginRequired, followersController.delete);
 
 module.exports = followersRoutes;
