@@ -53,13 +53,22 @@ class SideBar extends Component {
             })
         })
         .then(res => {
-            this.getFollowing();
+            this.props.getFollowing();
         }).catch(err => console.log(err))
+    }
+
+    update = () => {
+        if(this.props.updateState === 'follow'){
+            this.getFollowers()
+            this.getFollowing()
+            this.props.updateStateFunction(null)
+        }
     }
 
     render(){
         return(
             <div className='sideBar'>
+                {this.update()}
                 <div className="follows">
                 <h4>Followers</h4>
                 {(this.state.followersLoaded) 
