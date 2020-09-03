@@ -3,7 +3,7 @@ div.loginlogo {
     position: relative;
     height: 300px;
     width: 300px;
-    border: #00416d solid 10px;
+    border: #9a8c98 solid 7px;
     border-radius: 150px;
     box-sizing: border-box;
     margin: 4em 1em 6em 1em;
@@ -21,19 +21,22 @@ form.loginform {
     display: flex;
     flex-direction: column;
     margin-bottom: 2em;
+    background-color: white;
 }
 
 .loginform input {
     border: #f6f6f6;
+    background-color: #f6f6f6;
     display: flex;
     align-self: center;
     padding: 1em;
     margin: 1em 2em .2em 2em;
     border-radius: 4px;
+   
 }
 
 .loginform [type="submit"] {
-    background-color: #ffc93c; 
+    background-color: #ffddd2; 
     padding: .9em;
     border-radius: 5px;
 }

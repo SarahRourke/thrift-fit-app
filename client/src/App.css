@@ -5,33 +5,32 @@ div.App {
   text-align: center;
   width: 100%;  
   height: 100%;
-  background-color: #f5f1da;
   overflow-y: auto;
 }
 
 header {
   display: flex;
   width: 100vw;
-  border-radius: 3px;
   justify-content: space-between;
-  border-bottom: #f5f1da solid 2px;
+  border-bottom: #4a4e69 solid 2px;
   height: 60px;
-  background-color: #00416d;
+  background-color: #4a4e69;
 }
 
 .logo {
   position: absolute;
-  background-color: #4e89ae;
+  background-color: #9a8c98;
   display: flex;
   flex-grow: 0;
   height: 100px;
   width: 100px;
-  border: #f5f1da solid 2px;
+  border: #faf9f9 solid 2px;
   border-radius: 50px;
   box-sizing: border-box;
   margin: 1em;
   padding: 25px 25px;
   text-align: center;
+  z-index: 1;
 }
 
 .search-bar {
@@ -40,7 +39,7 @@ header {
 }
 
 .search-bar input[type="text"] { 
-    border: #00416d solid 2px;
+    border: #4a4e69 solid 2px;
     width: 25vw;
     max-width: 300px;
     border-radius: 4px;
@@ -51,7 +50,7 @@ header {
 } 
 .navbar {
   overflow: hidden;
-  background-color: #83c5be;
+  background-color: #4a4e69;
   flex-wrap: wrap;
   max-height: 80px;
   padding: 1em;
@@ -80,13 +79,13 @@ header {
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: #006d77
+  background-color: #3d405b;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #edf6f9;
+  background-color: #fffffc;
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -94,7 +93,7 @@ header {
 
 .dropdown-content a {
   float: none;
-  color: #1a535c;
+  color: #293241;
   padding: 4px 8px;
   text-decoration: none;
   display: block;
@@ -115,14 +114,21 @@ header {
 .container {
   box-sizing: border-box;
   display: flex;
+  flex-shrink: 0;
   /* background: fill; */
   position: relative;
   top: 135;
   height: 100%;
-  overflow-y: auto;
+  overflow: auto;
   justify-content: center; 
   padding: .5em;
-  margin: 1em;
+  /* margin: 1em; */
+}
+.container input {
+  background-color: fffffc;
+}
+.home {
+  color: #9a8c98;
 }
 
 /* .outfitform input { 

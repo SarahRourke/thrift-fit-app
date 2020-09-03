@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './forms.css';
 class OutfitAddForm extends Component {
     constructor(props) {
         super(props);
@@ -25,9 +25,9 @@ class OutfitAddForm extends Component {
 
     render() {
         return (
-            <div className="outfitcontainer">
-            <div className="outfitform">
-            <form className="addOutfitForm"
+            <>
+            <div className="form">
+            <form className="outfitform"
             onSubmit={(e) => this.props.handleOutfitSubmit('POST', e, this.state)}>
               
 
@@ -50,7 +50,7 @@ class OutfitAddForm extends Component {
                 <input type="submit" value='Add this outfit'/>
             </form>
             </div>  
-            </div>  
+            </>  
         );
         
         

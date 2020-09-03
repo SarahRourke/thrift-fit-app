@@ -2,17 +2,17 @@
     position: absolute;
     height: 100vh;
     z-index: 1;
-    top: 134px;
+    /* top: 134px; */
     right: 0;
-    overflow-x: hidden;
+    overflow-x: auto;
     padding: 8px;
     width: 200px;
-    border-left: black solid 2px;
+   
     background-color: grey;
 }
 
 .follows {
-    display: inherit;
+    
     margin: 5px;
     height: 45vh;
     /* width: 240px; */

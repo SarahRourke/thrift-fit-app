@@ -5,19 +5,21 @@ import './outfits.css';
 const Outfit = (props) => {
     return (
         <>
-        <div className="card">
-            <div className="card-image">
-            <img src={props.outfit.img_url} alt={props.outfit.key} />
-            </div>
+        <div className="card" key={props.outfit.key}>
+            {/* <div className="card-content"> */}
+            <img sizes="293px" src={props.outfit.img_url} alt="image" />
+            
             <div className="card-content">
-            <span className="card-title">{props.outfit.description}</span>
-            <br />
-            <Link to={`/outfits/${props.outfit.user_id}`}>See more by this USER_NAME here</Link>
+                <a>@{props.outfit.user_id}</a>
+                <span >{props.outfit.description}</span>
+                <br />
+                <Link to={`/outfits/${props.outfit.user_id}`}>See more by this USER_NAME here</Link>
+            {/* <div className="card-action"> */}
+                <span onClick={() => props.handleOnClickAddToCart(props.outfit.id)}>Add To Cart
+                </span>  
+                
             </div>
-            <div className="card-action">
-            <span className="add-to-cart" onClick={() => props.handleOnClickAddToCart(props.outfit.id)}>Add To Cart
-            </span>
-             </div>    
+            
         </div>
         </>
     );
