@@ -1,3 +1,4 @@
+  
 import React from 'react';
 
 import { Link } from 'react-router-dom';
@@ -9,27 +10,26 @@ const Header = (props) => {
     <header className="header">
       <div className="logo">Thrift-Fit-App</div>
       <SearchBarForm />
-        <div class="navbar">
+        <div className="navbar">
           <Link to="/">Home</Link>
-            <div class="dropdown">
-              <button class="dropbtn">Profile
-                <i class="fa fa-caret-down"></i>
+            <div className="dropdown">
+              <button className="dropbtn">Profile
+                <i className="fa fa-caret-down"></i>
               </button>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                   <Link to="/login">Login</Link> <Link to="/dashboard">Dashboard</Link>
                   <Link to="/register">Register</Link>
                   <Link onClick={props.logout} to="/">Logout</Link>
                 </div>
             </div>
-        <Link to="/shopping-cart">Shopping Cart</Link>
-        <div class="dropdown">
-          <button class="dropbtn">Outfits
-          <i class="fa fa-caret-down"></i>
+        
+        <div className="dropdown">
+          <button className="dropbtn">Outfits
+          <i className="fa fa-caret-down"></i>
           </button>
-          <div class="dropdown-content">
+          <div className="dropdown-content">
               <Link to="/outfits">All Outfits</Link>
-              
-          </div>
+          </div><Link to="/shopping-cart">Shopping Cart</Link>
         </div> 
       </div>
     </header>

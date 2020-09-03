@@ -45,8 +45,9 @@ header {
 
 .search-bar {
   display: flex;
-  
-  margin: 5px 8em;
+  box-sizing: border-box;
+  margin: 5px 4em;
+  /* margin: 5px 8em; */
   order: 2;
 }
 

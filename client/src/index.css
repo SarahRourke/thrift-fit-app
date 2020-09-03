@@ -18,10 +18,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, button, input, textarea {
+/* body, button, input, textarea {
   font-size: 14px;
   line-height: 18px;
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import OutfitAddForm from './OutfitAddForm'
+import '../App.css';
 
 import UserPage from './UserPage'
 
@@ -35,6 +35,7 @@ class Dashboard extends Component {
           this.getAllOutfits()
         }).catch(err => console.log(err));
     }
+
 
   setPage = (page) => {
     this.setState({
@@ -84,8 +85,10 @@ class Dashboard extends Component {
 
   render(){
     return (
-      <div className="dash">
+      <div className="container">
+        <div className="dash">
           {this.decideWhichToRender()}
+        </div>
       </div>
     )
   }
