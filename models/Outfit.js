@@ -1,5 +1,7 @@
 const db = require('../db/config');
 
+const User = require('./User');
+
 class Outfit {
   constructor(outfit) {
     this.id = outfit.id || null;
@@ -12,11 +14,24 @@ class Outfit {
     this.img_url_02 = outfit.img_url_02;
   }
 
+  // static getAll() {
+  //   return db
+  //     .manyOrNone('SELECT * FROM outfits ORDER BY id ASC')
+  //     .then((outfits) => outfits.map((outfit) => new this(outfit)));
+  // }
+
   static getAll() {
     return db
-      .manyOrNone('SELECT * FROM outfits ORDER BY id ASC')
-      .then((outfits) => outfits.map((outfit) => new this(outfit)));
+      .manyOrNone(`SELECT outfits.*, users.username
+      FROM outfits
+      JOIN users
+      On outfits.user_id=users.id 
+      ORDER BY outfits.id ASC`)
+      .then((outfits) => outfits.map((outfit) => {
+        return {outfit: new this(outfit), user: new User(outfit)}
+      }));
   }
+
 
   static getAllUser(id) {
     return db
