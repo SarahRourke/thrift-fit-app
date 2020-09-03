@@ -73,9 +73,7 @@ class ShoppingCart extends Component {
 
     renderSubTotal() {
         if (this.state.totalPriceLoaded) {
-            return <h3>                
-                <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
-            </h3>
+            return <h3>Subtotal: ${this.state.cartTotalPrice}</h3>            
         } else {
             return <p>Loading Subtotal</p>
         }
@@ -96,9 +94,7 @@ class ShoppingCart extends Component {
          return(
             <div className="shopping-cart">
                 {this.renderCartItems()}
-                <div className= "total_price-cart">
-                    {this.isCartEmpty()}
-                </div>
+                {this.isCartEmpty()}                
             </div>
          )       
     }

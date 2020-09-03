@@ -57,7 +57,7 @@ class ShoppingCart {
             WHERE shopping_carts.user_id = ${user_id};`)
         .then((items) => {
             return items.map((item) => {
-            return {outfit: new Outfit(item), shoppingCart: new this(item)};
+                return new Outfit(item);
             });
         });
     }
