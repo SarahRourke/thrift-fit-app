@@ -9,17 +9,10 @@ class ShoppingCart extends Component {
         super(props);
         this.state = {
             cartItems: null,
-<<<<<<< HEAD
-            dataLoaded: false,
-            // user: props.user.id,      
-            cartTotalPrice: 0.00,
-            totalPriceLoaded: false,
-=======
             dataLoaded: false,             
             cartTotalPrice: 0.00,
             totalPriceLoaded: false,
             itemCounter: 0,
->>>>>>> 2dff372290d9396f6fa976c5203e51914729fe98
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
