@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import './components/Login.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,6 +20,7 @@ class App extends Component {
     this.state = {
       auth: false,
       user: null,
+
       otherUser: null,
     }
   }
@@ -87,6 +89,7 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
+
   otherUser = (id) => {
     console.log(id)
     fetch(`/api/auth/userGet/${id}`, 
@@ -109,12 +112,15 @@ class App extends Component {
         <div className="App">
 
           <Header logout={this.logout}/>
+          {/* {(this.state.auth) 
+          ? <SideBar user={this.state.user.id}/>
+          : ''} */}
+          
+
+          <div className="container">
           {(this.state.auth) 
           ? <SideBar user={this.state.user.id}/>
           : ''}
-          
-
-          {/* <div className="container"> */}
 
             <Route exact path='/' component={Home} />
 
@@ -143,6 +149,7 @@ class App extends Component {
               <UserPage user={this.state.otherUser} otherUser={true}/>
             )}/>
 
+
             <Route exact path='/outfits' 
             render={() => ( 
             <AllOutfits outfits={this.state.outfits} 
@@ -154,37 +161,13 @@ class App extends Component {
               : < Redirect to='/login'/>
             )}/>
 
-           
-
-
-
-
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
+    
 
           </div>
-          {/* </div> */}
 
-          
-         
+          {/* <Footer /> */}
 
-        
-        {/* <Footer /> */}
+          </div>        
       </Router>
     );
   }

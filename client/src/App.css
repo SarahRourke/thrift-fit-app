@@ -1,3 +1,4 @@
+
 div.App {
   position: relative;
   flex-grow: 1;
@@ -45,9 +46,8 @@ header {
 
 .search-bar {
   display: flex;
-  box-sizing: border-box;
-  margin: 5px 4em;
-  /* margin: 5px 8em; */
+  
+  margin: 5px 8em;
   order: 2;
 }
 
