@@ -64,7 +64,7 @@ class AllOutfits extends Component {
             <>
             <div className="row">
                 
-                    {this.state.outfits.map((outfits) => {
+                    {this.state.availableOutfits.map((outfits) => {
                         
                         return <Outfit 
                         outfits={outfits} 
