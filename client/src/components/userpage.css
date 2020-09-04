@@ -1,3 +1,14 @@
+button.follow {    
+    background-color: #515070; 
+    box-shadow: 2px 2px 2px 0px;
+    padding: .9em;
+    border-radius: 5px;
+    color: #22333b;
+    border: #515070 solid 4px;
+    font-weight: bold;
+  
+}
+
 .row {
     display: flex;
     flex-direction: row;
@@ -8,9 +19,6 @@
     max-height: 70vh;
     /* flex-direction: column; */
     /* overflow-wrap: normal; */
-    
-}
-@media (max-width: 735px) {
     
 }
 
@@ -29,20 +37,11 @@ div.card {
     /* color: white; */
 }
 
-@media (max-width: 735px) {
-    div.card {
-        margin-right: 3px;
-    }
-    div.row {
-        margin-bottom: 3px;
-    }
-}
 
 div.card-image {
     display: flex;
     margin: 5px;
-    
-} 
+}
 
 img {
     max-height: 280px;
@@ -55,6 +54,7 @@ img {
     backface-visibility: hidden;
     /* display: block;  */
 }
+
 
 .card-content {
     display: flex;
@@ -69,22 +69,14 @@ img {
     align-content: center;
 }
 
+.row {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 30vw;
+    height: 20vh;
+    background-color: #f1f3f8;
+    font-size: 14;
 
 
-div.card:hover img {
-    opacity: 0.4;
-    background-color: #9a8c98;
-    
-} 
-
-div.card:hover .card-content {
-    opacity: 1;
-    /* filter: brightness(0.4); */
-    
-    color: white;
-    /* fill-opacity: inherit; */
-    font-size: 20px;
-    padding: 16px 32px;
-    font-style: bold;
 }
-
