@@ -6,7 +6,6 @@
     height: 54px;
     width: 100%;
     margin: 0px 0px;
-    padding: 0px 12vw;
     position: fixed;
     z-index: 5;
     text-size-adjust: 100%;
@@ -14,9 +13,23 @@
 
 @media (max-width: 380px) {
     .header {
-        padding: 0px 1vw;
+        padding: 0px 2vw;
     }
 }
+@media (max-width: 930px) {
+    .header {
+        padding-left: 15%;
+        padding-right: 3vw;
+    }
+    
+}
+@media (max-width: 1800px) {
+    .header {
+        padding-left: 4vw;
+        padding-right: 8vw;
+    }
+}
+
 
 header.headernav {
     box-sizing: border-box;
@@ -32,56 +45,60 @@ header.headernav {
   
 .logo {
     position: fixed;
-    /* background-color: #577590; */
     display: flex;
     order: 1;
     flex-grow: 0;
-    height: 100px;
-    width: 100px;
+    height: 125px;
+    width: 125px;
     border: #faf9f9 solid 3px;
-    border-radius: 50px;
+    border-radius: 100px;
     box-sizing: border-box;
-    margin: .9em;
-    padding: 24px 20px;
+    padding-top: 0;
+    margin: .5em;
+    transform: rotate(-15deg);
+    padding: 35px 10px 10px 10px;
     text-align: center;
     z-index: 1;
-    font-size: 22px;
-  }
-  
-  .search-bar {
-    display: flex;
-    
-    margin: 5px 3vw 5px 8em;
+    font-size: 30px;
+}
+
+
+.search-bar {
+    display: flex;    
     order: 2;
-  }
+    margin-left: 10em;
+    
+}
   
-  .search-bar input[type="text"] { 
+.search-bar input[type="text"] { 
       border: #84a9ac solid 2px;
       background-color: #fffffc;
       width: 25vw;
       max-width: 230px;
       border-radius: 4px;
       font-weight: bold;
-  } 
+} 
   
-  .search-bar input[type="submit"] { 
+.search-bar input[type="submit"] { 
    margin: 3px; 
    font-weight: bold;
    background-color: #e8ded2;
-  } 
-  .navbar {
+} 
+
+.navbar {
     display: flex;
     flex-direction: row-reverse;
-    flex: 4;
     flex-wrap: wrap;
+    flex: 4;
     flex-shrink: 3;
     box-sizing: border-box;
     align-self: flex-end;
     background-color: #84a9ac;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     order: 3;
-    padding-bottom: 4vh;
+    padding-bottom: 3%;
+
 }
 
 .navbar a {
