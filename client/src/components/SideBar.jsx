@@ -72,14 +72,14 @@ class SideBar extends Component {
                 <div className="follows">
                 <h4>Followers</h4>
                 {(this.state.followersLoaded) 
-                ? <Follows isFollowers={true} follows={this.state.allFollowers} unFollow={this.unFollow}/> 
+                ? <Follows isFollowers={true} follows={this.state.allFollowers} unFollow={this.unFollow} otherUserFunction={this.props.otherUserFunction}/> 
                 : <p>Loading...</p>}
                 </div>
 
                 <div className="follows">
                     <h4>Following</h4>
                 {(this.state.followingLoaded) 
-                ? <Follows isFollowers={false} follows={this.state.allFollowing} unFollow={this.unFollow}/> 
+                ? <Follows isFollowers={false} follows={this.state.allFollowing} unFollow={this.unFollow} otherUserFunction={this.props.otherUserFunction}/> 
                 : <p>Loading...</p>}
                 </div>
             </div>
