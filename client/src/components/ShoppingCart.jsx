@@ -114,13 +114,28 @@ class ShoppingCart extends Component {
             this.getCartTotalPrice();
         }).catch(err => console.log(err));
     }
-
-    calcTotal =() => {
-        const trueTotal = this.state.totalPrice + this.state.shippingTotal
-        this.setState({
-            totalPrice: trueTotal,
-            totalPriceLoaded: true,
+    handleFormSubmit = () => {
+        // map throughout cartItems and update status for each outfit that is on the cart.
+        this.state.cartItems.forEach(element => {
+            console.log(element)
+            // fetch to back-end api & update outfits status is_sold to true
+            this.deleteCartItem(element.id)
+            fetch(`/api/outfits/${element.id}`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    is_sold: new Boolean(true),
+                }),
+            })
+            .then(res => res.json())           
+            .catch(err => console.log(err));
         })
+        // show message: Your order is being reviewed, please expect an email from the seller.
+        const priceTotal = this.state.cartTotalPrice + this.state.shippingTotal
+        alert(`Your total is $${priceTotal}. Your order is being reviewed, please expect an email from the seller.`);      
     }
     
     // show all cart items. 
@@ -173,7 +188,7 @@ class ShoppingCart extends Component {
             return <div>
                 {this.renderSubTotal()}
                 <h4>Items: {this.state.itemCounter.length} </h4>                
-                <ShoppingCartForm cartItems={this.state.cartItems} />
+                <ShoppingCartForm handleFormSubmit={this.handleFormSubmit} cartItems={this.state.cartItems} cartTotalPrice={this.state.cartTotalPrice} shippingTotal={this.state.shippingTotal}/>
             </div>             
         } else {
             return <h4>Your cart is empty!</h4>
