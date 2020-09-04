@@ -1,4 +1,7 @@
 # Thrift-fit
+
+![thrift_fit_app](./assets/thrift_fit_app.jpg)
+
 This app is for people to find thrifted outfits that have been curated by various different individuals. The users can explore a large selection of outfits purchasing the ones that they like and following curators who best match their styles and tastes.
  
 ## Explanation of Technology
@@ -20,7 +23,7 @@ link. After installing it locally you need to run yarn install in the top-level 
  
 ## ERDS
 
-[Entity Relationship Diagram(ERD)](./Group7Thrift-Fit.pdf).
+[Entity Relationship Diagram(ERD)](./Group7ThriftFit.pdf).
 
 ## User stories - Moscow Method
   ### Must Have
