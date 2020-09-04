@@ -127,7 +127,10 @@ updateStateFunction = (param) => {
           ? <SideBar user={this.state.user.id} updateState={this.state.updateState} updateStateFunction={this.updateStateFunction} otherUserFunction={this.otherUser}/>
           : ''}
 
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' 
+            render={() => ( 
+            <AllOutfits outfits={this.state.outfits} 
+            user={this.state.user} otherUserFunction={this.otherUser}/> )} />
 
             <Route exact path='/login' render={() => (
               this.state.auth
