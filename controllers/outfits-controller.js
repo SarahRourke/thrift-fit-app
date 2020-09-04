@@ -36,6 +36,7 @@ outfitController.show = (req, res, next) => {
 };
 
 outfitController.create = (req, res, next) => {
+  console.log(req)
   new Outfit({
     user_id: req.user.id,
     description: req.body.description,

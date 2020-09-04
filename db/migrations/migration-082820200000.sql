@@ -1,4 +1,4 @@
-\c thrift_fit
+
 
 
 CREATE TABLE IF NOT EXISTS users (
