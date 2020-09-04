@@ -8,6 +8,7 @@ class AllOutfits extends Component {
         super(props);
         this.state = {
             outfits: [],
+            availableOutfits: [],
             dataLoaded: false,
             shoppingCartItem: null,
         }
@@ -17,6 +18,7 @@ class AllOutfits extends Component {
 
     componentDidMount() {
        this.getAllOutfits();   
+       this.getAllAvailableOutfits();
     }
 
     getAllOutfits = () => {
@@ -31,6 +33,17 @@ class AllOutfits extends Component {
             }).catch(err => console.log(err));
     }
 
+    // show only available outfits, is_sold = false
+    getAllAvailableOutfits = () => {
+        fetch('/api/outfits/available', { credentials: 'include' })
+            .then(res => res.json())
+            .then(res => {                
+                this.setState({
+                    availableOutfits : res.data.outfits,
+                    dataLoaded: true,
+                });
+            }).catch(err => console.log(err));
+    }
 
     handleOnClickAddToCart(outfit_id) {          
         fetch(`/api/shopping-carts`, {
@@ -51,7 +64,7 @@ class AllOutfits extends Component {
             <>
             <div className="row">
                 
-                    {this.state.outfits.map((outfits) => {
+                    {this.state.availableOutfits.map((outfits) => {
                         
                         return <Outfit 
                         outfits={outfits} 

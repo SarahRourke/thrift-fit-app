@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import './components/styling/theme.css';
 import './components/Login.css';
 
 import Header from './components/Header';
@@ -123,7 +124,7 @@ updateStateFunction = (param) => {
 
           <div className="container">
           {(this.state.auth) 
-          ? <SideBar user={this.state.user.id} updateState={this.state.updateState} updateStateFunction={this.updateStateFunction}/>
+          ? <SideBar user={this.state.user.id} updateState={this.state.updateState} updateStateFunction={this.updateStateFunction} otherUserFunction={this.otherUser}/>
           : ''}
 
             <Route exact path='/' component={Home} />
