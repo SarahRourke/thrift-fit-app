@@ -1,4 +1,6 @@
 body {
+  /* color: #e8ded2; */
+  /* background-color: #faf9f9; */
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -16,21 +18,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* div #root {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-grow: 1;
-} */
-
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-
+.logo {
+  /* background-color: #577590; */
+}
 @media (min-width: 736px) {
   .App {
     box-sizing: content-box;

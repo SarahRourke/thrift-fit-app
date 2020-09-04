@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
+import './styling/theme.css';
 import SearchBarForm from './SearchBarForm';
 
 const Header = (props) => {
   return (
     <header className="header headernav">
       
-      <div className="logo">Thrift-Fit-App</div>
+      <div className="logo">thrift fit</div>
       <SearchBarForm />
         <div className="navbar">
           <Link to="/">Home</Link>
