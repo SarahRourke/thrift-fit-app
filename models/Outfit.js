@@ -33,6 +33,19 @@ class Outfit {
       }));
   }
 
+  static getAllAvailable() {
+    return db
+      .manyOrNone(`SELECT outfits.*, users.username
+      FROM outfits
+      JOIN users
+      On outfits.user_id=users.id 
+      WHERE outfits.is_sold = false
+      ORDER BY outfits.id ASC`)
+      .then((outfits) => outfits.map((outfit) => {
+        return {outfit: new this(outfit), user: new User(outfit)}
+      }));
+  }
+
 
   static getAllUser(id) {
     return db
