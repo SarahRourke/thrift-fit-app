@@ -3,7 +3,7 @@ div.loginlogo {
     position: relative;
     height: 200px;
     width: 200px;
-    border: #f6f5f5 solid 7px;
+    /* border: #f6f5f5 solid 7px; */
     border-radius: 100px;
     box-sizing: border-box;
     margin: 4em 1em 4em 1em;
@@ -12,6 +12,7 @@ div.loginlogo {
     background-color: #056676;
     z-index: 0;
     color: #f6f5f5;
+    box-shadow: 2px 2px 3px 3px #84a9ac;
 }
 
 div.loginform {

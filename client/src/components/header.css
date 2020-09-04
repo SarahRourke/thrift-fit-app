@@ -71,26 +71,25 @@ header.headernav {
   } 
   .navbar {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
+    flex: 4;
     flex-wrap: wrap;
     flex-shrink: 3;
     box-sizing: border-box;
-    margin: 0 7vw;
+    align-self: flex-end;
     background-color: #84a9ac;
     font-size: 16px;
     font-weight: bold;
     order: 3;
-   
-  }
+    padding-bottom: 4vh;
+}
 
-
-    
-  .navbar a {
+.navbar a {
     color: #1b262c;
     text-align: center;
     padding: 1px;  
     text-decoration: none;
-  }
+}
   
   .dropdown {
     float: left;

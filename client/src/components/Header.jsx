@@ -11,6 +11,8 @@ const Header = (props) => {
       <div className="logo">thrift fit</div>
       <SearchBarForm />
         <div className="navbar">
+          
+
           <Link to="/">Home</Link>
             <div className="dropdown">
               <button className="dropbtn">Profile
@@ -31,6 +33,20 @@ const Header = (props) => {
               <Link to="/outfits">All Outfits</Link>
           </div><Link to="/shopping-cart">Shopping Cart</Link>
         </div> 
+        {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link"><Link to="/">Home</Link></a>
+            </li>
+            <li class="nav-item"><a class="nav-link"><Link to="/login">Login</Link></a></li>
+            <li class="nav-item"><a class="nav-link"><Link to="/dashboard">Dashboard</Link></a></li>
+            <li class="nav-item"><a class="nav-link"><Link to="/register">Register</Link></a></li>
+          </ul>
+        </div>
+       */}
       </div>
       
     </header>
