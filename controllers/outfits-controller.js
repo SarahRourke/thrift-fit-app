@@ -80,4 +80,15 @@ outfitController.delete = (req, res, next) => {
     .catch(next);
 };
 
+outfitController.indexAvailable = (req, res, next) => {
+  Outfit.getAllAvailable()
+  .then((outfits) => {
+    res.json({
+      message: 'ok',
+      data: { outfits },        
+    });
+  })
+  .catch(next);
+}
+
 module.exports = outfitController;
