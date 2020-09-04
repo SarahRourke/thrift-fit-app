@@ -75,6 +75,7 @@ class ShoppingCart extends Component {
         fetch(`/api/shopping-carts/shopping_cart_item/`, {credentials: 'include',})
         .then(res => res.json())
         .then(res => {
+            console.log(res)
             this.setState({
                 cartItems: res.data.outfits,
                 dataLoaded: true,  
@@ -120,7 +121,7 @@ class ShoppingCart extends Component {
             console.log(element)
             // fetch to back-end api & update outfits status is_sold to true
             this.deleteCartItem(element.id)
-            fetch(`/api/outfits/${element.id}`, {
+            fetch(`/api/outfits/${element.shopping_cart_item}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {
@@ -133,9 +134,8 @@ class ShoppingCart extends Component {
             .then(res => res.json())           
             .catch(err => console.log(err));
         })
-        // show message: Your order is being reviewed, please expect an email from the seller.
-        const priceTotal = this.state.cartTotalPrice + this.state.shippingTotal
-        alert(`Your total is $${priceTotal}. Your order is being reviewed, please expect an email from the seller.`);      
+       
+        alert(`Your order is being reviewed, please expect an email from the seller.`);      
     }
     
     // show all cart items. 
@@ -148,15 +148,15 @@ class ShoppingCart extends Component {
         } else return <p>Loading...</p>;
     }
 
-    renderTotal(){
-        if (this.state.shippingLoaded){
-            return <div>
-                <h3>Total: ${this.state.totalPrice}</h3>
-                </div>
-            }else {
-                return <p>Calculating Total...</p>
-            }
-    }
+    // renderTotal(){
+    //     if (this.state.shippingLoaded){
+    //         return <div>
+    //             <h3>Total: ${this.state.totalPrice}</h3>
+    //             </div>
+    //         }else {
+    //             return <p>Calculating Total...</p>
+    //         }
+    // }
 
 
     renderShipping() {
