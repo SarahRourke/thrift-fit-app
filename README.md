@@ -46,3 +46,7 @@ link. After installing it locally you need to run yarn install in the top-level 
   ### Will not have
   - The buyer should be able to send a request for a seller to put together an outfit for them.
   - The Seller should have outfits automatically deleted if a user buys one
+
+## Link to deployed app
+
+https://vast-meadow-68893.herokuapp.com/
