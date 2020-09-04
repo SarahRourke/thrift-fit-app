@@ -73,7 +73,7 @@ class Dashboard extends Component {
     if(this.state.page === 'default'){
       return <div>
         <button onClick={() => this.setPage('add')}>Add an outfit!</button>
-        {((this.state.dataLoaded === false) ? <h1>You have no outfits yet</h1> : <UserPage user={this.props.user} outfits={this.state.outfits} edit={this.edit}/>)}
+        {((this.state.dataLoaded === false) ? <h1>You have no outfits yet</h1> : <UserPage user={this.props.user} outfits={this.state.outfits} yourPage={true} edit={this.edit}/>)}
       </div>
     }
     else if(this.state.page === 'add'){

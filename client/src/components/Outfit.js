@@ -14,6 +14,7 @@ class Outfit extends Component{
                     <a>{this.props.outfits.user_id}</a>
                     <span>{this.props.outfits.description}</span>
                     <br />
+                    {!this.props.otherUser ? <button onClick={() => this.props.edit(this.props.outfits)}>Edit</button> : ''}
                 {/* <div className="card-action"> */}
                     {this.props.otherUser ? <span onClick={() => this.props.handleOnClickAddToCart(this.props.outfits.id)}>Add To Cart
                     </span> : ''}
