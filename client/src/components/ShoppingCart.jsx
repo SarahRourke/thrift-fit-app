@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import ShoppingCartItem from './ShoppingCartItem';
 import ShoppingCartForm from './ShoppingCartForm';
+import './shoppingcart.css';
+
 
 class ShoppingCart extends Component {
     constructor(props) {
@@ -97,9 +99,11 @@ class ShoppingCart extends Component {
 
     render() {
          return(
+
             <div className="shopping-cart">
                 {this.renderCartItems()}
                 {this.isCartEmpty()}                
+
             </div>
          )       
     }

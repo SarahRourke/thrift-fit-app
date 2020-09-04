@@ -1,9 +1,26 @@
 div.sideBox {
-    height: 50vh;
+    height: 40vh;
     width: 240px;
-    /* top: 136px; */
-    right: 20px;
-    border: blue solid 1px;
-    position: absolute;
-    display: contents;
+    overflow-y: auto;
+    background-color: #d8d3cd;
+    border-radius: 10px;
+    font-weight: bold;
+    position: fixed;
+}
+
+p {
+    color: #22333b;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+button.follows    {    
+    background-color: #515070; 
+    box-shadow: 2px 2px 2px 0px;
+    padding: .9em;
+    border-radius: 5px;
+    color: #22333b;
+    border: #515070 solid 4px;
+    font-weight: bold;
+  
 }

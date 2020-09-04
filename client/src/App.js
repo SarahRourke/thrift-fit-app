@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import './components/styling/theme.css';
 import './components/Login.css';
 
 import Header from './components/Header';
@@ -20,8 +21,8 @@ class App extends Component {
     this.state = {
       auth: false,
       user: null,
-
       otherUser: null,
+      updateState: null,
     }
   }
 
@@ -106,20 +107,24 @@ class App extends Component {
         }).catch(err => console.log(err));
 }
 
+updateStateFunction = (param) => {
+  this.setState({
+    updateState: param,
+  })
+}
+
   render() {
     return (
       <Router>
         <div className="App">
-
           <Header logout={this.logout}/>
           {/* {(this.state.auth) 
           ? <SideBar user={this.state.user.id}/>
           : ''} */}
-          
 
           <div className="container">
           {(this.state.auth) 
-          ? <SideBar user={this.state.user.id}/>
+          ? <SideBar user={this.state.user.id} updateState={this.state.updateState} updateStateFunction={this.updateStateFunction}/>
           : ''}
 
             <Route exact path='/' component={Home} />
@@ -146,7 +151,9 @@ class App extends Component {
         
             <Route exact path={`/user/${(this.state.otherUser) ? this.state.otherUser.username : ''}`} 
             render={() => (
-              <UserPage user={this.state.otherUser} otherUser={true}/>
+              (this.state.otherUser === null) 
+              ? <Redirect to='/outfits'/>
+              : <UserPage user={this.state.otherUser} otherUser={true} updateStateFunction={this.updateStateFunction}/>
             )}/>
 
 

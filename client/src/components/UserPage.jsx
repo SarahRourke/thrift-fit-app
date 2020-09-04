@@ -1,6 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
 
+import Outfit from './Outfit'
+
 
 class UserPage extends Component {
     constructor(props){
@@ -60,6 +62,7 @@ class UserPage extends Component {
                 // this.setState({
                 //     isFollowing: true,
                 // })
+                this.props.updateStateFunction('follow')
                 this.checkFollowing();
             }).catch(err => console.log(err));
         }
@@ -78,6 +81,7 @@ class UserPage extends Component {
             // this.setState({
             //     isFollowing: false,
             // })
+            this.props.updateStateFunction('follow')
             this.checkFollowing();
         }).catch(err => console.log(err))
     }
@@ -97,7 +101,19 @@ class UserPage extends Component {
             }).catch(err => console.log(err));
     }
 
-    //add to shoping cart here maybe
+    handleOnClickAddToCart(outfit_id) {          
+        fetch(`/api/shopping-carts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                // user_id: this.state.user,
+                shopping_cart_item: outfit_id
+            })
+        })
+    }
 
     decideWhichToRender = () => {
         if(this.props.otherUser){
@@ -107,17 +123,22 @@ class UserPage extends Component {
 
                 {/* bio */}
 
-                <button 
+                <button className="follow"
                     onClick={this.state.isFollowing ? () => this.unFollow() : () => this.follow()}>
                     {this.state.isFollowing ? "Unfollow" : "Follow"}
                 </button>
-                
+                <div className="row">
                 {this.state.dataLoaded ? this.state.outfits.map((value, i) => {
-                    return <div key={i}> 
-                        <p>{value.description}</p>
-                        {/* addToCart */}
-                    </div>})
-                : <p>Loading...</p>}
+                    return <Outfit 
+                    outfits={value} 
+                    key={i} 
+                    handleOnClickAddToCart={this.handleOnClickAddToCart}
+                    userPage={true}
+                    otherUser={true}/>
+                
+                
+                }) : <p>Loading...</p>}
+                </div>
 
             </div>
         }
@@ -126,11 +147,15 @@ class UserPage extends Component {
                 {/* profile picture */}
                 <h1>Hello {this.props.user.username}!</h1>
                 {/* bio */}
+                <div className="row">
                 {this.props.outfits.map((value, i) => {
-                    return <div key={i}> 
-                        <p>{value.description}</p> 
-                        <button onClick={() => this.props.edit(value)}>edit</button>
-                    </div>})}
+                    return <Outfit 
+                    outfits={value} 
+                    key={i} 
+                    handleOnClickAddToCart={this.handleOnClickAddToCart}
+                    userPage={true}
+                    otherUser={true}/>})}
+                </div>
             </div>
         }
     }

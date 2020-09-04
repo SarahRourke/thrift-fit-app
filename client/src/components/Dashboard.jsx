@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import OutfitAddForm from './OutfitAddForm'
+import OutfitAddForm from './OutfitAddForm';
+import './styling/theme.css';
+import './forms.css';
 import '../App.css';
 
 import UserPage from './UserPage'
@@ -70,7 +72,7 @@ class Dashboard extends Component {
   decideWhichToRender = () => {
     if(this.state.page === 'default'){
       return <div>
-        <button onClick={() => this.setPage('add')}>Add a outfit</button>
+        <button onClick={() => this.setPage('add')}>Add an outfit!</button>
         {((this.state.dataLoaded === false) ? <h1>You have no outfits yet</h1> : <UserPage user={this.props.user} outfits={this.state.outfits} edit={this.edit}/>)}
       </div>
     }
