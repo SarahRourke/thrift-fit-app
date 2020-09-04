@@ -18,6 +18,7 @@ class AllOutfits extends Component {
 
     componentDidMount() {
        this.getAllOutfits();   
+       this.getAllAvailableOutfits();
     }
 
     getAllOutfits = () => {
