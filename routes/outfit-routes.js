@@ -22,4 +22,7 @@ outfitRoutes.delete('/:id', authHelpers.loginRequired, outfitsController.delete)
 // allow outfit get by users name /api/outfits/user
 outfitRoutes.get('/user/:id', outfitsController.indexUser);
 
+// get all available outfits (is_sold: false). Route: /api/outfits/available
+outfitRoutes.get('/available', outfitsController.indexAvailable);
+
 module.exports = outfitRoutes;
