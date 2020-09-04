@@ -154,7 +154,7 @@ class UserPage extends Component {
                     key={i} 
                     handleOnClickAddToCart={this.handleOnClickAddToCart}
                     userPage={true}
-                    otherUser={true}/>})}
+                    edit={this.props.edit}/>})}
                 </div>
             </div>
         }
