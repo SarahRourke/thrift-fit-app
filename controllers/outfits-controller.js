@@ -54,7 +54,7 @@ outfitController.create = (req, res, next) => {
     .catch(next);
 };
 
-outfitController.update = (req, res, next) => {
+outfitController.update = (req, res, next) => {  
   Outfit.getById(req.params.id)
     .then((outfit) => {
       return outfit.update(req.body);
@@ -78,5 +78,16 @@ outfitController.delete = (req, res, next) => {
     })
     .catch(next);
 };
+
+outfitController.indexAvailable = (req, res, next) => {
+  Outfit.getAllAvailable()
+  .then((outfits) => {
+    res.json({
+      message: 'ok',
+      data: { outfits },        
+    });
+  })
+  .catch(next);
+}
 
 module.exports = outfitController;
