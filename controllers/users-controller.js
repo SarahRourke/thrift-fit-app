@@ -13,6 +13,10 @@ UserController.create = (req, res, next) => {
         email: req.body.email,
         password_digest: hash,
         profile_img_url: req.body.profile_img_url,
+        bio: req.body.bio,
+        zip_code: req.body.zip_code,
+        state: req.body.state,
+        city: req.body.city,
     })
     .save()
     .then(user => {
@@ -39,5 +43,16 @@ UserController.show = (req, res, next) => {
       })
       .catch(next);
   };
+
+//   UserController.getTwo = (req, res, next) => {
+//     User.getTwoById(req.params.id)
+//       .then((User) => {
+//         res.json({
+//           message: 'ok',
+//           data: { User },
+//         });
+//       })
+//       .catch(next);
+//   };
 
 module.exports = UserController;

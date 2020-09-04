@@ -1,6 +1,9 @@
 const express = require('express');
 const shoppingCartRoutes = express.Router();
 
+
+const shippingCalculator= require('../services/shippingCalculator')
+
 const shoppingCartsController = require('../controllers/shoppingCart-controller');
 // const authHelpers = require('../services/auth/auth-helpers');
 
@@ -21,5 +24,7 @@ shoppingCartRoutes.get('/shopping_cart_item/', shoppingCartsController.showBuyer
 
 // get Shopping Cart Total Price By UserId route, GET /api/shopping-carts/total-price/:id
 shoppingCartRoutes.get('/total-price/', shoppingCartsController.getTotalPriceByUserId);
+
+shoppingCartRoutes.get('/shopping_cart_shipping/:id', shippingCalculator.date, shippingCalculator.shipping);
 
 module.exports = shoppingCartRoutes;

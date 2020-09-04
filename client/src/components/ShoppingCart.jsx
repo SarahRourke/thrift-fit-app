@@ -31,6 +31,24 @@ class ShoppingCart extends Component {
                 cartTotalPrice: res.data.total_price.sum,
                 totalPriceLoaded: true,
             })
+        }).then(this.getShippingPrice()).catch(err => console.log(err));
+    }
+
+    getShippingPrice() {
+        fetch(`/api/shopping-carts/shopping_cart_shipping/12`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            // this.setState({
+            //     cartTotalPrice: res.data.total_price.sum,
+            //     totalPriceLoaded: true,
+            // })
         }).catch(err => console.log(err));
     }
 
@@ -73,9 +91,7 @@ class ShoppingCart extends Component {
 
     renderSubTotal() {
         if (this.state.totalPriceLoaded) {
-            return <h3>                
-                <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
-            </h3>
+            return <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
         } else {
             return <p>Loading Subtotal</p>
         }

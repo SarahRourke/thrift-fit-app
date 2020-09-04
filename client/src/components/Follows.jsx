@@ -4,7 +4,6 @@ import './Follows.css'
 const Follows = (props) => {
     return(
         <div className="sideBox">
-            <h3>{(props.isFollowers) ? 'Followers:' : 'Following:'}</h3>
             {(props.follows.length === 0) 
             ?  <p>{(props.isFollowers) ? 'No followers yet!' : 'Not following anyone yet!'}</p> 
             : <div>
