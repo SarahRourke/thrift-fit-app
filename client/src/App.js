@@ -124,7 +124,7 @@ updateStateFunction = (param) => {
 
           <div className="container">
           {(this.state.auth) 
-          ? <SideBar user={this.state.user.id} updateState={this.state.updateState} updateStateFunction={this.updateStateFunction}/>
+          ? <SideBar user={this.state.user.id} updateState={this.state.updateState} updateStateFunction={this.updateStateFunction} otherUserFunction={this.otherUser}/>
           : ''}
 
             <Route exact path='/' component={Home} />

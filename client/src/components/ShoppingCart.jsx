@@ -57,14 +57,16 @@ class ShoppingCart extends Component {
             this.setState({
                 shippingPriceArray: newShippingPriceArray,
             })
-        }).then(res => {
-            const shippingTotal = this.state.shippingPriceArray.reduce((a, b) => a + b, 0);
+        })
+        .then(res => {
+            const shippingTotal =this.state.shippingPriceArray.reduce((a, b) => a + b, 0)
             this.setState({
+                shippingLoaded: true,
                 shippingTotal: shippingTotal,
             })
-        }).then(res => {
+        })
+        .then(res => {
             console.log(this.state.shippingPriceArray)
-            console.log(this.state.shippingTotal)
         }).catch(err => console.log(err));
     }
 
@@ -90,14 +92,6 @@ class ShoppingCart extends Component {
             this.state.cartItems.forEach(element => {
                 this.getShippingPrice(element)
                 i++
-                console.log(this.state.shippingLoaded)
-                if(i === this.state.cartItems.length-1){
-                    this.calcTotal()
-                    this.setState({
-                        shippingLoaded: true,
-                    })
-                }
-                
             })
         }).then(res => {
             console.log(this.state.shippingTotal)
