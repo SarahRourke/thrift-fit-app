@@ -50,3 +50,6 @@ link. After installing it locally you need to run yarn install in the top-level 
 ## Link to deployed app
 
 https://vast-meadow-68893.herokuapp.com/
+
+## Unsolved problems
+- Right before the prestentation we found out that when ever our heroku app refreshes the website crashes. We are not sure why this is happening as it does not happen in dev.
