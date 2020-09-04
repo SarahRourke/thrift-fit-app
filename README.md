@@ -19,7 +19,9 @@ link. After installing it locally you need to run yarn install in the top-level 
 ## Wireframes 
  
 ## ERDS
- 
+
+[Entity Relationship Diagram(ERD)](./Group7Thrift-Fit.pdf).
+
 ## User stories - Moscow Method
   ### Must Have
    - The seller should be able to post outfits that are for sale
