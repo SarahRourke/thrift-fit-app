@@ -1,9 +1,9 @@
 div.sideBox {
-    height: 50vh;
+    height: 40vh;
     width: 240px;
-    /* top: 136px; */
-    right: 20px;
-    border: blue solid 1px;
-    position: absolute;
-    display: contents;
+    overflow-y: auto;
+    background-color: #d8d3cd;
+    border-radius: 10px;
+    font-weight: bold;
+    position: fixed;
 }

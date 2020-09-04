@@ -1,9 +1,9 @@
-.outfitform {
+.addoutfitform {
     display: flex;
     flex-direction: column;
 }
 
-.outfitform input {
+.addoutfitform input {
     border: #f6f6f6;
     display: flex;
     align-self: center;
@@ -17,3 +17,4 @@
     padding: .9em;
     border-radius: 5px;
 }
+

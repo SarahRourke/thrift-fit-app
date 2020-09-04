@@ -15,7 +15,6 @@ div.App {
 
 
 .container {
-  /* box-sizing: border-box; */
   display: flex;
   /* flex-direction: column; */
   flex-shrink: 0;
@@ -26,6 +25,10 @@ div.App {
   height: 100%;
   overflow: auto;
   justify-content: center; 
+  margin-top: 100px;
+}
+.container input {
+  background-color: #f2e9e4;
 }
 
 @media (max-width: 400px) {
@@ -51,9 +54,7 @@ div.App {
     margin-bottom: 8%;;
   }
 }
-.container input {
-  background-color: #f2e9e4;
-}
+
 
 footer {
   position: absolute;

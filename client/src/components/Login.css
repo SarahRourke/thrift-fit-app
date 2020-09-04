@@ -29,14 +29,11 @@ form.loginform {
 
 .loginform input {
     border: #f6f6f6;
-    fill: #5eaaa8;
-    /* background-color: #056676; */
     display: flex;
     align-self: center;
     padding: 1em;
     margin: 1em 2em .2em 2em;
     border-radius: 4px;
-    color: #5eaaa8;
     background-color: #f2e9e4;
 }
    
@@ -50,6 +47,8 @@ form.loginform {
     padding: .9em;
     border-radius: 5px;
     color: #22333b;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .loginform a {

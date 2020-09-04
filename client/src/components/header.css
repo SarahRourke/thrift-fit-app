@@ -16,17 +16,17 @@
         padding: 0px 2vw;
     }
 }
-@media (max-width: 930px) {
+@media (min-width: 930px) {
     .header {
         padding-left: 15%;
         padding-right: 3vw;
     }
     
 }
-@media (max-width: 1800px) {
+@media (min-width: 1800px) {
     .header {
-        padding-left: 4vw;
-        padding-right: 8vw;
+        padding-left: 20%;
+        padding-right: 20%;
     }
 }
 
@@ -98,6 +98,7 @@ header.headernav {
     font-weight: bold;
     order: 3;
     padding-bottom: 3%;
+    padding-right: 4px;
 
 }
 
@@ -163,12 +164,13 @@ header.headernav {
       div.navbar {
           flex-direction: column;
           flex-wrap: wrap;
+          position: relative;
           /* font-size: 8px; */
           justify-self: center;
           /* margin-top: 50px; */
           height: 10vh;
           padding: 0;
-          font-size: 6px;
+          font-size: 4px;
       }
 
       .dropdown .dropbtn {
@@ -184,4 +186,12 @@ header.headernav {
         
 
     }
+
+  }
+
+  @media (max-width: 420px) {
+      div.navbar {
+          flex-flow: column;
+          position: relative;
+      }
   }

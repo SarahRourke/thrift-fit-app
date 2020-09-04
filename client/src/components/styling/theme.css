@@ -10,3 +10,31 @@ body {
 .navbar a {
     color: #1b262c;
 }
+
+.loginform [type="submit"] { 
+    background-color: #84a9ac; 
+    box-shadow: 2px 2px 2px 0px;
+    padding: .9em;
+    border-radius: 5px;
+    color: #22333b;
+}
+
+.dash button    {    
+    background-color: #84a9ac; 
+    box-shadow: 2px 2px 2px 0px;
+    padding: .9em;
+    border-radius: 5px;
+    color: #22333b;
+    border: #84a9ac solid 4px;
+    font-weight: bold;
+  
+}
+
+.dash [type="submit"] { 
+    background-color: #84a9ac; 
+    box-shadow: 2px 2px 2px 0px;
+    padding: .9em;
+    border-radius: 5px;
+    color: #22333b;
+    font-weight: bold;
+}
