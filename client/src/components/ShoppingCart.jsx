@@ -1,8 +1,9 @@
-// call the back-end shopping cart route
-// GET /api/shopping-carts/shopping_cart_item/:id
 import React, { Component } from 'react';
 
 import ShoppingCartItem from './ShoppingCartItem';
+import ShoppingCartForm from './ShoppingCartForm';
+import './shoppingcart.css';
+
 
 class ShoppingCart extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class ShoppingCart extends Component {
         }).catch(err => console.log(err));
     }
 
+
     getShippingPrice(element) {
         fetch(`/api/shopping-carts/shopping_cart_shipping/${element.user_id}`, {
             method: 'GET',
@@ -63,7 +65,10 @@ class ShoppingCart extends Component {
         }).catch(err => console.log(err));
     }
 
-    getAllCartItemsByUserId() {          
+
+    
+    // show all items that are on the logged user's cart.
+    getAllCartItemsByUserId() {
         fetch(`/api/shopping-carts/shopping_cart_item/`, {credentials: 'include',})
         .then(res => res.json())
         .then(res => {
@@ -104,7 +109,8 @@ class ShoppingCart extends Component {
             this.getCartTotalPrice();
         }).catch(err => console.log(err));
     }
-
+    
+    // show all cart items. 
     renderCartItems() {      
         if (this.state.dataLoaded) {
             return this.state.cartItems.map(outfit => {
@@ -113,6 +119,7 @@ class ShoppingCart extends Component {
             })
         } else return <p>Loading...</p>;
     }
+
 
     renderShipping() {
         if (this.state.shippingLoaded){
@@ -133,11 +140,14 @@ class ShoppingCart extends Component {
         }
     }
 
+    // if car is empty, show message: your car is empty.
+    // else, show subtotal / items count / Checkout button (ShoppingCartForm).
     isCartEmpty() {
         if (this.state.itemCounter.length >0 ) {            
             return <div>
                 {this.renderSubTotal()}
-                <h4>Items: {this.state.itemCounter.length} </h4>
+                <h4>Items: {this.state.itemCounter.length} </h4>                
+                <ShoppingCartForm cartItems={this.state.cartItems} />
             </div>             
         } else {
             return <h4>Your cart is empty!</h4>
@@ -146,11 +156,11 @@ class ShoppingCart extends Component {
 
     render() {
          return(
+
             <div className="shopping-cart">
                 {this.renderCartItems()}
-                <div className= "total_price-cart">
-                    {this.isCartEmpty()}
-                </div>
+                {this.isCartEmpty()}                
+
             </div>
          )       
     }

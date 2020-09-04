@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './forms.css';
+import './styling/theme.css';
 class OutfitAddForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             description: props.edit ? props.outfit.value.description : '',
             img_url: props.edit ? props.outfit.value.description  : '',
+            price: props.edit ? props.outfit.value.price : '',
         }
     }
 
@@ -48,6 +50,14 @@ class OutfitAddForm extends Component {
                 value={this.state.img_url || ''} 
                 placeholder={this.props.edit ? this.props.outfit.value.img_url : "img_url goes here"}
                 
+                onChange={this.handleChange} />
+
+                <input
+                type="numeric"
+                name="price"
+                value={this.state.price || ''}
+                placeholder={this.props.edit ? this.props.outfit.value.price : "$ price"}
+
                 onChange={this.handleChange} />
 
                 <input type="submit" value={(this.props.edit ? 'Edit this outfit!' : 'Add this outfit!')}/>

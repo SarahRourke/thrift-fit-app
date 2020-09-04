@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
-
 import { Link } from 'react-router-dom';
+import './Login.css';
 
 class Register extends Component {
     constructor(){
@@ -29,7 +29,7 @@ class Register extends Component {
     render(){
         return(
             <>
-            <div className="loginlogo">Thrift-Fit-App</div>
+            <div className="loginlogo">thrift fit</div>
             <div className="loginform">
                 <form className="loginform" onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
                     <input 
@@ -149,5 +149,4 @@ class Register extends Component {
         )
     }
 }
-
 export default Register;
