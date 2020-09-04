@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 
 import ShoppingCartItem from './ShoppingCartItem';
+import './shoppingcart.css';
 
 class ShoppingCart extends Component {
     constructor(props) {
@@ -94,11 +95,19 @@ class ShoppingCart extends Component {
 
     render() {
          return(
-            <div className="shopping-cart">
-                {this.renderCartItems()}
-                <div className= "total_price-cart">
+             
+                <div className="shopping-cart">
+                    
+                    
+                   
+                {this.renderCartItems()}<div className="shopping-cart-row">
+                        <ShoppingCartItem />
+
+                    </div>
+                <div className= "total_price-cart">{this.renderSubtotal}
                     {this.isCartEmpty()}
                 </div>
+                
             </div>
          )       
     }

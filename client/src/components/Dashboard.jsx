@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OutfitAddForm from './OutfitAddForm';
 import './styling/theme.css';
+import './forms.css';
 import '../App.css';
 
 import UserPage from './UserPage'

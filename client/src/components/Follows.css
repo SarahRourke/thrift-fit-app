@@ -7,3 +7,20 @@ div.sideBox {
     font-weight: bold;
     position: fixed;
 }
+
+p {
+    color: #22333b;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+button.follows    {    
+    background-color: #515070; 
+    box-shadow: 2px 2px 2px 0px;
+    padding: .9em;
+    border-radius: 5px;
+    color: #22333b;
+    border: #515070 solid 4px;
+    font-weight: bold;
+  
+}

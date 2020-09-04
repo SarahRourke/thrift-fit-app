@@ -13,18 +13,6 @@
 
 @media (max-width: 380px) {
     .header {
-        padding: 0px 2vw;
-    }
-}
-@media (min-width: 930px) {
-    .header {
-        padding-left: 15%;
-        padding-right: 3vw;
-    }
-    
-}
-@media (min-width: 1800px) {
-    .header {
         padding-left: 20%;
         padding-right: 20%;
     }
@@ -60,6 +48,7 @@ header.headernav {
     text-align: center;
     z-index: 1;
     font-size: 30px;
+    
 }
 
 

@@ -123,7 +123,7 @@ class UserPage extends Component {
 
                 {/* bio */}
 
-                <button 
+                <button className="follow"
                     onClick={this.state.isFollowing ? () => this.unFollow() : () => this.follow()}>
                     {this.state.isFollowing ? "Unfollow" : "Follow"}
                 </button>

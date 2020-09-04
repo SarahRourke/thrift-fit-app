@@ -1,20 +1,29 @@
-.addoutfitform {
+.addOutfitForm {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
-.addoutfitform input {
+.addOutfitForm input {
     border: #f6f6f6;
     display: flex;
     align-self: center;
     padding: 1em;
     margin: 1em 2em .2em 2em;
     border-radius: 4px;
-   
+    background-color: #f2e9e4;
 }
+   
 
 .form [type="submit"] {
     padding: .9em;
     border-radius: 5px;
 }
 
+form.addOutfitForm [type="text"] {
+    padding: .9em;
+    border-radius: 5px;
+    width: 300px;
+    height: 30vh;
+
+}

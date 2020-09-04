@@ -56,7 +56,7 @@ class OutfitAddForm extends Component {
                 type="numeric"
                 name="price"
                 value={this.state.price || ''}
-                placeholder={this.props.edit ? this.props.outfit.value.price : "price"}
+                placeholder={this.props.edit ? this.props.outfit.value.price : "$ price"}
 
                 onChange={this.handleChange} />
 
