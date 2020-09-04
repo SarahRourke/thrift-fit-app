@@ -127,9 +127,7 @@ class ShoppingCart extends Component {
             })
             .then(res => res.json())           
             .catch(err => console.log(err));
-        })
-       
-        alert(`Your order is being reviewed, please expect an email from the seller.`);      
+        })   
     }
     
     // show all cart items. 
