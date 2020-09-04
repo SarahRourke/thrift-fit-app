@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ShoppingCartItem from './ShoppingCartItem';
 import ShoppingCartForm from './ShoppingCartForm';
 import './shoppingcart.css';
+import './outfits.css';
 
 
 class ShoppingCart extends Component {
@@ -15,8 +16,10 @@ class ShoppingCart extends Component {
             totalPriceLoaded: false,
             itemCounter: 0,
             shippingPriceArray: [],
-            shippingTotal: null,
+            shippingTotal: 0,
             shippingLoaded: false,
+            totalPrice: 0,
+            totalPriceLoaded: false
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
@@ -88,10 +91,12 @@ class ShoppingCart extends Component {
                 i++
                 console.log(this.state.shippingLoaded)
                 if(i === this.state.cartItems.length-1){
+                    this.calcTotal()
                     this.setState({
                         shippingLoaded: true,
                     })
                 }
+                
             })
         }).then(res => {
             console.log(this.state.shippingTotal)
@@ -109,6 +114,14 @@ class ShoppingCart extends Component {
             this.getCartTotalPrice();
         }).catch(err => console.log(err));
     }
+
+    calcTotal =() => {
+        const trueTotal = this.state.totalPrice + this.state.shippingTotal
+        this.setState({
+            totalPrice: trueTotal,
+            totalPriceLoaded: true,
+        })
+    }
     
     // show all cart items. 
     renderCartItems() {      
@@ -120,12 +133,25 @@ class ShoppingCart extends Component {
         } else return <p>Loading...</p>;
     }
 
+    renderTotal(){
+        if (this.state.shippingLoaded){
+            return <div>
+                <h3>Total: ${this.state.totalPrice}</h3>
+                </div>
+            }else {
+                return <p>Calculating Total...</p>
+            }
+    }
+
 
     renderShipping() {
         if (this.state.shippingLoaded){
-        return <h3>Shipping: ${this.state.shippingTotal}</h3>
+        return <div>
+            <h3>Shipping: ${this.state.shippingTotal}</h3>
+            {/* {this.renderTotal()} */}
+            </div>
         }else {
-            return <p>Loading Subtotal</p>
+            return <p>Calculating Shipping Cost...</p>
         }
     }
 
@@ -136,7 +162,7 @@ class ShoppingCart extends Component {
                 {this.renderShipping()}
             </div>
         } else {
-            return <p>Loading Subtotal</p>
+            return <p>Loading Subtotal...</p>
         }
     }
 
@@ -157,8 +183,12 @@ class ShoppingCart extends Component {
     render() {
          return(
 
-            <div className="shopping-cart">
-                {this.renderCartItems()}
+            <div>
+                <div className="row">
+                    {this.renderCartItems()}
+                </div>
+                
+                
                 {this.isCartEmpty()}                
 
             </div>

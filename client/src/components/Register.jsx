@@ -80,7 +80,7 @@ class Register extends Component {
                     onChange={this.handleChange} 
                     />
 
-                    <select name="state" value={this.state.zip_code} onChange={this.handleChange}>
+                    <select name="state" value={this.state.state} onChange={this.handleChange}>
                         <option value="AL">AL</option>
                         <option value="AK">AK</option>
                         <option value="AR">AR</option>	
