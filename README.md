@@ -16,6 +16,33 @@ This app is for people to find thrifted outfits that have been curated by variou
 To install and run thrift-fit-locally you need to first run git clone with the project
 link. After installing it locally you need to run yarn install in the top-level directory ad well as the client directory. After doing that you need to create a local database you can name it whatever you want we named it thrift_fit. If you name it something other than thrift_fit you need to go into db/config.js and change the database name on line 12. From there you should run your migration files in db/migrations. There is a seed a file in there but it is not necessary to run for the sake of the project. If you do choose to run it please make sure you have at least one user created. You will also need a .env file. The .env file should contain a SECRET_KEY=(INSERT RANDOM STRING).
  
+## Wireframes 
+ 
 ## ERDS
  
-## User-Stories
+## User stories - Moscow Method
+  ### Must Have
+   - The seller should be able to post outfits that are for sale
+   - The seller should be able to view a full list of outfits they have availble
+   - The seller should be able to delete outfits after they are sold
+   - The seller should be able to see their followers
+   - The buyer should be able to follow sellers they like
+   - The buyer should be able to see a full list of outfits from all sellers
+   - The buyer should be able to see a full list of outfits from all sellers they follow
+   - The buyer should be able to see a full list of outfits from one seller they follow
+   - The buyer and seller should be able to login
+    
+  ### Should Have
+   - The buyer should be able to see shipping costs
+   - The buyer should be able to buy the outfits
+    
+  ### Could Have
+   - The seller should be see their rating
+   - The buyer should be able to add friends
+   - The buyer should be able to see friends
+   - The buyer should be able to recommend an outfit to a friend
+   - The buyer should be able to see their recommendations.
+    
+  ### Will not have
+  - The buyer should be able to send a request for a seller to put together an outfit for them.
+  - The Seller should have outfits automatically deleted if a user buys one
