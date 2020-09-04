@@ -13,6 +13,9 @@ class ShoppingCart extends Component {
             cartTotalPrice: 0.00,
             totalPriceLoaded: false,
             itemCounter: 0,
+            shippingPriceArray: [],
+            shippingTotal: null,
+            shippingLoaded: false,
         }
         this.deleteCartItem = this.deleteCartItem.bind(this);
     }
@@ -21,7 +24,6 @@ class ShoppingCart extends Component {
         this.getCartTotalPrice();
         this.getAllCartItemsByUserId();              
     }
-
     // set state with user's cart total price.
     getCartTotalPrice() {
         fetch(`/api/shopping-carts/total-price/`)
@@ -31,11 +33,11 @@ class ShoppingCart extends Component {
                 cartTotalPrice: res.data.total_price.sum,
                 totalPriceLoaded: true,
             })
-        }).then(this.getShippingPrice()).catch(err => console.log(err));
+        }).catch(err => console.log(err));
     }
 
-    getShippingPrice() {
-        fetch(`/api/shopping-carts/shopping_cart_shipping/12`, {
+    getShippingPrice(element) {
+        fetch(`/api/shopping-carts/shopping_cart_shipping/${element.user_id}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -45,10 +47,19 @@ class ShoppingCart extends Component {
         .then(res => res.json())
         .then(res => {
             console.log(res)
-            // this.setState({
-            //     cartTotalPrice: res.data.total_price.sum,
-            //     totalPriceLoaded: true,
-            // })
+            console.log(res.shippingCost.cost[6].shipping_amount.amount)
+            const newShippingPriceArray = this.state.shippingPriceArray.concat(res.shippingCost.cost[6].shipping_amount.amount)
+            this.setState({
+                shippingPriceArray: newShippingPriceArray,
+            })
+        }).then(res => {
+            const shippingTotal = this.state.shippingPriceArray.reduce((a, b) => a + b, 0);
+            this.setState({
+                shippingTotal: shippingTotal,
+            })
+        }).then(res => {
+            console.log(this.state.shippingPriceArray)
+            console.log(this.state.shippingTotal)
         }).catch(err => console.log(err));
     }
 
@@ -65,6 +76,20 @@ class ShoppingCart extends Component {
                     }
                 }),
             })
+        }).then(res => {
+            let i = 0
+            this.state.cartItems.forEach(element => {
+                this.getShippingPrice(element)
+                i++
+                console.log(this.state.shippingLoaded)
+                if(i === this.state.cartItems.length-1){
+                    this.setState({
+                        shippingLoaded: true,
+                    })
+                }
+            })
+        }).then(res => {
+            console.log(this.state.shippingTotal)
         }).catch(err => console.log(err));        
     }
 
@@ -89,9 +114,20 @@ class ShoppingCart extends Component {
         } else return <p>Loading...</p>;
     }
 
+    renderShipping() {
+        if (this.state.shippingLoaded){
+        return <h3>Shipping: ${this.state.shippingTotal}</h3>
+        }else {
+            return <p>Loading Subtotal</p>
+        }
+    }
+
     renderSubTotal() {
         if (this.state.totalPriceLoaded) {
-            return <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
+            return <div>
+                <h3>Subtotal: ${this.state.cartTotalPrice}</h3>
+                {this.renderShipping()}
+            </div>
         } else {
             return <p>Loading Subtotal</p>
         }
