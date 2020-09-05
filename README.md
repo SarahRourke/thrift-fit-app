@@ -21,6 +21,8 @@ link. After installing it locally you need to run yarn install in the top-level 
  
 ## Wireframes 
  
+[Wireframes](./preproduction-materials/wireframes.md)
+
 ## ERDS
 
 [Entity Relationship Diagram(ERD)](./Group7ThriftFit.pdf).
